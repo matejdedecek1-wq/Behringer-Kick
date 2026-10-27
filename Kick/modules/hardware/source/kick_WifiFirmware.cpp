@@ -19,6 +19,7 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+#include <sys/stat.h> // stat() is used on every platform; some libc implementations do not pull it in indirectly
 #if( JUCE_LINUX || __linux__ )
     #include <iostream>
     #include <fcntl.h>

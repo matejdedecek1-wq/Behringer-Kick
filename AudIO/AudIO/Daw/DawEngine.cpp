@@ -1,3 +1,4 @@
+#include <thread> // std::this_thread::sleep_for: the standard library needs it spelled out
 #include "DawEngine.h"
 #include "DawSequence.h"
 
