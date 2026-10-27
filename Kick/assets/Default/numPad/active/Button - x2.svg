@@ -1,0 +1,25 @@
+<svg width="160" height="50" viewBox="0 0 160 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_ii_5266_52260)">
+<rect width="160" height="50" rx="4" fill="#422F05"/>
+<rect x="0.5" y="0.5" width="159" height="49" rx="3.5" stroke="#FFB608"/>
+<path d="M70.5641 20.32H72.5241L73.9041 22.4C74.2641 22.94 74.5641 23.44 74.8841 23.98H74.9441C75.2641 23.4 75.5841 22.9 75.9041 22.38L77.2641 20.32H79.1641L75.8641 25L79.2641 30H77.2641L75.8441 27.82C75.4641 27.26 75.1441 26.72 74.8041 26.14H74.7641C74.4441 26.74 74.1041 27.24 73.7441 27.82L72.3441 30H70.4041L73.8441 25.06L70.5641 20.32ZM88.702 30H80.402V28.92L81.782 27.58C85.102 24.42 86.602 22.74 86.622 20.78C86.622 19.46 85.982 18.24 84.042 18.24C82.862 18.24 81.882 18.84 81.282 19.34L80.722 18.1C81.622 17.34 82.902 16.78 84.402 16.78C87.202 16.78 88.382 18.7 88.382 20.56C88.382 22.96 86.642 24.9 83.902 27.54L82.862 28.5V28.54H88.702V30Z" fill="#FFB608"/>
+</g>
+<defs>
+<filter id="filter0_ii_5266_52260" x="-4" y="-4" width="170" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_5266_52260"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-4" dy="-4"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_5266_52260" result="effect2_innerShadow_5266_52260"/>
+</filter>
+</defs>
+</svg>

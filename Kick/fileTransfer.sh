@@ -1,0 +1,3 @@
+FILE=$1
+DPATH=$2
+scp -P 48042 $FILE root@192.168.10.100:$DPATH

@@ -1,0 +1,13 @@
+[Unit]
+Description=Writable /opt
+DefaultDependencies=no
+#After=mkfs-setup.service
+Before=local-fs.target umount.target
+
+[Mount]
+What=/dev/mmcblk1p6
+Where=/opt
+Type=ext4
+
+[Install]
+WantedBy=multi-user.target

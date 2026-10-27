@@ -1,0 +1,11 @@
+[Unit]
+Description=Prepare writable overlay directories on the KICK storage partition
+DefaultDependencies=no
+RequiresMountsFor=/tmp /media/kickstorage
+Conflicts=shutdown.target
+RefuseManualStop=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/systemd-tmpfiles --create --remove /etc/kick/overlay-dirs.conf

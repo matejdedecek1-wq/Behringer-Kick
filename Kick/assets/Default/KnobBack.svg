@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <radialGradient cx="0" cy="0" gradientTransform="matrix(0 27.98118 -27.9494 0 13.975 0)" gradientUnits="userSpaceOnUse" id="a" r="1">
+   <stop stop-color="#6A4B00"/>
+   <stop offset="1" stop-color="#0E0A00"/>
+  </radialGradient>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <path class="layer" d="m14.97,29.98c8.27,0 14.98,-6.71 14.98,-14.99s-6.71,-14.99 -14.98,-14.99s-14.97,6.71 -14.97,14.99s6.7,14.99 14.97,14.99" fill="url(#a)" id="svg_1"/>
+ </g>
+</svg>

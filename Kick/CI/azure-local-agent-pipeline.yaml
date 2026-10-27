@@ -1,0 +1,106 @@
+# https://aka.ms/yaml
+
+resources:
+  repositories:
+    - repository: Linux
+      type: git
+      name: BE_P0XXX_JUCE_PLATFORM/Linux
+      ref: KT-Kick_RevB
+
+trigger:
+  - KT-Kick_RevB
+
+schedules:
+- cron: "0 12 * * 4"
+  displayName: Weekly
+  always: true
+  branches:
+    include:
+    - KT-Kick_RevB
+
+jobs:
+- job: build
+  timeoutInMinutes: 0
+  strategy:
+    matrix:
+      linux:
+        imageName: 'MTIN-Ubuntu'
+        isLinux: True
+
+  pool:
+    name: MTIN-Ubuntu
+
+  steps:
+    - task: Bash@3
+      condition: variables.isLinux
+      displayName : "Clean work space"
+      inputs:
+        targetType: 'inline'
+        script: |
+          sudo rm -rf  $(Build.SourcesDirectory)
+
+    - checkout: Linux
+      clean: true
+
+    # --- Build Kick - Linux ---
+    - task: Bash@3
+      condition: variables.isLinux
+      displayName: "Build Kick for Linux"
+      inputs:
+        targetType: 'inline'
+        script: |
+          cd $(Build.SourcesDirectory)/
+          bash ./CI/azure_build_standalone.sh Kick
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy firmware files"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/output/images/fw_files/'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Buildroot/fw_files'
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy fw upgrade files"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/output/images/fwUpgrade_files'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Buildroot/fwUpgrade_files/'
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy App image"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/AppTemp/Kick/apps/kick/Kick_artefacts/Release'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application' 
+
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy Debug App image"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/AppTemp/Kick/apps/kick/Kick_artefacts/Debug'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg'
+
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy App assets"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/AppTemp/Kick/assets'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg/assets/'
+
+    - task: CopyFiles@2
+      condition: variables.isLinux
+      displayName : "Copy App assets"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/buildroot/AppTemp/Kick/assets'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application/assets/' 
+
+    - task: PublishBuildArtifacts@1
+      condition: variables.isLinux
+      displayName: "upload Kick binaries"
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+        ArtifactName: 'KickArtifacts'
+        publishLocation: 'Container'

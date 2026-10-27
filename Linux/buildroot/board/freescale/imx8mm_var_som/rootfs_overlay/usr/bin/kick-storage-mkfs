@@ -1,0 +1,8 @@
+#!/bin/sh
+# Format the KICK storage partition on first boot (only if it has no filesystem yet).
+
+part=/dev/disk/by-partuuid/56d2e551-db06-46da-bb58-274c6ee725d2
+
+if ! /sbin/e2label "$part" >/dev/null 2>&1; then
+    exec mkfs.ext4 -L kickstorage "$part"
+fi

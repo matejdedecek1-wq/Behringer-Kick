@@ -1,0 +1,19 @@
+[Unit]
+Description=KT_Kick Auto Start
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart= /bin/sh /usr/bin/kt_kick.sh
+Restart=on-failure
+RestartSec=2
+KillMode=process
+CPUWeight=20
+CPUQuota=85%
+IOWeight=20
+MemorySwapMax=0
+
+[Install]
+WantedBy=multi-user.target

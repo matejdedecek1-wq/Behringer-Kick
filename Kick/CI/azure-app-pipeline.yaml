@@ -1,0 +1,131 @@
+# https://aka.ms/yaml
+
+resources:
+  repositories:
+    - repository: Kick
+      type: git
+      name: Kick
+      ref: dev
+
+trigger:
+  - dev
+
+schedules:
+- cron: "0 12 * * 4"
+  displayName: Weekly
+  always: true
+  branches:
+    include:
+    - dev
+
+variables:
+  Agent.Source.Git.ShallowFetchDepth: 1
+
+jobs:
+- job: build
+  timeoutInMinutes: 0
+  strategy:
+    matrix:
+      linux:
+        imageName: 'MTIN-Ubuntu'
+        isApp: True
+
+  pool:
+    name: MTIN-Ubuntu
+
+  steps:
+    - checkout: self
+      fetchDepth: 1
+      clean: true
+      timeoutInMinutes: 45
+
+    # --- Build KICK Linux App ---
+    - task: Bash@3
+      condition: variables.isApp
+      displayName: "Build Kick App for Linux"
+      inputs:
+        targetType: 'inline'
+        script: |
+          cd $(Build.SourcesDirectory)/
+          bash ./CI/azure_build.sh "isApp"
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy Release App Image"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/apps/kick/Kick_artefacts/Release'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy Debug App Image"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/apps/kick/Kick_artefacts/Debug'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy assets"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/assets'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg/assets/'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy assets"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/assets'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application/assets/'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy demos"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/demos'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg/demos/'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy demos"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/demos'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application/demos/'
+
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy templates"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/templates'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application_dbg/templates/'
+
+    - task: CopyFiles@2
+      condition: variables.isApp
+      displayName : "Copy templates"
+      inputs:
+        SourceFolder : '$(Build.SourcesDirectory)/templates'
+        Contents : '**'
+        TargetFolder : '$(Build.ArtifactStagingDirectory)/Linux_Images/Application/templates/'
+
+
+    - task: PublishBuildArtifacts@1
+      condition: variables.isApp
+      displayName: "upload Kick App binaries"
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/'
+        ArtifactName: 'KickArtifacts'
+        publishLocation: 'Container'
+
+    - task: Bash@3
+      condition: variables.isApp
+      displayName : "Clean work space"
+      inputs:
+        targetType: 'inline'
+        script: |
+          sudo rm -rf  $(Build.SourcesDirectory)

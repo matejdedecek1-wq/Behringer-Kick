@@ -1,0 +1,14 @@
+[Unit]
+Description=Writable /var (overlay on the KICK storage partition)
+DefaultDependencies=no
+Requires=kick-overlay-dirs.service
+After=kick-overlay-dirs.service
+Conflicts=umount.target
+Before=local-fs.target umount.target
+
+[Mount]
+What=overlay
+Where=/var
+Type=overlay
+# Paths must match /etc/kick/overlay-dirs.conf
+Options=lowerdir=/var,upperdir=/media/kickstorage/overlay/var/upper,workdir=/media/kickstorage/overlay/var/work

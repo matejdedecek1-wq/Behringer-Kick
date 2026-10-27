@@ -1,0 +1,13 @@
+[Unit]
+Description=KICK storage partition
+DefaultDependencies=no
+Requires=kick-storage-mkfs.service
+After=kick-storage-mkfs.service
+RequiresMountsFor=/media
+Conflicts=umount.target
+Before=local-fs.target umount.target
+
+[Mount]
+What=PARTUUID=56d2e551-db06-46da-bb58-274c6ee725d2
+Where=/media/kickstorage
+Type=ext4

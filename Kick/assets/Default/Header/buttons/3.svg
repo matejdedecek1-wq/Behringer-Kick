@@ -1,0 +1,25 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_ii_11226_24218)">
+<rect width="44" height="44" rx="4" fill="#1F1F1F"/>
+<rect x="0.5" y="0.5" width="43" height="43" rx="3.5" stroke="#2D2D2D"/>
+<path d="M18.9991 25.038L19.3351 24.086C19.6851 24.31 20.4971 24.66 21.3511 24.66C22.9331 24.66 23.4231 23.652 23.4091 22.896C23.3951 21.622 22.2471 21.076 21.0571 21.076H20.3711V20.152H21.0571C21.9531 20.152 23.0871 19.69 23.0871 18.612C23.0871 17.884 22.6251 17.24 21.4911 17.24C20.7631 17.24 20.0631 17.562 19.6711 17.842L19.3491 16.946C19.8251 16.596 20.7491 16.246 21.7291 16.246C23.5211 16.246 24.3331 17.31 24.3331 18.416C24.3331 19.354 23.7731 20.152 22.6531 20.558V20.586C23.7731 20.81 24.6831 21.65 24.6831 22.924C24.6831 24.38 23.5491 25.654 21.3651 25.654C20.3431 25.654 19.4471 25.332 18.9991 25.038Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_ii_11226_24218" x="-4" y="-4" width="54" height="54" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_11226_24218"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-4" dy="-4"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_11226_24218" result="effect2_innerShadow_11226_24218"/>
+</filter>
+</defs>
+</svg>

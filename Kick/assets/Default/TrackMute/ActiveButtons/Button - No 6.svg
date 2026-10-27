@@ -1,0 +1,25 @@
+<svg width="156" height="34" viewBox="0 0 156 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_ii_8101_59425)">
+<rect width="156" height="34" rx="4" fill="#422F05"/>
+<rect x="0.5" y="0.5" width="155" height="33" rx="3.5" stroke="#FFB608"/>
+<path d="M80.2351 11.26V12.268C79.9831 12.254 79.6611 12.268 79.3111 12.324C77.3791 12.646 76.3571 14.06 76.1471 15.558H76.1891C76.6231 14.984 77.3791 14.508 78.3871 14.508C79.9971 14.508 81.1311 15.67 81.1311 17.448C81.1311 19.114 79.9971 20.654 78.1071 20.654C76.1611 20.654 74.8871 19.142 74.8871 16.776C74.8871 14.984 75.5311 13.57 76.4271 12.674C77.1831 11.932 78.1911 11.47 79.3391 11.33C79.7031 11.274 80.0111 11.26 80.2351 11.26ZM78.1071 19.702H78.1211C79.1711 19.702 79.8851 18.82 79.8851 17.518C79.8851 16.216 79.1431 15.432 78.0091 15.432C77.2671 15.432 76.5811 15.894 76.2451 16.552C76.1611 16.692 76.1051 16.874 76.1051 17.098C76.1331 18.596 76.8191 19.702 78.1071 19.702Z" fill="#FFB608"/>
+</g>
+<defs>
+<filter id="filter0_ii_8101_59425" x="-4" y="-4" width="166" height="44" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="6" dy="6"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_8101_59425"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-4" dy="-4"/>
+<feGaussianBlur stdDeviation="5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_8101_59425" result="effect2_innerShadow_8101_59425"/>
+</filter>
+</defs>
+</svg>

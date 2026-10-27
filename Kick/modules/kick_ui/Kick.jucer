@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="GUHftw" name="Kick" projectType="guiapp" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
+              cppLanguageStandard="17" companyName="MusicTribe" maxBinaryFileSize="20971520">
+  <MAINGROUP id="f6Ea8w" name="Kick">
+    <GROUP id="{87B06735-50AD-35DA-9660-026C1255A919}" name="ui">
+      <GROUP id="{4DCE7B77-3D74-649C-3372-B7C33172288B}" name="dialogs">
+        <GROUP id="{3C4E4A61-AA17-8EE9-E623-076E20B43761}" name="mainmode">
+          <FILE id="LlB2me" name="kick_AppHumanize.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppHumanize.cpp"/>
+          <FILE id="Yfd3Cy" name="kick_AppGenRandEvents.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppGenRandEvents.cpp"/>
+          <FILE id="XPiKPH" name="kick_AppGenRandEvents.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppGenRandEvents.h"/>
+          <FILE id="WSGVyM" name="kick_AppHumanize.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppHumanize.h"/>
+          <FILE id="lEgGPr" name="kick_AppMainmode.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppMainmode.cpp"/>
+          <FILE id="iguUBE" name="kick_AppSplitEvents.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppSplitEvents.cpp"/>
+          <FILE id="VhJf4D" name="kick_AppPitchQuantize.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppPitchQuantize.cpp"/>
+          <FILE id="SqfA7O" name="kick_AppPitchQuantize.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppPitchQuantize.h"/>
+          <FILE id="hJ9reh" name="kick_AppSplitEvents.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppSplitEvents.h"/>
+          <FILE id="gpReQq" name="kick_AppMainmode.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppMainmode.h"/>
+          <FILE id="zNYZCZ" name="kick_AppCopyTrack.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppCopyTrack.cpp"/>
+          <FILE id="LHo4pC" name="kick_AppCopyTrack.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppCopyTrack.h"/>
+          <FILE id="gLIjEh" name="kick_AppModifyBar.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppModifyBar.cpp"/>
+          <FILE id="hTAhqK" name="kick_AppTrackOptions.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppTrackOptions.cpp"/>
+          <FILE id="EnHbay" name="kick_AppTrackOptions.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppTrackOptions.h"/>
+          <FILE id="tlAZvb" name="kick_AppModifyBar.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppModifyBar.h"/>
+          <FILE id="GG6DH0" name="kick_AppProgModeComponent.cpp" compile="1"
+                resource="0" file="dialogs/mainmode/kick_AppProgModeComponent.cpp"/>
+          <FILE id="v7STnN" name="kick_AppProgModeComponent.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppProgModeComponent.h"/>
+          <FILE id="QONbQK" name="kick_AppProgram.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppProgram.cpp"/>
+          <FILE id="oTeLaT" name="kick_AppProgram.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppProgram.h"/>
+          <FILE id="vuUYwx" name="kick_AppProgramComponent.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppProgramComponent.cpp"/>
+          <FILE id="FJNdZz" name="kick_AppProgramComponent.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppProgramComponent.h"/>
+          <FILE id="vVAbMh" name="kick_AppProgSort.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppProgSort.cpp"/>
+          <FILE id="rMSbuM" name="kick_AppProgSort.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppProgSort.h"/>
+          <FILE id="CetHJP" name="kick_AppSequence.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppSequence.cpp"/>
+          <FILE id="lhAvNJ" name="kick_AppSequence.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppSequence.h"/>
+          <FILE id="hp4RgY" name="kick_AppSequenceComponent.cpp" compile="1"
+                resource="0" file="dialogs/mainmode/kick_AppSequenceComponent.cpp"/>
+          <FILE id="depzU2" name="kick_AppSequenceComponent.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppSequenceComponent.h"/>
+          <FILE id="X2X3vO" name="kick_AppSequenceOptions.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppSequenceOptions.cpp"/>
+          <FILE id="ptQL0U" name="kick_AppSequenceOptions.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppSequenceOptions.h"/>
+          <FILE id="kcJvAF" name="kick_AppTrack.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppTrack.cpp"/>
+          <FILE id="n8nRwg" name="kick_AppTrack.h" compile="0" resource="0" file="dialogs/mainmode/kick_AppTrack.h"/>
+          <FILE id="Q9PSng" name="kick_AppTrackComponent.cpp" compile="1" resource="0"
+                file="dialogs/mainmode/kick_AppTrackComponent.cpp"/>
+          <FILE id="BYOOme" name="kick_AppTrackComponent.h" compile="0" resource="0"
+                file="dialogs/mainmode/kick_AppTrackComponent.h"/>
+        </GROUP>
+        <FILE id="Bni7Mt" name="kick_AppDnp.cpp" compile="1" resource="0" file="dialogs/kick_AppDnp.cpp"/>
+        <FILE id="MSn798" name="kick_AppDnp.h" compile="0" resource="0" file="dialogs/kick_AppDnp.h"/>
+        <FILE id="M03ZQm" name="kick_AppPadGroup.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppPadGroup.cpp"/>
+        <FILE id="Ui7B4p" name="kick_AppPadGroup.h" compile="0" resource="0"
+              file="dialogs/kick_AppPadGroup.h"/>
+        <FILE id="gdZJbH" name="AppMenu.cpp" compile="1" resource="0" file="dialogs/AppMenu.cpp"/>
+        <FILE id="Jii8xI" name="AppMenu.h" compile="0" resource="0" file="dialogs/AppMenu.h"/>
+        <FILE id="MtoMBK" name="kick_AppGridControl.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppGridControl.cpp"/>
+        <FILE id="ATvHGY" name="kick_AppPadList.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppPadList.cpp"/>
+        <FILE id="MXBlB9" name="kick_AppPadList.h" compile="0" resource="0"
+              file="dialogs/kick_AppPadList.h"/>
+        <FILE id="Nzdp1Y" name="kick_AppPadSettings.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppPadSettings.cpp"/>
+        <FILE id="b7AyIf" name="kick_AppPadSettings.h" compile="0" resource="0"
+              file="dialogs/kick_AppPadSettings.h"/>
+        <FILE id="fedyn6" name="kick_AppAssignKeyGrp.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppAssignKeyGrp.cpp"/>
+        <FILE id="FoDT8p" name="kick_AppAssignKeyGrp.h" compile="0" resource="0"
+              file="dialogs/kick_AppAssignKeyGrp.h"/>
+        <FILE id="dMXhDf" name="kick_Background.cpp" compile="1" resource="0"
+              file="dialogs/kick_Background.cpp"/>
+        <FILE id="NTDm1e" name="kick_AppAssignSample.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppAssignSample.cpp"/>
+        <FILE id="dRkqYW" name="kick_AppAssignSample.h" compile="0" resource="0"
+              file="dialogs/kick_AppAssignSample.h"/>
+        <FILE id="DYCOTm" name="kick_Background.h" compile="0" resource="0"
+              file="dialogs/kick_Background.h"/>
+        <FILE id="D5tkCU" name="kick_AppGridControl.h" compile="0" resource="0"
+              file="dialogs/kick_AppGridControl.h"/>
+        <FILE id="cqlTol" name="kick_AppHome.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppHome.cpp"/>
+        <FILE id="HNK9A2" name="kick_AppHome.h" compile="0" resource="0" file="dialogs/kick_AppHome.h"/>
+        <FILE id="Ww3RlP" name="kick_AppStatusbar.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppStatusbar.cpp"/>
+        <FILE id="lSFlj9" name="kick_AppStatusbar.h" compile="0" resource="0"
+              file="dialogs/kick_AppStatusbar.h"/>
+        <FILE id="BRZ6MZ" name="kick_AppTopbar.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppTopbar.cpp"/>
+        <FILE id="dwQT1u" name="kick_AppTopbar.h" compile="0" resource="0"
+              file="dialogs/kick_AppTopbar.h"/>
+        <FILE id="MmwtIl" name="kick_AppTransCompOptions.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppTransCompOptions.cpp"/>
+        <FILE id="NfFHe7" name="kick_AppTransCompOptions.h" compile="0" resource="0"
+              file="dialogs/kick_AppTransCompOptions.h"/>
+        <FILE id="p7b1L4" name="kick_AppTransport.cpp" compile="1" resource="0"
+              file="dialogs/kick_AppTransport.cpp"/>
+        <FILE id="aLtvGe" name="kick_AppTransport.h" compile="0" resource="0"
+              file="dialogs/kick_AppTransport.h"/>
+        <FILE id="RyhIjd" name="kick_AppTransportComponent.cpp" compile="1"
+              resource="0" file="dialogs/kick_AppTransportComponent.cpp"/>
+        <FILE id="Krqb73" name="kick_AppTransportComponent.h" compile="0" resource="0"
+              file="dialogs/kick_AppTransportComponent.h"/>
+        <FILE id="VHwadh" name="kick_Includes.h" compile="0" resource="0" file="dialogs/kick_Includes.h"/>
+      </GROUP>
+      <FILE id="OkuKcS" name="kick_LabelComponentOptions.cpp" compile="1"
+            resource="0" file="common/kick_LabelComponentOptions.cpp"/>
+      <GROUP id="{A3B383C7-E4DE-6CEC-A841-3B6AB712E7B1}" name="common">
+        <FILE id="Mzj5l9" name="broswer.png" compile="0" resource="1" file="../../icons/broswer.png"/>
+        <FILE id="wWPpC2" name="channelMixer.png" compile="0" resource="1"
+              file="../../icons/channelMixer.png"/>
+        <FILE id="F13nFj" name="colorEditor.png" compile="0" resource="1" file="../../icons/colorEditor.png"/>
+        <FILE id="XiiN5A" name="kick_Constants.h" compile="0" resource="0"
+              file="common/kick_Constants.h"/>
+        <FILE id="FekQ2o" name="kick_CustListBox.cpp" compile="1" resource="0"
+              file="common/kick_CustListBox.cpp"/>
+        <FILE id="mXtSbV" name="kick_CustListBox.h" compile="0" resource="0"
+              file="common/kick_CustListBox.h"/>
+        <FILE id="Bme7C3" name="kick_LabelComponent.cpp" compile="1" resource="0"
+              file="common/kick_LabelComponent.cpp"/>
+        <FILE id="ttlqwJ" name="kick_LabelComponent.h" compile="0" resource="0"
+              file="common/kick_LabelComponent.h"/>
+        <FILE id="C8pRCf" name="kick_LabelComponentOptions.h" compile="0" resource="0"
+              file="common/kick_LabelComponentOptions.h"/>
+        <FILE id="zyxTQc" name="kick_ListBoxComp.cpp" compile="1" resource="0"
+              file="common/kick_ListBoxComp.cpp"/>
+        <FILE id="vehEKf" name="kick_ListBoxComp.h" compile="0" resource="0"
+              file="common/kick_ListBoxComp.h"/>
+        <FILE id="rYz4NI" name="kick_ListBoxCompOptions.cpp" compile="1" resource="0"
+              file="common/kick_ListBoxCompOptions.cpp"/>
+        <FILE id="OLbOS4" name="kick_ListBoxCompOptions.h" compile="0" resource="0"
+              file="common/kick_ListBoxCompOptions.h"/>
+        <FILE id="Pq9Xij" name="kick_LookAndFeel.h" compile="0" resource="0"
+              file="common/kick_LookAndFeel.h"/>
+        <FILE id="AWo05l" name="kick_NumericComponent.cpp" compile="1" resource="0"
+              file="common/kick_NumericComponent.cpp"/>
+        <FILE id="sXHTgD" name="kick_NumericComponent.h" compile="0" resource="0"
+              file="common/kick_NumericComponent.h"/>
+        <FILE id="svTZ1r" name="kick_NumericComponentOptions.cpp" compile="1"
+              resource="0" file="common/kick_NumericComponentOptions.cpp"/>
+        <FILE id="HMTcx5" name="kick_NumericComponentOptions.h" compile="0"
+              resource="0" file="common/kick_NumericComponentOptions.h"/>
+        <FILE id="jlVk7W" name="kick_Theme.cpp" compile="1" resource="0" file="common/kick_Theme.cpp"/>
+        <FILE id="DHn3HR" name="kick_Theme.h" compile="0" resource="0" file="common/kick_Theme.h"/>
+        <FILE id="Xtegqr" name="listEdit.png" compile="0" resource="1" file="../../icons/listEdit.png"/>
+        <FILE id="k65FjE" name="liveControl.png" compile="0" resource="1" file="../../icons/liveControl.png"/>
+        <FILE id="PW9g3Z" name="looper.png" compile="0" resource="1" file="../../icons/looper.png"/>
+        <FILE id="WJK5CJ" name="midiControl.png" compile="0" resource="1" file="../../icons/midiControl.png"/>
+        <FILE id="b2ZRIx" name="padMixer.png" compile="0" resource="1" file="../../icons/padMixer.png"/>
+        <FILE id="aVfHnn" name="padMute.png" compile="0" resource="1" file="../../icons/padMute.png"/>
+        <FILE id="Hy3V8V" name="programEdit.png" compile="0" resource="1" file="../../icons/programEdit.png"/>
+        <FILE id="gC2tIU" name="qLinkEdit.png" compile="0" resource="1" file="../../icons/qLinkEdit.png"/>
+        <FILE id="Jn3afe" name="sampleEdit.png" compile="0" resource="1" file="../../icons/sampleEdit.png"/>
+        <FILE id="voLFct" name="sampler.png" compile="0" resource="1" file="../../icons/sampler.png"/>
+        <FILE id="aOfIKm" name="sequences.png" compile="0" resource="1" file="../../icons/sequences.png"/>
+        <FILE id="Fl9q4k" name="signals.h" compile="0" resource="0" file="common/signals.h"/>
+        <FILE id="DVTWme" name="song.png" compile="0" resource="1" file="../../icons/song.png"/>
+        <FILE id="gLaR6D" name="trackMute.png" compile="0" resource="1" file="../../icons/trackMute.png"/>
+      </GROUP>
+    </GROUP>
+    <GROUP id="{24C55AA8-D37C-3150-140D-6AFC3342BE49}" name="Resources">
+      <FILE id="rWfrIB" name="Automate_Normal.png" compile="0" resource="1"
+            file="../../icons/Automate_Normal.png"/>
+      <FILE id="MkIfuf" name="back.png" compile="0" resource="1" file="../../icons/back.png"/>
+      <FILE id="iPeec0" name="Browse.png" compile="0" resource="1" file="../../icons/Browse.png"/>
+      <FILE id="tTkTRu" name="Clip_2x.png" compile="0" resource="1" file="../../icons/Clip_2x.png"/>
+      <FILE id="hRIGyR" name="Clip_Normal.png" compile="0" resource="1" file="../../icons/Clip_Normal.png"/>
+      <FILE id="i5l4gD" name="CV.png" compile="0" resource="1" file="../../icons/CV.png"/>
+      <FILE id="SDZfZ7" name="Drum_2x.png" compile="0" resource="1" file="../../icons/Drum_2x.png"/>
+      <FILE id="JASkM5" name="Drum_Normal.png" compile="0" resource="1" file="../../icons/Drum_Normal.png"/>
+      <FILE id="L744qY" name="edit.png" compile="0" resource="1" file="../../icons/edit.png"/>
+      <FILE id="oKmR4q" name="Erase_2x.png" compile="0" resource="1" file="../../icons/Erase_2x.png"/>
+      <FILE id="jYKhOf" name="Erase_Normal.png" compile="0" resource="1"
+            file="../../icons/Erase_Normal.png"/>
+      <FILE id="FTD8eB" name="Grey.png" compile="0" resource="1" file="../../icons/Grey.png"/>
+      <FILE id="HP0EKP" name="Grid_Normal.png" compile="0" resource="1" file="../../icons/Grid_Normal.png"/>
+      <FILE id="wzLlJZ" name="Grid_Pressed.png" compile="0" resource="1"
+            file="../../icons/Grid_Pressed.png"/>
+      <FILE id="D4tFST" name="Home_Normal.png" compile="0" resource="1" file="../../icons/Home_Normal.png"/>
+      <FILE id="ZFfTBf" name="Home_Pressed.png" compile="0" resource="1"
+            file="../../icons/Home_Pressed.png"/>
+      <FILE id="RyDDkN" name="Keygroup_2x.png" compile="0" resource="1" file="../../icons/Keygroup_2x.png"/>
+      <FILE id="Eb53XF" name="Keygroup_Normal.png" compile="0" resource="1"
+            file="../../icons/Keygroup_Normal.png"/>
+      <FILE id="rZeRV6" name="Mainmode_Normal.png" compile="0" resource="1"
+            file="../../icons/Mainmode_Normal.png"/>
+      <FILE id="g2WUcf" name="Mainmode_Pressed.png" compile="0" resource="1"
+            file="../../icons/Mainmode_Pressed.png"/>
+      <FILE id="ZyzzEY" name="Menu_Normal.png" compile="0" resource="1" file="../../icons/Menu_Normal.png"/>
+      <FILE id="G4XCTr" name="Menu_Pressed.png" compile="0" resource="1"
+            file="../../icons/Menu_Pressed.png"/>
+      <FILE id="qTbzhF" name="Metronome_Normal.png" compile="0" resource="1"
+            file="../../icons/Metronome_Normal.png"/>
+      <FILE id="V5LF7V" name="Midi_2x.png" compile="0" resource="1" file="../../icons/Midi_2x.png"/>
+      <FILE id="POyYcE" name="Midi_Normal.png" compile="0" resource="1" file="../../icons/Midi_Normal.png"/>
+      <FILE id="FRbWWv" name="Options.png" compile="0" resource="1" file="../../icons/Options.png"/>
+      <FILE id="l7BFvI" name="Options_2x.png" compile="0" resource="1" file="../../icons/Options_2x.png"/>
+      <FILE id="s4lQBv" name="OptionsSave.PNG" compile="0" resource="1" file="../../icons/OptionsSave.PNG"/>
+      <FILE id="K1KnQa" name="Orange.png" compile="0" resource="1" file="../../icons/Orange.png"/>
+      <FILE id="QdEDOy" name="Pause.png" compile="0" resource="1" file="../../icons/Pause.png"/>
+      <FILE id="q3psnU" name="Pause_Pressed.png" compile="0" resource="1"
+            file="../../icons/Pause_Pressed.png"/>
+      <FILE id="P4yRIB" name="Pencil_2x.png" compile="0" resource="1" file="../../icons/Pencil_2x.png"/>
+      <FILE id="OK9WIa" name="Pencil_Normal.png" compile="0" resource="1"
+            file="../../icons/Pencil_Normal.png"/>
+      <FILE id="rW39j7" name="Play.png" compile="0" resource="1" file="../../icons/Play.png"/>
+      <FILE id="nUmX7g" name="Play_Pressed.png" compile="0" resource="1"
+            file="../../icons/Play_Pressed.png"/>
+      <FILE id="AS2jF4" name="Plugin_2x.png" compile="0" resource="1" file="../../icons/Plugin_2x.png"/>
+      <FILE id="YLlfMr" name="Plugin_Normal.png" compile="0" resource="1"
+            file="../../icons/Plugin_Normal.png"/>
+      <FILE id="oDhE2Y" name="project.png" compile="0" resource="1" file="../../icons/project.png"/>
+      <FILE id="Hl7cKg" name="PunchIn_Normal.png" compile="0" resource="1"
+            file="../../icons/PunchIn_Normal.png"/>
+      <FILE id="r61o55" name="PunchOut_Normal.png" compile="0" resource="1"
+            file="../../icons/PunchOut_Normal.png"/>
+      <FILE id="zOiVFX" name="Save.png" compile="0" resource="1" file="../../icons/Save.png"/>
+      <FILE id="KDip6J" name="search.png" compile="0" resource="1" file="../../icons/search.png"/>
+      <FILE id="AEThIS" name="seback.png" compile="0" resource="1" file="../../icons/seback.png"/>
+      <FILE id="EF9Mx5" name="Select_2x.png" compile="0" resource="1" file="../../icons/Select_2x.png"/>
+      <FILE id="iUXzMh" name="Select_Normal.png" compile="0" resource="1"
+            file="../../icons/Select_Normal.png"/>
+      <FILE id="lfiKbl" name="selisten.png" compile="0" resource="1" file="../../icons/selisten.png"/>
+      <FILE id="XhZ3X7" name="seqOptBars.png" compile="0" resource="1" file="../../icons/seqOptBars.png"/>
+      <FILE id="fAIQ8V" name="seqOptBouncetoSample.png" compile="0" resource="1"
+            file="../../icons/seqOptBouncetoSample.png"/>
+      <FILE id="emenvH" name="seqOptClear.png" compile="0" resource="1" file="../../icons/seqOptClear.png"/>
+      <FILE id="ZI4R4B" name="seqOptDeleteBars.png" compile="0" resource="1"
+            file="../../icons/seqOptDeleteBars.png"/>
+      <FILE id="ICwBNi" name="seqOptDoubleLength.png" compile="0" resource="1"
+            file="../../icons/seqOptDoubleLength.png"/>
+      <FILE id="WaC0dr" name="seqOptErase.png" compile="0" resource="1" file="../../icons/seqOptErase.png"/>
+      <FILE id="ng8haQ" name="seqOptEvents.png" compile="0" resource="1"
+            file="../../icons/seqOptEvents.png"/>
+      <FILE id="D0eQ32" name="seqOptHalfLength.png" compile="0" resource="1"
+            file="../../icons/seqOptHalfLength.png"/>
+      <FILE id="rYYThF" name="seqOptInsertBars.png" compile="0" resource="1"
+            file="../../icons/seqOptInsertBars.png"/>
+      <FILE id="pgyoTF" name="seqOptSaveCurrentSeq.png" compile="0" resource="1"
+            file="../../icons/seqOptSaveCurrentSeq.png"/>
+      <FILE id="P0gpSi" name="seqOptSequence.png" compile="0" resource="1"
+            file="../../icons/seqOptSequence.png"/>
+      <FILE id="JwdBJO" name="seqOptTranspose.png" compile="0" resource="1"
+            file="../../icons/seqOptTranspose.png"/>
+      <FILE id="TuZbrJ" name="sesearch.png" compile="0" resource="1" file="../../icons/sesearch.png"/>
+      <FILE id="HxiDbD" name="sesettings.png" compile="0" resource="1" file="../../icons/sesettings.png"/>
+      <FILE id="z5j777" name="Settings_Normal.png" compile="0" resource="1"
+            file="../../icons/Settings_Normal.png"/>
+      <FILE id="nC8RER" name="Settings_Pressed.png" compile="0" resource="1"
+            file="../../icons/Settings_Pressed.png"/>
+      <FILE id="Tukfo4" name="Step_Normal.png" compile="0" resource="1" file="../../icons/Step_Normal.png"/>
+      <FILE id="eBY8Mj" name="Step_Pressed.png" compile="0" resource="1"
+            file="../../icons/Step_Pressed.png"/>
+      <FILE id="xYl1kA" name="Stop.png" compile="0" resource="1" file="../../icons/Stop.png"/>
+      <FILE id="nf45VF" name="Stop_Pressed.png" compile="0" resource="1"
+            file="../../icons/Stop_Pressed.png"/>
+      <FILE id="g5HG32" name="System.png" compile="0" resource="1" file="../../icons/System.png"/>
+      <FILE id="PVnkY3" name="tab1.png" compile="0" resource="1" file="../../icons/tab1.png"/>
+      <FILE id="j69YDd" name="tab2.png" compile="0" resource="1" file="../../icons/tab2.png"/>
+      <FILE id="medhEP" name="tab3.png" compile="0" resource="1" file="../../icons/tab3.png"/>
+      <FILE id="kS9QFH" name="tab4.png" compile="0" resource="1" file="../../icons/tab4.png"/>
+      <FILE id="LrXBiR" name="tab5.png" compile="0" resource="1" file="../../icons/tab5.png"/>
+      <FILE id="jZCPD6" name="Track_Normal.png" compile="0" resource="1"
+            file="../../icons/Track_Normal.png"/>
+      <FILE id="o7CLaX" name="Track_Pressed.png" compile="0" resource="1"
+            file="../../icons/Track_Pressed.png"/>
+      <FILE id="Ouxyt3" name="TrackProgramMode_Normal.png" compile="0" resource="1"
+            file="../../icons/TrackProgramMode_Normal.png"/>
+      <FILE id="yTUKyp" name="TrackProgramMode_Pressed.png" compile="0" resource="1"
+            file="../../icons/TrackProgramMode_Pressed.png"/>
+      <FILE id="QURVfw" name="trkOptBouncetoAudio.png" compile="0" resource="1"
+            file="../../icons/trkOptBouncetoAudio.png"/>
+      <FILE id="CMTBfH" name="trkOptBouncetoSample.png" compile="0" resource="1"
+            file="../../icons/trkOptBouncetoSample.png"/>
+      <FILE id="FileLy" name="trkOptConverttoProgression.png" compile="0"
+            resource="1" file="../../icons/trkOptConverttoProgression.png"/>
+      <FILE id="p63JCr" name="trkOptCopyTrack.png" compile="0" resource="1"
+            file="../../icons/trkOptCopyTrack.png"/>
+      <FILE id="aEhHi9" name="trkOptDeleteBtn.png" compile="0" resource="1"
+            file="../../icons/trkOptDeleteBtn.png"/>
+      <FILE id="mb5rxf" name="trkOptDoubleSpeedEvents.png" compile="0" resource="1"
+            file="../../icons/trkOptDoubleSpeedEvents.png"/>
+      <FILE id="ZhekGm" name="trkOptExplodeBtn.png" compile="0" resource="1"
+            file="../../icons/trkOptExplodeBtn.png"/>
+      <FILE id="L7poul" name="trkOptGenerateRandomEvents.png" compile="0"
+            resource="1" file="../../icons/trkOptGenerateRandomEvents.png"/>
+      <FILE id="Irk7FO" name="trkOptHalfSpeedEvents.png" compile="0" resource="1"
+            file="../../icons/trkOptHalfSpeedEvents.png"/>
+      <FILE id="bnpYk8" name="trkOptHumanize.png" compile="0" resource="1"
+            file="../../icons/trkOptHumanize.png"/>
+      <FILE id="bEgOZy" name="trkOptPitchQuantize.png" compile="0" resource="1"
+            file="../../icons/trkOptPitchQuantize.png"/>
+      <FILE id="ctIR4O" name="trkOptSplitEvents.png" compile="0" resource="1"
+            file="../../icons/trkOptSplitEvents.png"/>
+      <FILE id="zFLBJJ" name="XY_2x.png" compile="0" resource="1" file="../../icons/XY_2x.png"/>
+      <FILE id="HMJjTh" name="XY_Normal.png" compile="0" resource="1" file="../../icons/XY_Normal.png"/>
+      <FILE id="bANgqW" name="Y_Normal.png" compile="0" resource="1" file="../../icons/Y_Normal.png"/>
+      <FILE id="RBHmfA" name="Y_Pressed.png" compile="0" resource="1" file="../../icons/Y_Pressed.png"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+  <EXPORTFORMATS>
+    <VS2019 targetFolder="Builds/VisualStudio2019">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Kick"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Kick"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="..\juce\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\juce\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\juce\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\juce\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\juce\modules"/>
+        <MODULEPATH id="juce_blocks_basics" path="..\juce\modules"/>
+        <MODULEPATH id="juce_box2d" path="..\juce\modules"/>
+        <MODULEPATH id="juce_core" path="..\juce\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\juce\modules"/>
+        <MODULEPATH id="juce_dsp" path="..\juce\modules"/>
+        <MODULEPATH id="juce_events" path="..\juce\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\juce\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\juce\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\juce\modules"/>
+        <MODULEPATH id="juce_opengl" path="..\juce\modules"/>
+        <MODULEPATH id="juce_osc" path="..\juce\modules"/>
+        <MODULEPATH id="juce_product_unlocking" path="..\juce\modules"/>
+        <MODULEPATH id="juce_video" path="..\juce\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\juce\modules"/>
+        <MODULEPATH id="tracktion_engine" path="../tracktion"/>
+      </MODULEPATHS>
+    </VS2019>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_blocks_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_box2d" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_product_unlocking" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="tracktion_engine" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <WINDOWS buildEnabled="0"/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>

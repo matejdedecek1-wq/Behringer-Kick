@@ -1,0 +1,7 @@
+
+const char* GIT_HASH_STR = GIT_HASH;
+const char* GIT_SHORT_HASH_STR = GIT_SHORT_HASH;
+const char* GIT_BRANCH_STR = GIT_BRANCH;
+const char* GIT_DIRTY_STR = GIT_DIRTY;
+const char* BUILD_TIMESTAMP_STR = BUILD_TIME;
+const char* CPACK_VERSION_STR = CPACK_VERSION;

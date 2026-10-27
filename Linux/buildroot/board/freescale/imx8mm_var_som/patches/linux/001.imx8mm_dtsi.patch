@@ -1,0 +1,343 @@
+diff --git a/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts b/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
+index 283d748bea7b..b221d30574d5 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
++++ b/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
+@@ -56,7 +56,7 @@
+ 			wakeup-source;
+ 		};
+ 	};
+-
++/*
+ 	gpio-leds {
+ 		compatible = "gpio-leds";
+ 		status = "okay";
+@@ -66,6 +66,26 @@
+ 			gpios = <&pca9534 0 GPIO_ACTIVE_HIGH>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
++	}; */
++/* This is for CODEC RESET and MUTE GPIO control */
++	leds {
++	compatible = "gpio-leds";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_gpio_reset>;
++	pinctrl-1 = <&pinctrl_gpio_mute>;
++
++	codecreset {
++		label = "codecreset";
++		gpios = <&gpio4 24 GPIO_ACTIVE_HIGH>,
++		<&gpio4 24 GPIO_ACTIVE_HIGH>;
++		default-state = "on";
++	};
++	codecmute {
++		label = "codecmute";
++		gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>,
++		<&gpio4 25 GPIO_ACTIVE_HIGH>;
++		default-state = "on";
++		};
+ 	};
+ 
+ 	pcie0_refclk: pcie0-refclk {
+@@ -189,6 +209,7 @@
+ 
+ &i2c3 {
+ 	/* Capacitive touch controller */
++#if 0 /* setu: commenting this */
+ 	ft5x06_ts: ft5x06_ts@38 {
+ 		compatible = "edt,edt-ft5206";
+ 		reg = <0x38>;
+@@ -203,7 +224,7 @@
+ 		wakeup-source;
+ 		status = "okay";
+ 	};
+-
++#endif
+ 	/* DS1337 RTC module */
+ 	rtc@68 {
+ 		compatible = "dallas,ds1337";
+@@ -417,12 +438,25 @@
+ 		>;
+ 	};
+ 
+-	pinctrl_reg_usdhc2_vmmc: regusdhc2vmmc {
++
++/* setu: This is for CODEC RESET and MUTE GPIO pins */
++	pinctrl_gpio_reset: gpioreset {
+ 		fsl,pins = <
+-			MX8MM_IOMUXC_SAI2_RXC_GPIO4_IO22		0x41
++			MX8MM_IOMUXC_SAI2_TXFS_GPIO4_IO24		0x41
++		>;
++	};
++	pinctrl_gpio_mute: gpiomute {
++		fsl,pins = <
++			MX8MM_IOMUXC_SAI2_TXC_GPIO4_IO25		0x41
+ 		>;
+ 	};
+ 
++	pinctrl_reg_usdhc2_vmmc: regusdhc2vmmc {
++		fsl,pins = <
++			MX8MM_IOMUXC_SAI1_RXC_SAI1_RX_BCLK		0x41
++		>;
++	};
++	
+ 	pinctrl_usdhc2_gpio: usdhc2grpgpio {
+ 		fsl,pins = <
+ 			MX8MM_IOMUXC_GPIO1_IO10_GPIO1_IO10		0xc1
+@@ -511,7 +545,7 @@
+ 
+ 	pinctrl_pcie0: pcie0grp {
+ 		fsl,pins = <
+-			MX8MM_IOMUXC_SAI2_RXFS_GPIO4_IO21		0x41
++		/*	MX8MM_IOMUXC_SAI2_RXFS_GPIO4_IO21		0x41*/ 
+ 		>;
+ 	};
+ };
+diff --git a/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi b/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
+index 5c6e03a2f22a..629316d54d4d 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
+@@ -15,6 +15,11 @@
+ 	reg_audio: audio_vdd {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "wm8904_supply";
++		 /* 
++		 setu : see if this needs to be changed
++		 
++		 regulator-name = "v4220m_supply";
++		*/
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+ 		regulator-always-on;
+@@ -36,12 +41,21 @@
+ 		/delete-node/ linux,cma;
+ 	};
+ 
+-	sound-wm8904 {
++
++/* Below entry is for Cool Audio codec V4220M : setu */
++	sound-v4220m {
+ 		compatible = "simple-audio-card";
+ 		simple-audio-card,bitclock-master = <&dailink_master>;
+ 		simple-audio-card,format = "i2s";
+ 		simple-audio-card,frame-master = <&dailink_master>;
+-		simple-audio-card,name = "wm8904-audio";
++		simple-audio-card,name = "v4220m-audio";		
++		/* audio-codec = <&codec>;		
++		cpu-dai = <&sai2>; */
++
++		simple-audio-card,widgets =
++			"Microphone", "Microphone Jack",
++			"Headphone", "Headphone Jack",
++			"Line", "Line In Jack";
+ 		simple-audio-card,routing =
+ 			"Headphone Jack", "HPOUTL",
+ 			"Headphone Jack", "HPOUTR",
+@@ -49,21 +63,27 @@
+ 			"IN2R", "Line In Jack",
+ 			"IN1L", "Microphone Jack",
+ 			"IN1R", "Microphone Jack";
+-		simple-audio-card,widgets =
+-			"Microphone", "Microphone Jack",
+-			"Headphone", "Headphone Jack",
+-			"Line", "Line In Jack";
+-		simple-audio-card,mclk-fs = <256>;
+-
+-		dailink_master: simple-audio-card,codec {
+-			sound-dai = <&wm8904>;
++		simple-audio-card,mclk-fs = <256>;	
++		simple-audio-card,codec {		
++			sound-dai = <&codec1>;
+ 		};
+-
+-		simple-audio-card,cpu {
+-			sound-dai = <&sai5>;
++		dailink_master: simple-audio-card,cpu {
++			sound-dai = <&sai2>;
++			clock-names = "mclk";
++			/* clocks = <&clk IMX8MM_CLK_SAI2_ROOT>; */
++			/* system-clock-frequency = <883200>;     setus:  in order to get an LRCLK of 48 kHz */
+ 		};
+ 	};
+-
++	
++	codec1: codec1 {
++//		compatible = "linux,snd-soc-dummy"; 
++		compatible = "linux,bt-sco";		
++		clocks = <&clk IMX8MM_CLK_SAI2_ROOT>;
++		clock-names = "mclk";
++		#sound-dai-cells = <0>;
++		status = "okay";
++    };
++	
+ 	sound-spdif {
+ 		compatible = "fsl,imx-audio-spdif";
+ 		model = "imx-spdif";
+@@ -137,8 +157,8 @@
+ 		display-timings {
+ 			lvds {
+ 				clock-frequency = <33000000>;
+-				hactive = <800>;
+-				vactive = <480>;
++				hactive = <1024>;        /*  tried 1366 & 1000 as well.. 1024 works..*/
++				vactive = <600>;          /* tried 800 & 768 as well .. 600 works.. */
+ 				hback-porch = <40>;
+ 				hfront-porch = <40>;
+ 				vback-porch = <29>;
+@@ -284,40 +304,51 @@
+ 	sda-gpios = <&gpio5 19 GPIO_ACTIVE_HIGH>;
+ 	status = "okay";
+ 
+-	wm8904: audio-codec@1a {
+-		compatible = "wlf,wm8904";
+-		#sound-dai-cells = <0>;
+-		reg = <0x1a>;
+-		clocks = <&clk IMX8MM_CLK_SAI5_ROOT>;
+-		clock-names = "mclk";
+-		DBVDD-supply = <&reg_audio>;
+-		DCVDD-supply = <&ldo5_reg>;
+-		AVDD-supply = <&ldo5_reg>;
+-		CPVDD-supply = <&ldo5_reg>;
+-		MICVDD-supply = <&ldo5_reg>;
+-		num-drc-cfgs = <5>;
+-		drc-cfg-names = "default", "peaklimiter", "tradition", "soft", "music";
+-		drc-cfg-regs =
+-			/* coded default: KNEE_IP = KNEE_OP = 0, HI_COMP = LO_COMP = 1  */
+-			<0x01af 0x3248 0x0000 0x0000>,
+-			/* coded default: KNEE_IP = -24, KNEE_OP = -6, HI_COMP = 1/4, LO_COMP = 1 */
+-			<0x04af 0x324b 0x0010 0x0408>,
+-			/* coded default: KNEE_IP = -42, KNEE_OP = -3, HI_COMP = 0, LO_COMP = 1 */
+-			<0x04af 0x324b 0x0028 0x0704>,
+-			/* coded default: KNEE_IP = -45, KNEE_OP = -9, HI_COMP = 1/8, LO_COMP = 1 */
+-			<0x04af 0x324b 0x0018 0x078c>,
+-			/* coded default: KNEE_IP = -30, KNEE_OP = -10.5, HI_COMP = 1/4, LO_COMP = 1 */
+-			<0x04af 0x324b 0x0010 0x050e>;
+-		gpio-cfg = <
+-			0x0018 /* GPIO1 => DMIC_CLK */
+-			0xffff /* GPIO2 => don't touch */
+-			0xffff /* GPIO3 => don't touch */
+-			0xffff /* GPIO4 => don't touch */
+-		>;
++	gt911: touchscreen@14 {
++			compatible = "goodix,gt911";
++			reg = <0x14>;
++			pinctrl-names = "default";
++            pinctrl-0 = <&pinctrl_gt911_ts_gpio>;  			/* Custom pinctrl group node */
++
++			interrupt-parent = <&gpio5>; 					/* Use the correct gpio controller here */
++			interrupts = <4 IRQ_TYPE_EDGE_FALLING>;				/* setu: IRQ_TYPE_NONE not working, try with IRQ_TYPE_EDGE_FALLING and IRQ_TYPE_EDGE_RISING */
++			irq-gpios = <&gpio5 4 GPIO_ACTIVE_HIGH>;
++			reset-gpios = <&gpio5 3 GPIO_ACTIVE_LOW>;  /*Use the correct gpio controller and pin */			
++#if 0
++			interrupt-parent = <&gpio3>; /* setu: old schematic referred to gpio3-io19 and 21 for Int and reset */
++/*			interrupts = <19 IRQ_TYPE_EDGE_FALLING>;             cpt_int:  SAI5_RXFS/SAI1_TXD0/////GPIO3_IO19 */
++			irq-gpios = <&gpio3 19 GPIO_ACTIVE_HIGH>;
++			reset-gpios = <&gpio3 21 GPIO_ACTIVE_LOW>;  /* : cpt_rst: SAI5_RXD0/SAI1_TXD2/////GPIO3_IO21 */
++#endif
++			touchscreen-size-x = <800>;
++			touchscreen-size-y = <480>;
++/*			power-off-suspend;
++			no-probe-reset;
++*/
++			status = "okay";
++    	};
++	/* DS1337 RTC module */
++	rtc@68 {
++		compatible = "nxp,pcf85263";
++		reg = <0x68>;
+ 		status = "okay";
+ 	};
+ };
+ 
++/* setu: added for v4220m coolaudio codec*/
++&sai2 {
++	#sound-dai-cells = <0>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_sai2>;
++	assigned-clocks = <&clk IMX8MM_CLK_SAI2>;
++	assigned-clock-parents = <&clk IMX8MM_AUDIO_PLL1_OUT>;
++	/* assigned-clock-rates = <1536000>; */
++	assigned-clock-rates = <12288000>;        /*setu: this is supposed to be our MCLK */
++	fsl,sai-synchronous-rx;
++	fsl,sai-mclk-direction-output;
++	status = "okay";
++};
++/*
+ &sai5 {
+ 	#sound-dai-cells = <0>;
+ 	pinctrl-names = "default";
+@@ -327,6 +358,7 @@
+ 	assigned-clock-rates = <1536000>;
+ 	status = "okay";
+ };
++*/
+ 
+ &spdif1 {
+ 	pinctrl-names = "default";
+@@ -411,7 +443,7 @@
+ 		   <&gpio1  0 GPIO_ACTIVE_LOW>,
+ 		   <&gpio2 19 GPIO_ACTIVE_LOW>;
+ 	status = "okay";
+-
++#if 0
+ 	/* Resistive touch controller */
+ 	ads7846@0 {
+ 		reg = <0>;
+@@ -436,7 +468,7 @@
+ 		wakeup-source;
+ 		status = "okay";
+ 	};
+-
++#endif
+ 	/* CAN controller */
+ 	can0: can@1 {
+ 		reg = <1>;
+@@ -547,6 +579,20 @@
+ 			MX8MM_IOMUXC_I2C1_SDA_GPIO5_IO15		0x1c3
+ 		>;
+ 	};
++	
++	pinctrl_gt911_ts_gpio: gt911_ts_gpiogrp {
++        fsl,pins = <
++ 
++			MX8MM_IOMUXC_SPDIF_RX_GPIO5_IO4        0x1d6  /* Interrupt */
++            MX8MM_IOMUXC_SPDIF_TX_GPIO5_IO3        0x149 /* Reset */
++#if 0
++
++/* After changing the pad control value as 0x1d6 for interrupt pin and 0x149 for reset pin it worked at once like a charm. */
++			MX8MM_IOMUXC_SAI5_RXFS_GPIO3_IO19         0x1d6 /* 0x16 not working on bootup: Interrupt try with 0x1c0*/
++			MX8MM_IOMUXC_SAI5_RXD0_GPIO3_IO21        0x149 /* 0x1c3 default: not working on bootup: Reset */
++#endif
++        >;
++    };
+ 
+ 	pinctrl_i2c3_gpio: i2c3grp-gpio {
+ 		fsl,pins = <
+@@ -584,7 +630,27 @@
+ 			MX8MM_IOMUXC_SAI5_MCLK_SAI5_MCLK		0xd6
+ 		>;
+ 	};
+-
++	/* setu: V4220M codec settings
++	I2S_DAT_ADC (SAI2_RXD0)    (SAI2_RXD0/SAI5_TXD0////UART1_RTS_B/////GPIO4_IO23)            -->> MX8MM_IOMUXC_SAI2_RXD0_SAI2_RX_DATA0
++	I2S_DAT_DAC (SAI2_TXD0)    (SAI2_TXD0/SAI5_TXD3/////GPIO4_IO26)                           -->> MX8MM_IOMUXC_SAI2_TXD0_SAI2_TX_DATA0
++	I2S_BCLK    (SAI2_RXC)     (SAI2_RXC/SAI5_TXC///UART1_RXD/////GPIO4_IO22)                 -->> MX8MM_IOMUXC_SAI2_RXC_SAI2_RX_BCLK
++	I2S_LRCK    (SAI2_RXFS)    (SAI2_RXFS/SAI5_TXFS//SAI5_TXD1///SAI2_RXD////UART1_TXD/////GPIO4_IO21) -->>  MX8MM_IOMUXC_SAI2_RXFS_SAI2_RX_SYNC
++	I2S_MCLK    (SAI2_MCLK)     (SAI2_MCLK/SAI5_MCLK/////GPIO4_IO27)                         -->>  MX8MM_IOMUXC_SAI2_MCLK_SAI2_MCLK
++	
++	nMUTE_SOM   (GPIO4_IO25)   (SAI2_TXC/SAI5_TXD2/////GPIO4_IO25)                             -->> MX8MM_IOMUXC_SAI2_TXC_GPIO4_IO25
++	nCODEC_RST  (GPIO4_IO24)   (SAI2_TXFS/SAI5_TXD1///SAI2_TXD1////UART1_CTS_B/////GPIO4_IO24) -->> MX8MM_IOMUXC_SAI2_TXFS_GPIO4_IO24
++	*/
++	pinctrl_sai2: sai2grp {
++		fsl,pins = <
++		/*	MX8MM_IOMUXC_SAI2_TXFS_SAI2_TX_SYNC		0xd6        updated.. MAY BE, NOT Required coz may b needed by nCODEC_RST */
++			MX8MM_IOMUXC_SAI2_RXFS_SAI2_RX_SYNC		0xd6       /* there : Required for I2S_LRCLK*/
++			MX8MM_IOMUXC_SAI2_TXD0_SAI2_TX_DATA0		0xd6   /* updated DAT_DAC : Required for I2S_DAT_DAC */
++			MX8MM_IOMUXC_SAI2_RXD0_SAI2_RX_DATA0		0xd6  /* there DAT_ADC : Required for I2S_DAT_ADC */
++			MX8MM_IOMUXC_SAI2_RXC_SAI2_RX_BCLK		0xd6      /*  there: Required for I2S_BCLK: but ambigous, cant use since its used by SDCard: pinctrl_reg_usdhc2_vmmc */
++		/*	MX8MM_IOMUXC_SAI2_TXC_SAI2_TX_BCLK		0xd6       updated ..  MAY BE, NOT Required coz may b needed by nMUTE_SOM*/
++			MX8MM_IOMUXC_SAI2_MCLK_SAI2_MCLK		0xd6      /* there : Required for I2S_MCLK*/
++		>;
++	};
+ 	pinctrl_spdif1: spdif1grp {
+ 		fsl,pins = <
+ 			MX8MM_IOMUXC_SPDIF_TX_SPDIF1_OUT		0xd6

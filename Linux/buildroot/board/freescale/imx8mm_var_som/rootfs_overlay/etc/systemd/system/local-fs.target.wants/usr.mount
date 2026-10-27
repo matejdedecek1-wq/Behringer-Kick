@@ -1,0 +1,13 @@
+[Unit]
+Description=Writable /home/Kick
+DefaultDependencies=no
+#After=mkfs-setup.service
+Before=local-fs.target umount.target
+
+[Mount]
+What=/dev/mmcblk1p7
+Where=/home/Kick
+Type=ext4
+
+[Install]
+WantedBy=multi-user.target

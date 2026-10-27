@@ -1,0 +1,58 @@
+======================================================================= 
+ How to compile Kick in Linux.
+=======================================================================
+1. Install WSL in  your system 
+
+2. In order to compile Kick Install below packages 
+	
+	#sudo apt install gcc g++ bash patch gzip bzip2 perl tar cpio unzip \
+rsync file bc libasound2-dev libjack-jackd2-dev libcurl4-openssl-dev libfreetype6-dev \
+libx11-dev libxcomposite-dev libxcursor-dev libxcursor-dev libxext-dev libxinerama-dev \
+libxrandr-dev libxrender-dev libwebkit2gtk-4.0-dev libglu1-mesa-dev mesa-common-dev libserial*
+
+
+3. Clone the Kick Repo and inside repo create build folder.
+
+	# mkdir BuildLocal
+	# cd BuildLocal
+	
+4. Run CMake command and do make 
+
+	# cmake ../
+	# make -j4
+	
+******************************************************************************
+======================================================================= 
+ How to Compile Buildroot in Linux.
+=======================================================================
+1. Clone the buildroot Repo and checkout testing branch
+
+	# git clone <url-of-the-Linux-buildroot-repo>
+	# git checkout --track origin/testing
+	
+2. Run the Script to build the buildroot 
+
+	#sh -x builder.sh KTKick_5.15RT
+	
+	
+3. This process will take 1 or 2 hours after complition.
+
+****************************************************************************************
+
+======================================================================= 
+ How to Cross Compile Kick in Linux.
+=======================================================================
+
+1. create folder in Kick repo 
+
+	# get the file location of "toolchainfile.cmake" file in buildroot 
+	
+	Ex : /path/to/KT_Kick/uboot/Linux/buildroot/output/host/share/buildroot/toolchainfile.cmake
+	
+2. export the toolchain Path using below command
+	
+	#export TOOLCHAIN_FILE=/path/to/KT_Kick/uboot/Linux/buildroot/output/host/share/buildroot/toolchainfile.cmake
+
+3. Run the below script in kick repo.
+	
+	#  sh -x buildApp.sh Release

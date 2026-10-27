@@ -1,0 +1,223 @@
+diff --git a/sound/soc/codecs/bt-sco.c b/sound/soc/codecs/bt-sco.c
+index 4d286844e..b875c6a9c 100644
+--- a/sound/soc/codecs/bt-sco.c
++++ b/sound/soc/codecs/bt-sco.c
+@@ -20,39 +20,48 @@ static const struct snd_soc_dapm_route bt_sco_routes[] = {
+ 	{ "TX", NULL, "Playback" },
+ };
+ 
++#define WM8804_FORMATS (SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S20_3LE | \
++		                        SNDRV_PCM_FMTBIT_S24_LE|SNDRV_PCM_FMTBIT_S32_LE)
++
++#define WM8804_RATES (SNDRV_PCM_RATE_32000 | SNDRV_PCM_RATE_44100 | \
++		SNDRV_PCM_RATE_48000 | SNDRV_PCM_RATE_64000 | \
++		SNDRV_PCM_RATE_88200 | SNDRV_PCM_RATE_96000 | \
++		SNDRV_PCM_RATE_176400 | SNDRV_PCM_RATE_192000)
++
+ static struct snd_soc_dai_driver bt_sco_dai[] = {
+ 	{
+ 		.name = "bt-sco-pcm",
+ 		.playback = {
+ 			.stream_name = "Playback",
+ 			.channels_min = 1,
+-			.channels_max = 1,
+-			.rates = SNDRV_PCM_RATE_8000,
+-			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++			.channels_max = 2,
++			.rates = WM8804_RATES,
++			.formats = WM8804_FORMATS,
+ 		},
+ 		.capture = {
+ 			 .stream_name = "Capture",
+ 			.channels_min = 1,
+-			.channels_max = 1,
+-			.rates = SNDRV_PCM_RATE_8000,
+-			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++			.channels_max = 2,
++			.rates = WM8804_RATES,
++			.formats = WM8804_FORMATS,
+ 		},
++	.symmetric_rates = 1
+ 	},
+ 	{
+ 		.name = "bt-sco-pcm-wb",
+ 		.playback = {
+ 			.stream_name = "Playback",
+ 			.channels_min = 1,
+-			.channels_max = 1,
+-			.rates = SNDRV_PCM_RATE_8000 | SNDRV_PCM_RATE_16000,
+-			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++			.channels_max = 2,
++			.rates = WM8804_RATES,
++			.formats = WM8804_FORMATS,
+ 		},
+ 		.capture = {
+ 			 .stream_name = "Capture",
+ 			.channels_min = 1,
+-			.channels_max = 1,
+-			.rates = SNDRV_PCM_RATE_8000 | SNDRV_PCM_RATE_16000,
+-			.formats = SNDRV_PCM_FMTBIT_S16_LE,
++			.channels_max = 2,
++			.rates = WM8804_RATES,
++			.formats = WM8804_FORMATS,
+ 		},
+ 	}
+ };
+diff --git a/sound/soc/fsl/fsl_sai.c b/sound/soc/fsl/fsl_sai.c
+index d9958a52e..b9cbcf644 100644
+--- a/sound/soc/fsl/fsl_sai.c
++++ b/sound/soc/fsl/fsl_sai.c
+@@ -32,7 +32,7 @@
+ 		       FSL_SAI_CSR_FEIE)
+ 
+ #define FSL_SAI_VERID_0301	0x0301
+-
++#define dev_dbg dev_err
+ static struct fsl_sai_soc_data fsl_sai_vf610 = {
+ 	.imx = false,
+ 	/*dataline is mask, not index*/
+@@ -532,21 +532,21 @@ static int fsl_sai_set_bclk(struct snd_soc_dai *dai, bool tx, u32 freq)
+ 		clk_rate = clk_get_rate(sai->mclk_clk[id]);
+ 		if (!clk_rate)
+ 			continue;
++		ratio = clk_rate / freq; // 12288000/2304000 =  5.33 
+ 
+-		ratio = clk_rate / freq;
+-
+-		ret = clk_rate - ratio * freq;
++		ret = clk_rate - ratio * freq; // 12288000 - 5 * 2304000 = 768000
+ 
++		dev_dbg(dai->dev,
++			"ratio %d for freq %dHz based on clock %ldHz ret=%d\n",
++			ratio, freq, clk_rate,ret);
++		
+ 		/*
+ 		 * Drop the source that can not be
+ 		 * divided into the required rate.
+ 		 */
+-		if (ret != 0 && clk_rate / ret < 1000)
++		if (ret != 0 && clk_rate / ret < 1000) ///  16
+ 			continue;
+ 
+-		dev_dbg(dai->dev,
+-			"ratio %d for freq %dHz based on clock %ldHz\n",
+-			ratio, freq, clk_rate);
+ 
+ 		if ((ratio % 2 == 0 && ratio >= 2 && ratio <= 512) ||
+ 		    (ratio == 1 && sai->verid.id >= FSL_SAI_VERID_0301)) {
+@@ -557,6 +557,7 @@ static int fsl_sai_set_bclk(struct snd_soc_dai *dai, bool tx, u32 freq)
+ 				savesub = ret;
+ 			}
+ 
++		dev_dbg(dai->dev,"saveration=%d , savesub= %d \n", saveratio,savesub);
+ 			if (ret == 0)
+ 				break;
+ 		}
+@@ -602,8 +603,8 @@ static int fsl_sai_set_bclk(struct snd_soc_dai *dai, bool tx, u32 freq)
+ 			FSL_SAI_MCTL_MCLK_EN, FSL_SAI_MCTL_MCLK_EN);
+ 	}
+ 
+-	dev_dbg(dai->dev, "best fit: clock id=%d, ratio=%d, deviation=%d\n",
+-			sai->mclk_id[tx], saveratio, savesub);
++	dev_dbg(dai->dev, "best fit: clock id=%d, saveratio=%d, deviation=%d savediv=%d\n",
++			sai->mclk_id[tx], saveratio, savesub,savediv);
+ 
+ 	return 0;
+ }
+@@ -627,7 +628,7 @@ static int fsl_sai_hw_params(struct snd_pcm_substream *substream,
+ 
+ 	if (sai->slots)
+ 		slots = sai->slots;
+-
++	dev_dbg(cpu_dai->dev,"Kick ->>>>>>>>>>>>> channels:%d word_width=%d rate=%d sai_bclk_Ratio %d \n",channels,word_width,rate,sai->bitclk_ratio);
+ 	pins = DIV_ROUND_UP(channels, slots);
+ 	sai->is_dsd = fsl_is_dsd(params);
+ 	if (sai->is_dsd) {
+@@ -656,7 +657,8 @@ static int fsl_sai_hw_params(struct snd_pcm_substream *substream,
+ 		slot_width = sai->slot_width;
+ 
+ 	bclk = rate*(sai->bitclk_ratio ? sai->bitclk_ratio : slots * slot_width);
+-
++	dev_dbg(cpu_dai->dev,"Kick ->>>>>>>>>>>>> Kick Rate:%d sai->biclk_ration=%d slots = %d slots_width%d \n", rate,sai->bitclk_ratio,slots,slot_width);
++	dev_dbg(cpu_dai->dev,"Kick ->>>>>>>>>>>>> Kick BCLK: %d\n", bclk);
+ 	if (!IS_ERR_OR_NULL(sai->pinctrl)) {
+ 		sai->pins_state = fsl_get_pins_state(sai->pinctrl, params, bclk);
+ 
+diff --git a/sound/soc/generic/simple-card.c b/sound/soc/generic/simple-card.c
+index 97c5e6997..d91bed386 100644
+--- a/sound/soc/generic/simple-card.c
++++ b/sound/soc/generic/simple-card.c
+@@ -22,6 +22,7 @@
+ #define DAI	"sound-dai"
+ #define CELL	"#sound-dai-cells"
+ #define PREFIX	"simple-audio-card,"
++//#define dev_dbg dev_err
+ 
+ static int simple_outdrv_event(struct snd_soc_dapm_widget *w,
+ 			      struct snd_kcontrol *kcontrol,
+@@ -635,12 +636,16 @@ static int simple_soc_probe(struct snd_soc_card *card)
+ 	int ret;
+ 
+ 	ret = asoc_simple_init_hp(card, &priv->hp_jack, PREFIX);
+-	if (ret < 0)
+-		return ret;
++	if (ret < 0) {
++		pr_err("Kick: In simple_soc_probe 1() %s\n", __func__);
++		//return ret;
++	}
+ 
+ 	ret = asoc_simple_init_mic(card, &priv->mic_jack, PREFIX);
+-	if (ret < 0)
+-		return ret;
++	if (ret < 0) {
++		pr_err("Kick: In simple_soc_probe() 2 %s\n", __func__);
++		//return ret;
++	}
+ 
+ 	return 0;
+ }
+diff --git a/sound/soc/soc-core.c b/sound/soc/soc-core.c
+index a856eabf5..9be698fbc 100644
+--- a/sound/soc/soc-core.c
++++ b/sound/soc/soc-core.c
+@@ -44,6 +44,8 @@
+ #include <trace/events/asoc.h>
+ 
+ #define NAME_SIZE	32
++//#define dev_err pr_err
++#define dev_dbg dev_err
+ 
+ #ifdef CONFIG_DEBUG_FS
+ struct dentry *snd_soc_debugfs_root;
+@@ -2110,9 +2112,10 @@ static int snd_soc_instantiate_card(struct snd_soc_card *card)
+ 
+ 	ret = snd_soc_dapm_add_routes(&card->dapm, card->of_dapm_routes,
+ 				      card->num_of_dapm_routes);
+-	if (ret < 0)
+-		goto probe_end;
+-
++	if (ret < 0) {
++		dev_err(card->dev, "Kick In snd_soc_instantiate_card() ...  card->name = %s  line = %d\n", card->name, __LINE__);
++		//goto probe_end;
++	}
+ 	/* try to set some sane longname if DMI is available */
+ 	snd_soc_set_dmi_name(card, NULL);
+ 
+@@ -2140,7 +2143,7 @@ static int snd_soc_instantiate_card(struct snd_soc_card *card)
+ 		if (ret < 0) {
+ 			dev_err(card->dev, "ASoC: %s late_probe() failed: %d\n",
+ 				card->name, ret);
+-			goto probe_end;
++			//goto probe_end;
+ 		}
+ 	}
+ 
+@@ -2150,7 +2153,7 @@ static int snd_soc_instantiate_card(struct snd_soc_card *card)
+ 	if (ret < 0) {
+ 		dev_err(card->dev, "ASoC: failed to register soundcard %d\n",
+ 				ret);
+-		goto probe_end;
++		//goto probe_end;
+ 	}
+ 
+ 	card->instantiated = 1;

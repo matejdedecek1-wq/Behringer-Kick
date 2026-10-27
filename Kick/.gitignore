@@ -1,0 +1,52 @@
+# Prerequisites
+*.d
+*.patch
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# 3rd Party source caches
+.build_cache
+.3rdPartySourceCache
+
+# Project and other directories
+projects
+juce_lv2_helper
+Debug
+logs
+prefs
+/out/build/x64-Debug
+/.vs
+/CMakeSettings.json
+/build*
+/sounds*
+/apps/out/build/x64-Debug
+/modules/out/build/x64-Debug
+

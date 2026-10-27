@@ -1,0 +1,12 @@
+[Unit]
+Description=Format the KICK storage partition on first boot
+DefaultDependencies=no
+Requires=dev-disk-by\x2dpartuuid-56d2e551\x2ddb06\x2d46da\x2dbb58\x2d274c6ee725d2.device
+After=dev-disk-by\x2dpartuuid-56d2e551\x2ddb06\x2d46da\x2dbb58\x2d274c6ee725d2.device
+Conflicts=shutdown.target
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/kick-storage-mkfs

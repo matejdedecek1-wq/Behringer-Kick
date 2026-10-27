@@ -1,0 +1,24 @@
+#ifndef _CONFIG_H_
+#define _CONFIG_H_
+
+#pragma once
+
+// define your version_libinterface
+#define MT_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"
+#define MT_VERSION_MINOR "@PROJECT_VERSION_MINOR@"
+#define MT_VERSION_PATCH "@PROJECT_VERSION_PATCH@"
+
+#define MT_VERSION_STR   "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@"
+#define MT_VERSION_NUM    @PROJECT_VERSION_MAJOR@@PROJECT_VERSION_MINOR@@PROJECT_VERSION_PATCH@
+
+#define MT_SOURCE_SRCDIR "@TargetSrc_DIR@"
+
+struct ProjectInfo
+{
+    inline static const char* const projectName{ "@TargetName@" };
+    inline static const char* const companyName{ "@TargetCompany@" };
+    inline static const char* const versionString { "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@" };
+    inline static const int         versionNumber{ @PROJECT_VERSION_MAJOR@@PROJECT_VERSION_MINOR@@PROJECT_VERSION_PATCH@ };
+};
+
+#endif // _CONFIG_H_

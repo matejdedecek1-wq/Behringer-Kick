@@ -1,0 +1,14 @@
+[Unit]
+Description=Writable /etc (overlay on the KICK storage partition)
+DefaultDependencies=no
+Requires=kick-overlay-dirs.service
+After=kick-overlay-dirs.service
+Conflicts=umount.target
+Before=local-fs.target umount.target
+
+[Mount]
+What=overlay
+Where=/etc
+Type=overlay
+# Paths must match /etc/kick/overlay-dirs.conf
+Options=lowerdir=/etc,upperdir=/media/kickstorage/overlay/etc/upper,workdir=/media/kickstorage/overlay/etc/work

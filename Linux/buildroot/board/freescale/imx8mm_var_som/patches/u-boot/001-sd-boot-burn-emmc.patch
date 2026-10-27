@@ -1,0 +1,101 @@
+diff --git a/board/variscite/imx8mm_var_dart/Makefile b/board/variscite/imx8mm_var_dart/Makefile
+index f4a10415..e285bd08 100644
+--- a/board/variscite/imx8mm_var_dart/Makefile
++++ b/board/variscite/imx8mm_var_dart/Makefile
+@@ -17,4 +17,5 @@ obj-y += ../common/mmc.o
+ obj-$(CONFIG_VIDEO) += ../common/video.o
+ obj-$(CONFIG_FEC_MXC) += ../common/eth.o
+ obj-$(CONFIG_IMX8M_BOARD_INIT_DRAM) += ../common/imx8_dram.o
++obj-y += burn_emmc_image.o
+ endif
+diff --git a/board/variscite/imx8mm_var_dart/burn_emmc_image.c b/board/variscite/imx8mm_var_dart/burn_emmc_image.c
+new file mode 100644
+index 00000000..9b52d4d4
+--- /dev/null
++++ b/board/variscite/imx8mm_var_dart/burn_emmc_image.c
+@@ -0,0 +1,74 @@
++#include <common.h>
++#include <cpu_func.h>
++#include <hang.h>
++#include <spl.h>
++#include <asm/io.h>
++#include <asm/mach-imx/iomux-v3.h>
++#include <asm/arch/clock.h>
++#include <asm/arch/imx8mm_pins.h>
++#include <asm/arch/sys_proto.h>
++#include <asm/mach-imx/boot_mode.h>
++#include <asm/arch/ddr.h>
++#include <asm/mach-imx/gpio.h>
++#include <asm/mach-imx/mxc_i2c.h>
++#include <fsl_esdhc_imx.h>
++#include <mmc.h>
++#include <fs.h>
++#include <gzip.h>
++#include <fat.h>
++#include <part.h>
++
++#define ROOTFS_OFFSET (8 * 1024 * 1024)
++
++void burn_emmc_image(void)
++{
++	int boot_device;
++	
++	boot_device = mmc_get_env_dev();
++
++	if(boot_device == BOOT_DEVICE_MMC1){	/* we boot from SD card */
++		unsigned long addr;
++		const char *addr_str;
++		char *ep;
++		loff_t size;
++
++		struct blk_desc *sd;
++		struct blk_desc *emmc;
++		char cmd[32];
++
++		addr_str = env_get("img_addr");
++		if(!addr_str) return;
++		addr = simple_strtoul(addr_str, &ep, 16);
++
++
++		if (blk_get_device_by_str("mmc", "1", &sd) < 0){
++			return;
++		}
++		if (blk_get_device_by_str("mmc", "2", &emmc) < 0){
++			return;
++		}
++
++		if(fat_register_device(sd, 1) < 0){
++			return;
++		}
++
++		if (fat_read_file("rootfs.ext4.gz", (unsigned char *)addr, 0, 0, &size) < 0){
++			return;
++		}
++
++		if(gzwrite((unsigned char *)addr, size, emmc, 1<<20, ROOTFS_OFFSET, 0)){
++			return;
++		}
++
++		if (fat_read_file("emmc.gpt.gz", (unsigned char *)addr, 0, 0, &size) < 0){
++			return;
++		}
++		if(gzwrite((unsigned char *)addr, size, emmc, 1<<20, 0, 0)){
++			return;
++		}
++		env_set_ulong("mmcdev", 2);
++		env_set_ulong("mmcblk", 2);
++		sprintf(cmd, "mmc dev %d", 2);
++		run_command(cmd, 0);
++	}
++}
+diff --git a/board/variscite/imx8mm_var_dart/imx8mm_var_dart.c b/board/variscite/imx8mm_var_dart/imx8mm_var_dart.c
+index 83e25557..081f7228 100644
+--- a/board/variscite/imx8mm_var_dart/imx8mm_var_dart.c
++++ b/board/variscite/imx8mm_var_dart/imx8mm_var_dart.c
+@@ -243,5 +243,6 @@ int board_late_init(void)
+ 	board_late_mmc_env_init();
+ #endif
+ 
++	burn_emmc_image();
+ 	return 0;
+ }

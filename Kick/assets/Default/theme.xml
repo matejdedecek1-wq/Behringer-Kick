@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<THEME name="Default">
+	<FONT _0="Myriad Pro Regular.ttf"/>
+	<DEFAULT _0="0x00"/>
+	<TITLE _1="0xffFFB608" _2="0xffFFFFFF" _3="0xffB2B2B2"/>
+	<TEXT _0="0xff000000" _1="0xffFFFFFF" _2="0xffFFB608" _3="0xffB2B2B2" _4="0xff1B1B1B"/>
+	<BACKGROUND _0="0xff363636" _1="0xff2B2B2B" _2="0xff222222" _3="0xff1F1F1F" _4="0xff151515" _5="0xff000000" _6="0xffFFB608" _7="0xff3d3d3d" _8="0xffB2B2B2" _9="0x00000000" _10="0xff0FE389" _11="0xff424242" _12="0xff422F05" _13="0x33000000" _14="0xff484848" />
+	<FOREGROUND _0="0xffFFFFFF" _1="0xffFFB608"_2="0xffD18900"/>
+	<SELECTION _1="0xff00AAEE" _2="0xff1DFF00" _3="0xff525252" _4="0xffFFFFFF"/>
+	<OUTLINE _0="0x00" _1="0xffFFB608" _2="0xff2D2D2D" _3="0xff363636" _4="0xff222222" _5="0xff151515" _6="0xFF7D6733"/>
+	<HIGHLIGHT _0="0x00" _1="0xffFFB608" _2="0xffFE001A" _3="0xff1DFF00"/>
+	<WAVEFORM _1="0xff00AAEE" />
+	<METER _1="0xff1DFF00" _2="0xff7A5511" />
+	<NOTE _0="0x00" _1="0xffF5AE0D" _2="0xffFFA700" _3="0xffFE001A" />
+	<GRID _1="0xff343434" _2="0xffB2B2B2" _3="0xffFFB608" />
+	<PADBUTTON _0="0xff94172E" _1="0xff7C00F8" _2="0xffAB7B00" _3="0xff1DF800" _4="0xffE4F800" _5="0xff22AB00" _6="0xff0DF0FF" _7="0xff3DAEFF" _8="0xff0D34FF" _9="0xffFF00E9" _10="0xffCC00FF" _11="0xffFF89FA" _12="0xffFF250D" _13="0xffFF730D" _14="0xffFFB608" _15="0x00000000" _16="0xffFFFFFF" _17="0xffC2C2C2"/>
+
+	<Images>
+		<Image name="Rotary_Knob" path="KnobPointer.svg"></Image>
+		<Image name="Rotary_background" path="KnobBack.svg"></Image>
+		<Image name="button_on" path="ButtonOn.svg"></Image>
+		<Image name="button_off" path="ButtonOff.svg"></Image>
+		<Image name="button_hover" path=""></Image>
+		<Image name="logo_pref" path="Logo_Splash-Page.svg"></Image>
+		<Image name="DropDown" path="dropdown.svg"></Image>
+		<Image name="Browser" path="mainmenu/browsers.svg"></Image>
+		<Image name="Track Mixer" path="mainmenu/trackmixers.svg"></Image>
+		<Image name="Track Mutes" path="mainmenu/trackmutes.svg"></Image>
+		<Image name="Sequences" path="mainmenu/sequences.svg"></Image>
+		<Image name="listedit" path="mainmenu/listedits.svg"></Image>
+		<Image name="Padmixer" path="mainmenu/padmixers.svg"></Image>
+		<Image name="Padmutes" path="mainmenu/padmutes.svg"></Image>
+		<Image name="songs" path="mainmenu/songs.svg"></Image>
+		<Image name="Coloreditor" path="mainmenu/coloreditors.svg"></Image>
+		<Image name="Sampler" path="mainmenu/samplers.svg"></Image>
+		<Image name="Sample editor" path="mainmenu/sampleeditors.svg"></Image>
+		<Image name="Program edit" path="mainmenu/program edits.svg"></Image>
+		<Image name="Padnotes" path="mainmenu/padnotes.svg"></Image>
+		<Image name="Looper" path="mainmenu/loopers.svg"></Image>
+		<Image name="Qlinks" path="mainmenu/qlinks.svg"></Image>
+		<Image name="Midicontrol" path="mainmenu/midicontrols.svg"></Image>
+		<Image name="Sequence_normal" path="sequence_normal.svg"></Image>
+		<Image name="Sequence_active" path="sequence_active.svg"></Image>
+		<Image name="Main_active" path="Main Nav Btns/Active/Menu.svg"></Image>
+		<Image name="Main_normal" path="Main Nav Btns/Default/Menu.svg"></Image>
+		<Image name="Home_active" path="Main Nav Btns/Active/Home.svg"></Image>
+		<Image name="Home_normal" path="Main Nav Btns/Default/Home.svg"></Image>
+		<Image name="Main Edit_normal" path="Main Nav Btns/Default/Main Edit.svg"></Image>
+		<Image name="Main Edit_active" path="Main Nav Btns/Default/Main Edit.svg"></Image>
+		<Image name="Step Seq_normal" path="Main Nav Btns/Default/Step Seq.svg"></Image>
+		<Image name="Step Seq_active" path="Main Nav Btns/Active/Step Seq.svg"></Image>
+		<Image name="XY_normal" path="Main Nav Btns/Default/XY.svg"></Image>
+		<Image name="XY_active" path="Main Nav Btns/Active/XY.svg"></Image>
+		<Image name="Metronome_normal" path="Button Level 01b/Default/Metronome.svg"></Image>
+		<Image name="Metronome_active" path="Button Level 01b/Press/Metronome.svg"></Image>
+		<Image name="Play Control_normal" path="Button Level 01b/Default/Play Control.svg"></Image>
+		<Image name="Play Control_active" path="Button Level 01b/Press/Play Control.svg"></Image>
+		<Image name="Stop_Active" path="Button Level 01b/Press/Stop_Active.svg"></Image>
+		<Image name="New File_normal" path="Button Level 01b/Default/New File.svg"></Image>
+		<Image name="New File_active" path="Button Level 01b/Press/New File.svg"></Image>
+		<Image name="File_normal" path="Button Level 01b/Default/File.svg"></Image>
+		<Image name="File_active" path="Button Level 01b/Press/File.svg"></Image>
+		<Image name="Settings_normal" path="Button Level 01b/Default/Settings.svg"></Image>
+		<Image name="Settings_active" path="Button Level 01b/Press/Settings.svg"></Image>
+		<Image name="Seq_Global" path="Button Level 02 b - Toggle/Default/Seq.svg"></Image>
+		<Image name="Seq_Seq" path="Button Level 02 b - Toggle/Active/Seq.svg"></Image>
+		<Image name="Loop_normal" path="Button Level 02 b - Toggle/Loop/Loop.svg"></Image>
+		<Image name="Loop_active" path="Button Level 02 b - Toggle/Active/Loop.svg"></Image>
+		<Image name="Add_active" path="add_active.svg"></Image>
+		<Image name="Add_normal" path="add_normal.svg"></Image>
+		<Image name="Mute_normal" path="mute_default.svg"></Image>
+		<Image name="Mute_active" path="Button - Mute.svg"></Image>
+		<Image name="Solo_normal" path="solo_default.svg"></Image>
+		<Image name="Solo_active" path="Button - Solo.svg"></Image>
+		<Image name="Monitor_normal" path="monitor_default.svg"></Image>
+		<Image name="Monitor_active" path="Button - Monitor.svg"></Image>
+		<Image name="Arm_normal" path="arm.svg"></Image>
+		<Image name="Arm_active" path="Button - Rec.svg"></Image>
+		<Image name="ROUTE" path="routeFx.svg"></Image>
+		<Image name="ROUTE_active" path="Button - Route and FX.svg"></Image>
+		<Image name="ASSIGN" path="assign.svg"></Image>
+		<Image name="ASSIGN_active" path="Button - Assign.svg"></Image>
+		<Image name="editSample" path="editSample.svg"></Image>
+		<Image name="editSample_active" path=""></Image>
+		<Image name="padPerform" path="padperform.svg"></Image>
+		<Image name="padPerform_active" path=""></Image>
+		<Image name="editAudio" path="editAudio.svg"></Image>
+		<Image name="editAudio_active" path=""></Image>
+		<Image name="editClip" path="editClip.svg"></Image>
+		<Image name="editClip_active" path=""></Image>
+		<Image name="Drum" path="Normal/Drum.svg"></Image>
+		<Image name="Drum_Active" path="Active/Drum_Active.svg"></Image>
+		<Image name="Piano" path="Normal/Piano.svg"></Image>
+		<Image name="Piano_Active" path="Active/Piano_Active.svg"></Image>
+		<Image name="Guitar" path="Normal/Guitar.svg"></Image>
+		<Image name="Guitar_Active" path="Active/Guitar_Active.svg"></Image>
+		<Image name="Movie" path="Normal/Movie.svg"></Image>
+		<Image name="Movie_Active" path="Active/Movie_Active.svg"></Image>
+		<Image name="Cord" path="Normal/Cord.svg"></Image>
+		<Image name="Cord_Active" path="Active/Cord_Active.svg"></Image>
+		<Image name="CV" path="Normal/CV.svg"></Image>
+		<Image name="CV_Active" path="Active/CV_Active.svg"></Image>
+		<Image name="Plugin" path="Normal/Plugin.svg"></Image>
+		<Image name="Plugin_Active" path="Active/Plugin_Active.svg"></Image>
+        <Image name="HalfLength" path="editOptions/HalfLength.svg"></Image>
+        <Image name="DoubleLength" path="editOptions/DoubleLength.svg"></Image>
+        <Image name="TimeSignature" path="editOptions/TimeSignature.svg"></Image>
+        <Image name="Bounce" path="editOptions/Bounce.svg"></Image>
+        <Image name="InsertBar" path="editOptions/InsertBar.svg"></Image>
+        <Image name="CopyEvent" path="editOptions/CopyEvent.svg"></Image>
+        <Image name="CopyBar" path="editOptions/CopyBar.svg"></Image>
+        <Image name="CopySequence" path="editOptions/CopySequence.svg"></Image>
+        <Image name="Clear" path="editOptions/Clear.svg"></Image>
+        <Image name="DeleteSequence" path="editOptions/DeleteSequence.svg"></Image>
+        <Image name="Icon Close" path="Popup/Icon - Close.svg"></Image>
+        <Image name="Edit_Close" path="editOptions/Edit_Close.svg"></Image>
+        <Image name="CopyTrack" path="editOptions/Copy_Track.svg"></Image>
+        <Image name="Bounce_Track" path="editOptions/Bounce_Track.svg"></Image>
+        <Image name="Delete_Track" path="editOptions/Delete_Track.svg"></Image>
+        <Image name="Double Speed" path="editOptions/Double Speed_Events.svg"></Image>
+        <Image name="Erase_Event" path="editOptions/Erase_Event.svg"></Image>
+        <Image name="Humanize" path="editOptions/Humanize.svg"></Image>
+        <Image name="Split_Events" path="editOptions/Split_Events.svg"></Image>
+        <Image name="Quantize_Track" path="editOptions/Quantize_Track.svg"></Image>
+        <Image name="Explode" path="editOptions/Explode.svg"></Image>
+        <Image name="Generate Random_Events" path="editOptions/Generate Random_Events.svg"></Image>
+        <Image name="Half Speed" path="editOptions/Half Speed.svg"></Image>
+        <Image name="COPY Pads" path="editOptions/Copy_Pads.svg"></Image>
+        <Image name="Duplicate_Program" path="editOptions/Duplicate_Program.svg"></Image>
+        <Image name="Duplicate Program To Track" path="editOptions/Duplicate Program To Track.svg"></Image>
+        <Image name="Flatten Pads" path="editOptions/Flatten Pads.svg"></Image>
+        <Image name="Pad Colour" path="editOptions/Pad Colour.svg"></Image>
+        <Image name="Delete_Program" path="editOptions/Delete_Program.svg"></Image>
+        <Image name="RecentProject" path="Header/RecentProjects.svg"></Image>
+        <Image name="Browser_Recent" path="Header/buttons/Browser_Recent.svg"></Image>
+        <Image name="NewProject" path="Browser/Button Level 43.svg"></Image>
+        <Image name="Settings_Header" path="Header/buttons/Settings.svg"></Image>
+        <Image name="Back" path="Header/buttons/Back.svg"></Image>
+        <Image name="Back_Active" path="Header/buttons/Back_Active.svg"></Image>
+        <Image name="Icon_Proj" path="recent_project/Icon-File - Kick Project.svg"></Image>
+        <Image name="Icon_Grid" path="grid/Icon-Grid.svg"></Image>
+        <Image name="Pencil_Normal" path="Header/buttons/Pencil.svg"></Image>
+        <Image name="Pencil_Active" path="Header/buttons/ActiveButtons/Pencil_Active.svg"></Image>
+        <Image name="Erase_Normal" path="Header/buttons/Eraser.svg"></Image>
+        <Image name="Erase_Active" path="Header/buttons/ActiveButtons/Erase_Active.svg"></Image>
+        <Image name="Select_Normal" path="Header/buttons/Select.svg"></Image>
+        <Image name="Select_Active" path="Header/buttons/ActiveButtons/select_active.svg"></Image>
+        <Image name="Cut_Normal" path="Header/buttons/Cut.svg"></Image>
+        <Image name="Cut_Active" path="Header/buttons/ActiveButtons/Cut_active.svg"></Image>
+        <Image name="Copy_Active" path="Header/buttons/ActiveButtons/paste_active.svg"></Image>
+        <Image name="Copy_Normal" path="Header/buttons/paste.svg"></Image>
+        <Image name="Automation_Normal" path="Header/buttons/Automation.svg"></Image>
+        <Image name="Metronome" path="Header/buttons/Metronome.svg"></Image>
+        <Image name="Play_Grid" path="Header/buttons/Play.svg"></Image>
+        <Image name="Resource" path="Header/buttons/Resources 1.svg"></Image>
+        <Image name="UP" path="grid/expBtn.svg"></Image>
+        <Image name="Down" path="grid/expBtn_Active.svg"></Image>
+        <Image name="Velocity" path="grid/Velocity.svg"></Image>
+        <Image name="RightNudge" path="grid/Right Nudge.svg"></Image>
+        <Image name="LeftNudge" path="grid/Left Nudge.svg"></Image>
+        <Image name="Inverse_Normal" path="stepseq/inverse.svg"></Image>
+        <Image name="Flip_Normal" path="stepseq/Flip Steps.svg"></Image>
+        <Image name="Mirror_Normal" path="stepseq/Mirror.svg"></Image>
+        <Image name="LeftNudge" path="grid/Left Nudge.svg"></Image>
+        <Image name="Inverse_Normal" path="stepseq/default/inv.svg"></Image>
+        <Image name="Flip_Normal" path="stepseq/default/Flip Steps.svg"></Image>
+        <Image name="Mirror_Normal" path="stepseq/default/Mirror.svg"></Image>
+        <Image name="Flip_active" path="stepseq/active/Button - Flip Steps.svg"></Image>
+        <Image name="Mirror_active" path="stepseq/active/Button - Inv 5.svg"></Image>
+        <Image name="Inverse_active" path="stepseq/active/Button - Inv 6.svg"></Image>
+        <Image name="SetUP_normal" path="xyview/default/Setup.svg"></Image>
+        <Image name="Back_Browser" path="Browser/back_button.svg"></Image>
+        <Image name="Back_Browser_Disabled" path="Browser/disabled/Back.svg"></Image>
+        <Image name="Back_BrowserActive" path="Browser/Active_Images/Button - BackActive.svg"></Image>
+        <Image name="Search_Browser" path="Browser/search_browser.svg"></Image>
+        <Image name="Search_BrowserActive" path="Browser/Active_Images/Button - SearchActive.svg"></Image>
+        <Image name="Plus" path="Plus.svg"></Image>
+        <Image name="Minus" path="minus.svg"></Image>
+        <Image name="Plus_Active" path="Button - Plus_Active.svg"></Image>
+        <Image name="Minus_Active" path="Button - Minus_Active.svg"></Image>
+        <Image name="editOptions" path="editOptions.svg"></Image>
+        <Image name="Trash" path="Browser/Trash.svg"></Image>
+        <Image name="Trash_Active" path="Browser/Active_Images/Trash_Active.svg"></Image>
+		<Image name="Trash Disabled" path="Browser/Disabled/delete.svg"></Image>
+        <Image name="Icon_Stepsequencer" path="Header/Step Sequencer.svg"></Image>
+        <Image name="Icon_XY" path="Header/XY.svg"></Image>
+        <Image name="Icon_Browser" path="Header/File Browser.svg"></Image>
+        <Image name="ID_sequence" path="ID-Icons/Sequence.svg"></Image>
+        <Image name="ID_Program" path="ID-Icons/Program.svg"></Image>
+        <Image name="ID_Drum" path="ID-Icons/Drums.svg"></Image>
+        <Image name="ID_KEY" path="ID-Icons/Key group.svg"></Image>
+        <Image name="ID_MIDI" path="ID-Icons/MIDI.svg"></Image>
+        <Image name="ID_AUdio" path="ID-Icons/Audio.svg"></Image>
+        <Image name="ID_CLIP" path="ID-Icons/Clip.svg"></Image>
+        <Image name="ID_PLUGIN" path="ID-Icons/Plugin.svg"></Image>
+        <Image name="ID_CV" path="ID-Icons/CV.svg"></Image>
+        <Image name="Places" path="Browser/Places_Button.png"></Image>
+        <Image name="Content" path="Browser/Content_Button.png"></Image>
+        <Image name="Expansion" path="Browser/Expansions_Button.png"></Image>
+        <Image name="No" path="Browser/no.svg"></Image>
+        <Image name="Yes" path="Browser/yes.svg"></Image>
+        <Image name="Vector-1" path="Browser/Vector-1.svg"></Image>
+        <Image name="Eject" path="Browser/Button - Eject.svg"></Image>
+        <Image name="Format" path="Browser/Button - Format Drive.svg"></Image>
+        <Image name="Eject_Active" path="Browser/Active_Images/Button - Eject_Active.svg"></Image>
+        <Image name="Format_Active" path="Browser/Active_Images/Button - Format Drive_Active.svg"></Image>
+        <Image name="Cancel_Browser" path="Browser/Cancel_Brow.svg"></Image>
+        <Image name="Project_Browser" path="Browser/project_browser.svg"></Image>
+        <Image name="Sample_Browser" path="Browser/Samples_browser.svg"></Image>
+        <Image name="All_Browser" path="Browser/All_browser.svg"></Image>
+        <Image name="Project_BrowserActive" path="Browser/Active_Images/Project_BrowserActive.svg"></Image>
+        <Image name="Sample_BrowserActive" path="Browser/Active_Images/Sample_BrowserActive.svg"></Image>
+        <Image name="All_BrowserActive" path="Browser/Active_Images/All_BrowserActive.svg"></Image>
+        <Image name="Play_browser" path="Browser/Button - Play.svg"></Image>
+        <Image name="Play_browser_Active" path="Browser/Active_Images/Button - PlayActive.svg"></Image>
+        <Image name="Volume_Browser" path="Browser/Button - Volume.svg"></Image>
+        <Image name="Volume_BrowserActive" path="Browser/Active_Images/Button - Volume - Active.svg"></Image>
+        <Image name="Button_VolumeMute" path="Browser/Button - Volume - Mute.svg"></Image>
+        <Image name="Rename" path="Browser/Button - Rename.svg"></Image>
+        <Image name="Rename_Active" path="Browser/Active_Images/Button - RenameActive.svg"></Image>
+		<Image name="Rename Disabled" path="Browser/Disabled/rename.svg"></Image>
+        <Image name="Paste Button" path="Browser/Button - paste.svg"></Image>
+        <Image name="Paste Button_Active" path="Browser/Active_Images/Button - pasteActive.svg"></Image>
+		<Image name="Paste Disabled" path="Browser/Disabled/paste.svg"></Image>
+        <Image name="Copy Button" path="Browser/Button - Copy.svg"></Image>
+        <Image name="Copy Button_Active" path="Browser/Active_Images/Button - CopyActive.svg"></Image>
+        <Image name="Cut Button" path="Browser/Button - Cut.svg"></Image>
+        <Image name="Cut Button_Active" path="Browser/Active_Images/Button - CutActive.svg"></Image>
+		<Image name="Cut Disabled" path="Browser/Disabled/cut.svg"></Image>
+        <Image name="Icon_Internal" path="Browser/icon-internal Drive.svg"></Image>
+        <Image name="Icon_InternalActive" path="Browser/Active_Images/icon-internal DriveActive.svg"></Image>
+        <Image name="Icon_Library" path="Browser/Icon-Library.svg"></Image>
+        <Image name="Icon_LibraryActive" path="Browser/Active_Images/Icon-LibraryActive.svg"></Image>
+        <Image name="Icon_Demo" path="Browser/Icon-Demo.svg"></Image>
+        <Image name="Icon_DemoActive" path="Browser/Active_Images/Icon-DemoActive.svg"></Image>
+        <Image name="Vector" path="Browser/Vector.svg"></Image>
+        <Image name="Icon_ProjectFile" path="Browser/Icon-File - Projects.svg"></Image>
+        <Image name="Icon_SampleFile" path="Browser/Icon-File - Samples.svg"></Image>
+        <Image name="Icon_DefaultFile" path="Browser/Icon-File Type-Default.svg"></Image>
+        <Image name="Icon_DefaultFile1" path="Browser/Icon-File Type-Default1.svg"></Image>
+        <Image name="AuditionOff" path="Browser/Button - Audition - Off.svg"></Image>
+        <Image name="AuditionMan" path="Browser/Active_Images/Button - Audition - Man.svg"></Image>
+        <Image name="AuditionAuto" path="Browser/Active_Images/Button - Audition -Auto.svg"></Image>
+        <Image name="SD" path="Browser/Icon-SD Card.svg"></Image>
+        <Image name="SDactive" path="Browser/Active_Images/Icon-SD Card (1).svg"></Image>
+        <Image name="USB" path="Browser/Icon-USB Drive.svg"></Image>
+        <Image name="UDBactive" path="Browser/Active_Images/Icon-USB Drive (1).svg"></Image>
+        <Image name="Icon_Mixer" path="Header/Mixer Channel.svg"></Image>
+        <Image name="Mixer_All" path="channelMixer/All.svg"></Image>
+        <Image name="Virtual_Cancel" path="virtualKeyboard/Cancel.svg"></Image>
+        <Image name="Virtual_Apply" path="virtualKeyboard/Apply.svg"></Image>
+        <Image name="Virtual_a" path="virtualKeyboard/lettersDefault/Btn-a.svg"></Image>
+        <Image name="Virtual_b" path="virtualKeyboard/lettersDefault/Btn-b.svg"></Image>
+        <Image name="Virtual_c" path="virtualKeyboard/lettersDefault/Btn-c.svg"></Image>
+        <Image name="Virtual_d" path="virtualKeyboard/lettersDefault/Btn-d.svg"></Image>
+        <Image name="Virtual_e" path="virtualKeyboard/lettersDefault/Btn-e.svg"></Image>
+        <Image name="Virtual_f" path="virtualKeyboard/lettersDefault/Btn-f.svg"></Image>
+        <Image name="Virtual_g" path="virtualKeyboard/lettersDefault/Btn-g.svg"></Image>
+        <Image name="Virtual_h" path="virtualKeyboard/lettersDefault/Btn-h.svg"></Image>
+        <Image name="Virtual_i" path="virtualKeyboard/lettersDefault/Btn-i.svg"></Image>
+        <Image name="Virtual_j" path="virtualKeyboard/lettersDefault/Btn-j.svg"></Image>
+        <Image name="Virtual_k" path="virtualKeyboard/lettersDefault/Btn-k.svg"></Image>
+        <Image name="Virtual_l" path="virtualKeyboard/lettersDefault/Btn-l.svg"></Image>
+        <Image name="Virtual_m" path="virtualKeyboard/lettersDefault/Btn-m.svg"></Image>
+        <Image name="Virtual_n" path="virtualKeyboard/lettersDefault/Btn-n.svg"></Image>
+        <Image name="Virtual_o" path="virtualKeyboard/lettersDefault/Btn-o.svg"></Image>
+        <Image name="Virtual_p" path="virtualKeyboard/lettersDefault/Btn-p.svg"></Image>
+        <Image name="Virtual_q" path="virtualKeyboard/lettersDefault/Btn-q.svg"></Image>
+        <Image name="Virtual_r" path="virtualKeyboard/lettersDefault/Btn-r.svg"></Image>
+        <Image name="Virtual_s" path="virtualKeyboard/lettersDefault/Btn-s.svg"></Image>
+        <Image name="Virtual_t" path="virtualKeyboard/lettersDefault/Btn-t.svg"></Image>
+        <Image name="Virtual_u" path="virtualKeyboard/lettersDefault/Btn-u.svg"></Image>
+        <Image name="Virtual_v" path="virtualKeyboard/lettersDefault/Btn-v.svg"></Image>
+        <Image name="Virtual_w" path="virtualKeyboard/lettersDefault/Btn-w.svg"></Image>
+        <Image name="Virtual_x" path="virtualKeyboard/lettersDefault/Btn-x.svg"></Image>
+        <Image name="Virtual_y" path="virtualKeyboard/lettersDefault/Btn-y.svg"></Image>
+        <Image name="Virtual_z" path="virtualKeyboard/lettersDefault/Btn-z.svg"></Image>
+        <Image name="Virtual_a_Active" path="virtualKeyboard/lettersActive/Btn-a.svg"></Image>
+        <Image name="Virtual_b_Active" path="virtualKeyboard/lettersActive/Btn-b.svg"></Image>
+        <Image name="Virtual_c_Active" path="virtualKeyboard/lettersActive/Btn-c.svg"></Image>
+        <Image name="Virtual_d_Active" path="virtualKeyboard/lettersActive/Btn-d.svg"></Image>
+        <Image name="Virtual_e_Active" path="virtualKeyboard/lettersActive/Btn-e.svg"></Image>
+        <Image name="Virtual_f_Active" path="virtualKeyboard/lettersActive/Btn-f.svg"></Image>
+        <Image name="Virtual_g_Active" path="virtualKeyboard/lettersActive/Btn-g.svg"></Image>
+        <Image name="Virtual_h_Active" path="virtualKeyboard/lettersActive/Btn-h.svg"></Image>
+        <Image name="Virtual_i_Active" path="virtualKeyboard/lettersActive/Btn-i.svg"></Image>
+        <Image name="Virtual_j_Active" path="virtualKeyboard/lettersActive/Btn-j.svg"></Image>
+        <Image name="Virtual_k_Active" path="virtualKeyboard/lettersActive/Btn-k.svg"></Image>
+        <Image name="Virtual_l_Active" path="virtualKeyboard/lettersActive/Btn-l.svg"></Image>
+        <Image name="Virtual_m_Active" path="virtualKeyboard/lettersActive/Btn-m.svg"></Image>
+        <Image name="Virtual_n_Active" path="virtualKeyboard/lettersActive/Btn-n.svg"></Image>
+        <Image name="Virtual_o_Active" path="virtualKeyboard/lettersActive/Btn-o.svg"></Image>
+        <Image name="Virtual_p_Active" path="virtualKeyboard/lettersActive/Btn-p.svg"></Image>
+        <Image name="Virtual_q_Active" path="virtualKeyboard/lettersActive/Btn-q.svg"></Image>
+        <Image name="Virtual_r_Active" path="virtualKeyboard/lettersActive/Btn-r.svg"></Image>
+        <Image name="Virtual_s_Active" path="virtualKeyboard/lettersActive/Btn-s.svg"></Image>
+        <Image name="Virtual_t_Active" path="virtualKeyboard/lettersActive/Btn-t.svg"></Image>
+        <Image name="Virtual_u_Active" path="virtualKeyboard/lettersActive/Btn-u.svg"></Image>
+        <Image name="Virtual_v_Active" path="virtualKeyboard/lettersActive/Btn-v.svg"></Image>
+        <Image name="Virtual_w_Active" path="virtualKeyboard/lettersActive/Btn-w.svg"></Image>
+        <Image name="Virtual_x_Active" path="virtualKeyboard/lettersActive/Btn-x.svg"></Image>
+        <Image name="Virtual_y_Active" path="virtualKeyboard/lettersActive/Btn-y.svg"></Image>
+        <Image name="Virtual_z_Active" path="virtualKeyboard/lettersActive/Btn-z.svg"></Image>
+        <Image name="Virtual_Shift" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-Shift.svg"></Image>
+        <Image name="Virtual_Clear" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-Backspace.svg"></Image>
+        <Image name="Virtual_#123" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-Num.svg"></Image>
+        <Image name="Virtual_Space" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-spacebar.svg"></Image>
+        <Image name="Virtual_Enter" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-Enter.svg"></Image>
+        <Image name="Virtual_Clear_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-Backspace.svg"></Image>
+        <Image name="Virtual_#123_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-Num.svg"></Image>
+        <Image name="Virtual_Space_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-spacebar.svg"></Image>
+        <Image name="Virtual_Enter_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-Enter.svg"></Image>
+        <Image name="Virtual_Shift_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-Shift.svg"></Image>
+        <Image name="Virtual_s1" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-01.svg"></Image>
+        <Image name="Virtual_s2" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-02.svg"></Image>
+        <Image name="Virtual_s3" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-03.svg"></Image>
+        <Image name="Virtual_s4" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-04.svg"></Image>
+        <Image name="Virtual_s5" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-05.svg"></Image>
+        <Image name="Virtual_s6" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-06.svg"></Image>
+        <Image name="Virtual_s7" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-07.svg"></Image>
+        <Image name="Virtual_s8" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-08.svg"></Image>
+        <Image name="Virtual_s9" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-09.svg"></Image>
+        <Image name="Virtual_s10" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-10.svg"></Image>
+        <Image name="Virtual_s11" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-11.svg"></Image>
+        <Image name="Virtual_s12" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-11 (1).svg"></Image>
+        <Image name="Virtual_s13" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-12.svg"></Image>
+        <Image name="Virtual_s14" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-13.svg"></Image>
+        <Image name="Virtual_s15" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-14.svg"></Image>
+        <Image name="Virtual_s16" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-15.svg"></Image>
+        <Image name="Virtual_s17" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-27.svg"></Image>
+        <Image name="Virtual_s18" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-28.svg"></Image>
+        <Image name="Virtual_s19" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-29.svg"></Image>
+        <Image name="Virtual_s20" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-22.svg"></Image>
+        <Image name="Virtual_s21" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-23.svg"></Image>
+        <Image name="Virtual_s22" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-24.svg"></Image>
+        <Image name="Virtual_s23" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-25.svg"></Image>
+        <Image name="Virtual_s24" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-26.svg"></Image>
+        <Image name="Virtual_ABC" path="virtualKeyboard/specialSymbolsDefault/Button Level 51.svg"></Image>
+        <Image name="Virtual_s32" path="virtualKeyboard/specialSymbolsDefault/Button Level 85.svg"></Image>
+        <Image name="Virtual_s1_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-01.svg"></Image>
+        <Image name="Virtual_s2_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-02.svg"></Image>
+        <Image name="Virtual_s3_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-03.svg"></Image>
+        <Image name="Virtual_s4_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-04.svg"></Image>
+        <Image name="Virtual_s5_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-05.svg"></Image>
+        <Image name="Virtual_s6_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-06.svg"></Image>
+        <Image name="Virtual_s7_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-07.svg"></Image>
+        <Image name="Virtual_s8_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-08.svg"></Image>
+        <Image name="Virtual_s9_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-09.svg"></Image>
+        <Image name="Virtual_s10_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-10.svg"></Image>
+        <Image name="Virtual_s11_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-11.svg"></Image>
+        <Image name="Virtual_s12_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-12.svg"></Image>
+        <Image name="Virtual_s13_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-13.svg"></Image>
+        <Image name="Virtual_s14_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-14.svg"></Image>
+        <Image name="Virtual_s15_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-15.svg"></Image>
+        <Image name="Virtual_s16_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-16.svg"></Image>
+        <Image name="Virtual_s17_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-17.svg"></Image>
+        <Image name="Virtual_s18_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-18.svg"></Image>
+        <Image name="Virtual_s19_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-19.svg"></Image>
+        <Image name="Virtual_s20_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-20.svg"></Image>
+        <Image name="Virtual_s21_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-21.svg"></Image>
+        <Image name="Virtual_s22_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-22.svg"></Image>
+        <Image name="Virtual_s23_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-23.svg"></Image>
+        <Image name="Virtual_s24_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-24.svg"></Image>
+        <Image name="Virtual_ABC_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-Alpha.svg"></Image>
+        <Image name="Virtual_s32_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-32.svg"></Image>
+        <Image name="Virtual_A" path="virtualKeyboard/lettersDefault/KB-Btn-Default-A.svg"></Image>
+        <Image name="Virtual_B" path="virtualKeyboard/lettersDefault/KB-Btn-Default-B.svg"></Image>
+        <Image name="Virtual_C" path="virtualKeyboard/lettersDefault/KB-Btn-Default-C.svg"></Image>
+        <Image name="Virtual_D" path="virtualKeyboard/lettersDefault/KB-Btn-Default-D.svg"></Image>
+        <Image name="Virtual_E" path="virtualKeyboard/lettersDefault/KB-Btn-Default-E.svg"></Image>
+        <Image name="Virtual_F" path="virtualKeyboard/lettersDefault/KB-Btn-Default-F.svg"></Image>
+        <Image name="Virtual_G" path="virtualKeyboard/lettersDefault/KB-Btn-Default-G.svg"></Image>
+        <Image name="Virtual_H" path="virtualKeyboard/lettersDefault/KB-Btn-Default-H.svg"></Image>
+        <Image name="Virtual_I" path="virtualKeyboard/lettersDefault/KB-Btn-Default-I.svg"></Image>
+        <Image name="Virtual_J" path="virtualKeyboard/lettersDefault/KB-Btn-Default-J.svg"></Image>
+        <Image name="Virtual_K" path="virtualKeyboard/lettersDefault/KB-Btn-Default-K.svg"></Image>
+        <Image name="Virtual_L" path="virtualKeyboard/lettersDefault/KB-Btn-Default-L.svg"></Image>
+        <Image name="Virtual_M" path="virtualKeyboard/lettersDefault/KB-Btn-Default-M.svg"></Image>
+        <Image name="Virtual_N" path="virtualKeyboard/lettersDefault/KB-Btn-Default-N.svg"></Image>
+        <Image name="Virtual_O" path="virtualKeyboard/lettersDefault/KB-Btn-Default-O.svg"></Image>
+        <Image name="Virtual_P" path="virtualKeyboard/lettersDefault/KB-Btn-Default-P.svg"></Image>
+        <Image name="Virtual_Q" path="virtualKeyboard/lettersDefault/KB-Btn-Default-Q.svg"></Image>
+        <Image name="Virtual_R" path="virtualKeyboard/lettersDefault/KB-Btn-Default-R.svg"></Image>
+        <Image name="Virtual_S" path="virtualKeyboard/lettersDefault/KB-Btn-Default-S.svg"></Image>
+        <Image name="Virtual_T" path="virtualKeyboard/lettersDefault/KB-Btn-Default-T.svg"></Image>
+        <Image name="Virtual_U" path="virtualKeyboard/lettersDefault/KB-Btn-Default-U.svg"></Image>
+        <Image name="Virtual_V" path="virtualKeyboard/lettersDefault/KB-Btn-Default-V.svg"></Image>
+        <Image name="Virtual_W" path="virtualKeyboard/lettersDefault/KB-Btn-Default-W.svg"></Image>
+        <Image name="Virtual_X" path="virtualKeyboard/lettersDefault/KB-Btn-Default-X.svg"></Image>
+        <Image name="Virtual_Y" path="virtualKeyboard/lettersDefault/KB-Btn-Default-Y.svg"></Image>
+        <Image name="Virtual_Z" path="virtualKeyboard/lettersDefault/KB-Btn-Default-Z.svg"></Image>
+        <Image name="Virtual_A_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-A.svg"></Image>
+        <Image name="Virtual_B_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-B.svg"></Image>
+        <Image name="Virtual_C_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-C.svg"></Image>
+        <Image name="Virtual_D_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-D.svg"></Image>
+        <Image name="Virtual_E_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-E.svg"></Image>
+        <Image name="Virtual_F_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-F.svg"></Image>
+        <Image name="Virtual_G_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-G.svg"></Image>
+        <Image name="Virtual_H_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-H.svg"></Image>
+        <Image name="Virtual_I_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-I.svg"></Image>
+        <Image name="Virtual_J_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-J.svg"></Image>
+        <Image name="Virtual_K_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-K.svg"></Image>
+        <Image name="Virtual_L_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-L.svg"></Image>
+        <Image name="Virtual_M_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-M.svg"></Image>
+        <Image name="Virtual_N_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-N.svg"></Image>
+        <Image name="Virtual_O_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-O.svg"></Image>
+        <Image name="Virtual_P_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-P.svg"></Image>
+        <Image name="Virtual_Q_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-Q.svg"></Image>
+        <Image name="Virtual_R_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-R.svg"></Image>
+        <Image name="Virtual_S_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-S.svg"></Image>
+        <Image name="Virtual_T_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-T.svg"></Image>
+        <Image name="Virtual_U_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-U.svg"></Image>
+        <Image name="Virtual_V_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-V.svg"></Image>
+        <Image name="Virtual_W_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-W.svg"></Image>
+        <Image name="Virtual_X_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-X.svg"></Image>
+        <Image name="Virtual_Y_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-Y.svg"></Image>
+        <Image name="Virtual_Z_Active" path="virtualKeyboard/lettersActive/KB-Btn-Active-Z.svg"></Image>
+        <Image name="Virtual_0" path="virtualKeyboard/numbersDefault/KB-Btn-0.svg"></Image>
+        <Image name="Virtual_1" path="virtualKeyboard/numbersDefault/KB-Btn-1.svg"></Image>
+        <Image name="Virtual_2" path="virtualKeyboard/numbersDefault/KB-Btn-2.svg"></Image>
+        <Image name="Virtual_3" path="virtualKeyboard/numbersDefault/KB-Btn-3.svg"></Image>
+        <Image name="Virtual_4" path="virtualKeyboard/numbersDefault/KB-Btn-4.svg"></Image>
+        <Image name="Virtual_5" path="virtualKeyboard/numbersDefault/KB-Btn-5.svg"></Image>
+        <Image name="Virtual_6" path="virtualKeyboard/numbersDefault/KB-Btn-6.svg"></Image>
+        <Image name="Virtual_7" path="virtualKeyboard/numbersDefault/KB-Btn-7.svg"></Image>
+        <Image name="Virtual_8" path="virtualKeyboard/numbersDefault/KB-Btn-8.svg"></Image>
+        <Image name="Virtual_9" path="virtualKeyboard/numbersDefault/KB-Btn-9.svg"></Image>
+        <Image name="Virtual_0_Active" path="virtualKeyboard/numbersActive/KB-Btn-0.svg"></Image>
+        <Image name="Virtual_1_Active" path="virtualKeyboard/numbersActive/KB-Btn-1.svg"></Image>
+        <Image name="Virtual_2_Active" path="virtualKeyboard/numbersActive/KB-Btn-2.svg"></Image>
+        <Image name="Virtual_3_Active" path="virtualKeyboard/numbersActive/KB-Btn-3.svg"></Image>
+        <Image name="Virtual_4_Active" path="virtualKeyboard/numbersActive/KB-Btn-4.svg"></Image>
+        <Image name="Virtual_5_Active" path="virtualKeyboard/numbersActive/KB-Btn-5.svg"></Image>
+        <Image name="Virtual_6_Active" path="virtualKeyboard/numbersActive/KB-Btn-6.svg"></Image>
+        <Image name="Virtual_7_Active" path="virtualKeyboard/numbersActive/KB-Btn-7.svg"></Image>
+        <Image name="Virtual_8_Active" path="virtualKeyboard/numbersActive/KB-Btn-8.svg"></Image>
+        <Image name="Virtual_9_Active" path="virtualKeyboard/numbersActive/KB-Btn-9.svg"></Image>
+        <Image name="Virtual_s25" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-16.svg"></Image>
+        <Image name="Virtual_s26" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-17.svg"></Image>
+        <Image name="Virtual_s27" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-18.svg"></Image>
+        <Image name="Virtual_s28" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-19.svg"></Image>
+        <Image name="Virtual_s29" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-20.svg"></Image>
+        <Image name="Virtual_s30" path="virtualKeyboard/specialSymbolsDefault/KB-Btn-sym-21.svg"></Image>
+        <Image name="Virtual_s31" path="virtualKeyboard/specialSymbolsDefault/Button Level 92.svg"></Image>
+        <Image name="Virtual_s25_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-16 (2).svg"></Image>
+        <Image name="Virtual_s26_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-17 (1).svg"></Image>
+        <Image name="Virtual_s27_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-18 (1).svg"></Image>
+        <Image name="Virtual_s28_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-19 (1).svg"></Image>
+        <Image name="Virtual_s29_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-20 (1).svg"></Image>
+        <Image name="Virtual_s30_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-21 (1).svg"></Image>
+        <Image name="Virtual_s31_Active" path="virtualKeyboard/specialSymbolsActive/KB-Btn-sym-Symbols.svg"></Image>
+        <Image name="numPad_Clear" path="numPad/Button Level 30.svg"></Image>
+        <Image name="numPad_Apply" path="numPad/Button Level 31.svg"></Image>
+        <Image name="numPad_1" path="numPad/default/Button - 1.svg"></Image>
+        <Image name="numPad_2" path="numPad/default/Button - 2.svg"></Image>
+        <Image name="numPad_3" path="numPad/default/Button - 3.svg"></Image>
+        <Image name="numPad_4" path="numPad/default/Button - 4.svg"></Image>
+        <Image name="numPad_5" path="numPad/default/Button - 5.svg"></Image>
+        <Image name="numPad_6" path="numPad/default/Button - 6.svg"></Image>
+        <Image name="numPad_7" path="numPad/default/Button - 7.svg"></Image>
+        <Image name="numPad_8" path="numPad/default/Button - 8.svg"></Image>
+        <Image name="numPad_9" path="numPad/default/Button - 9.svg"></Image>
+        <Image name="numPad_0" path="numPad/default/Button - 0.svg"></Image>
+        <Image name="numPad_/2" path="numPad/default/2.svg"></Image>
+        <Image name="numPad_+" path="numPad/default/-.svg"></Image>
+        <Image name="numPad_C" path="numPad/default/Button - Clear.svg"></Image>
+        <Image name="numPad_D" path="numPad/default/Button - Del.svg"></Image>
+        <Image name="numPad_Dot" path="numPad/default/Button - Dot.svg"></Image>
+        <Image name="numPad_M" path="numPad/default/Button - Minus.svg"></Image>
+        <Image name="numPad_P" path="numPad/default/Button - Plus.svg"></Image>
+        <Image name="numPad_x2" path="numPad/default/Button - x2.svg"></Image>
+        <Image name="numPad_+" path="numPad/default/-.svg"></Image>
+        <Image name="numPad_1_Active" path="numPad/active/Button - 11.svg"></Image>
+        <Image name="numPad_2_Active" path="numPad/active/Button - 12.svg"></Image>
+        <Image name="numPad_3_Active" path="numPad/active/Button - 13.svg"></Image>
+        <Image name="numPad_4_Active" path="numPad/active/Button - 14.svg"></Image>
+        <Image name="numPad_5_Active" path="numPad/active/Button - 15.svg"></Image>
+        <Image name="numPad_6_Active" path="numPad/active/Button - 16.svg"></Image>
+        <Image name="numPad_7_Active" path="numPad/active/Button - 17.svg"></Image>
+        <Image name="numPad_8_Active" path="numPad/active/Button - 18.svg"></Image>
+        <Image name="numPad_9_Active" path="numPad/active/Button - 19.svg"></Image>
+        <Image name="numPad_0_Active" path="numPad/active/Button - 10.svg"></Image>
+        <Image name="numPad_C_Active" path="numPad/active/Button - Clear.svg"></Image>
+        <Image name="numPad_D_Active" path="numPad/active/Button - Del.svg"></Image>
+        <Image name="numPad_Dot_Active" path="numPad/active/Button - Dot.svg"></Image>
+        <Image name="numPad_M_Active" path="numPad/active/Button - Minus.svg"></Image>
+        <Image name="numPad_P_Active" path="numPad/active/Button - Plus.svg"></Image>
+        <Image name="numPad_x2_Active" path="numPad/active/Button - x2.svg"></Image>
+        <Image name="numPad_/2_Active" path="numPad/active/2.svg"></Image>
+        <Image name="numPad_+_Active" path="numPad/active/-.svg"></Image>
+        <Image name="Icon_TrackMute" path="Header/Icon-ID-Track Mute.svg"></Image>
+        <Image name="TrackMute_None" path="TrackMute/Button - No 00.svg"></Image>
+        <Image name="TrackMute_1" path="TrackMute/Button - No 01.svg"></Image>
+        <Image name="TrackMute_2" path="TrackMute/Button - No 02.svg"></Image>
+        <Image name="TrackMute_3" path="TrackMute/Button - No 03.svg"></Image>
+        <Image name="TrackMute_4" path="TrackMute/Button - No 04.svg"></Image>
+        <Image name="TrackMute_5" path="TrackMute/Button - No 05.svg"></Image>
+        <Image name="TrackMute_6" path="TrackMute/Button - No 06.svg"></Image>
+        <Image name="TrackMute_7" path="TrackMute/Button - No 07.svg"></Image>
+        <Image name="TrackMute_8" path="TrackMute/Button - No 08.svg"></Image>
+        <Image name="TrackMute_9" path="TrackMute/Button - No 09.svg"></Image>
+        <Image name="TrackMute_10" path="TrackMute/Button - No 10.svg"></Image>
+        <Image name="TrackMute_11" path="TrackMute/Button - No 11.svg"></Image>
+        <Image name="TrackMute_12" path="TrackMute/Button - No 12.svg"></Image>
+        <Image name="TrackMute_13" path="TrackMute/Button - No 13.svg"></Image>
+        <Image name="TrackMute_14" path="TrackMute/Button - No 14.svg"></Image>
+        <Image name="TrackMute_15" path="TrackMute/Button - No 15.svg"></Image>
+        <Image name="TrackMute_16" path="TrackMute/Button - No 16.svg"></Image>
+        <Image name="TrackMute_None_Active" path="TrackMute/ActiveButtons/Button - No 17.svg"></Image>
+        <Image name="TrackMute_1_Active" path="TrackMute/ActiveButtons/Button - No 1.svg"></Image>
+        <Image name="TrackMute_2_Active" path="TrackMute/ActiveButtons/Button - No 2.svg"></Image>
+        <Image name="TrackMute_3_Active" path="TrackMute/ActiveButtons/Button - No 3.svg"></Image>
+        <Image name="TrackMute_4_Active" path="TrackMute/ActiveButtons/Button - No 4.svg"></Image>
+        <Image name="TrackMute_5_Active" path="TrackMute/ActiveButtons/Button - No 5.svg"></Image>
+        <Image name="TrackMute_6_Active" path="TrackMute/ActiveButtons/Button - No 6.svg"></Image>
+        <Image name="TrackMute_7_Active" path="TrackMute/ActiveButtons/Button - No 7.svg"></Image>
+        <Image name="TrackMute_8_Active" path="TrackMute/ActiveButtons/Button - No 8.svg"></Image>
+        <Image name="TrackMute_9_Active" path="TrackMute/ActiveButtons/Button - No 9.svg"></Image>
+        <Image name="TrackMute_10_Active" path="TrackMute/ActiveButtons/Button - No 10.svg"></Image>
+        <Image name="TrackMute_11_Active" path="TrackMute/ActiveButtons/Button - No 11.svg"></Image>
+        <Image name="TrackMute_12_Active" path="TrackMute/ActiveButtons/Button - No 12.svg"></Image>
+        <Image name="TrackMute_13_Active" path="TrackMute/ActiveButtons/Button - No 13.svg"></Image>
+        <Image name="TrackMute_14_Active" path="TrackMute/ActiveButtons/Button - No 14.svg"></Image>
+        <Image name="TrackMute_15_Active" path="TrackMute/ActiveButtons/Button - No 15.svg"></Image>
+        <Image name="TrackMute_16_Active" path="TrackMute/ActiveButtons/Button - No 16.svg"></Image>
+        <Image name="TrackMute_Tick" path="TrackMute/Button - Tick.svg"></Image>
+        <Image name="TrackMute_Tick_Active" path="TrackMute/ActiveButtons/Button - Tick.svg"></Image>
+        <Image name="Icon_PadMute" path="Header/Icon-ID-Pad_Mute.svg"></Image>
+        <Image name="Icon_NextSeq" path="Header/Icon-ID-Sequence.svg"></Image>
+        <Image name="Icon_listEdit" path="Header/Icon-ID-List Edit.svg"></Image>
+        <Image name="Icon_Cancel" path="Cancel.svg"></Image>
+        <Image name="Icon_Apply" path="Apply_Icon.svg"></Image>
+        <Image name="Icon_Done" path="Done.svg"></Image>
+        <Image name="Icon_PadMix" path="Header/Icon-ID-Pad Mixer.svg"></Image>
+        <Image name="PadMix_Enable" path="padMixer/Button Level 01b (23).svg"></Image>
+        <Image name="PadMix_Enable_Active" path="padMixer/Button Level 01b (24).svg"></Image>
+        <Image name="PadMix_Insert" path="padMixer/Button Level 102.svg"></Image>
+        <Image name="number" path="Header/buttons/.svg"></Image>
+        <Image name="Icon_NewRecent" path="recent_project/Icon-New File.svg"></Image>
+        <Image name="SE_Xfade_Sharp" path="sampleEdit/default/Button 44 - Xfade-Sharp.svg"></Image>
+        <Image name="SE_Xfade_Smooth" path="sampleEdit/default/Button 44 - Xfade-Smooth.svg"></Image>
+        <Image name="SE_Xfade_Sharp_Active" path="sampleEdit/active/Button 44 - Xfade-Sharp.svg"></Image>
+        <Image name="SE_Xfade_Smooth_Active" path="sampleEdit/active/Button 44 - Xfade-Smooth.svg"></Image>
+        <Image name="Icon_SongEdit" path="Header/Icon-ID-Song Edit.svg"></Image>
+        <Image name="Song_Clear" path="Header/buttons/Clear.svg"></Image>
+        <Image name="Song_Export" path="Header/buttons/Export.svg"></Image>
+        <Image name="Song_Clear_Active" path="Header/buttons/Button - Clear.svg"></Image>
+        <Image name="Song_Export_Active" path="Header/buttons/Button - Export.svg"></Image>
+        <Image name="Icon_ColourEdit" path="Header/Union.svg"></Image>
+        <Image name="Icon_Sampler" path="sampler/Icon-ID-Sampler.svg"></Image>
+        <Image name="Icon_Fader" path="sampler/Fader handle 01.svg"></Image>
+        <Image name="sampler_Rec" path="sampler/rec.svg"></Image>
+        <Image name="sampler_Rec_active" path="sampler/Button - Rec_active.svg"></Image>
+        <Image name="sampler_Icon-Record" path="sampler/Icon-Record.svg"></Image>
+        <Image name="sampler_Icon-Stop" path="sampler/Icon-Stop.svg"></Image>
+        <Image name="sampler_Icon-wait" path="sampler/Icon-Waiting for Signal.svg"></Image>
+        <Image name="sampler_Monitor" path="sampler/Button - Monitor.svg"></Image>
+        <Image name="sampler_Monitor_active" path="sampler/Button - Monitor (1).svg"></Image>
+        <Image name="sampler_Rec_stop" path="sampler/Button - Rec-stop.svg"></Image>
+        <Image name="sampler_ellipse" path="sampler/Ellipse_2155.svg"></Image>
+        <Image name="Icon_PadPerform" path="padperform/Icon-ID-Pad Perform.svg"></Image>
+        <Image name="PadPerform_Octave" path="padperform/Button - Plus Minus Base.svg"></Image>
+        <Image name="Icon_MidiControl" path="Header/Icon-ID-MIDI Control.svg"></Image>
+        <Image name="PgmEdit_Insert_Active" path="progedit/active/insert.svg"></Image>
+        <Image name="PgmEdit_lfo_Active" path="progedit/active/lfo.svg"></Image>
+        <Image name="PgmEdit_Main" path="progedit/default/main.svg"></Image>
+        <Image name="PgmEdit_mainpgm_Active" path="progedit/active/main_pgm.svg"></Image>
+        <Image name="PgmEdit_mainkey_Active" path="progedit/active/main_keypgm.svg"></Image>
+        <Image name="PgmSel_Drum" path="programIcons/Btn Prog Sel - Drum.svg"></Image>
+        <Image name="PgmSel_Key" path="programIcons/Btn Prog Sel - Key Group.svg"></Image>
+        <Image name="PgmSel_Audio" path="programIcons/Btn Prog Sel - Audio.svg"></Image>
+        <Image name="PgmSel_Clip" path="programIcons/Btn Prog Sel - Clip.svg"></Image>
+        <Image name="PgmSel_CV" path="programIcons/Btn Prog Sel - CV.svg"></Image>
+        <Image name="PgmSel_MIDI" path="programIcons/Btn Prog Sel - MIDI Seq.svg"></Image>
+        <Image name="PgmSel_PLUGIN" path="programIcons/Btn Prog Sel - plugin.svg"></Image>
+		<Image name="PgmSel_Default" path="programIcons/Btn Prog Sel - Program.svg"></Image>
+		<Image name="PgmIcon_Drum" path="programIcons/Btn Prog Icon - Drum.svg"></Image>
+		<Image name="PgmIcon_Key" path="programIcons/Btn Prog Icon - Key Group.svg"></Image>
+		<Image name="PgmIcon_Audio" path="programIcons/Btn Prog Icon - Audio.svg"></Image>
+		<Image name="PgmIcon_Clip" path="programIcons/Btn Prog Icon - Clip.svg"></Image>
+		<Image name="PgmIcon_CV" path="programIcons/Btn Prog Icon - CV.svg"></Image>
+		<Image name="PgmIcon_MIDI" path="programIcons/Btn Prog Icon - MIDI Seq.svg"></Image>
+		<Image name="PgmIcon_PLUGIN" path="programIcons/Btn Prog Icon - plugin.svg"></Image>
+		<Image name="PgmEdit_EZ" path="progedit/default/editzone.svg"></Image>
+		<Image name="PgmEdit_FP" path="progedit/default/flatten pad.svg"></Image>
+		<Image name="PgmEdit_ConvertKG" path="progedit/default/convert to kg.svg"></Image>
+		<Image name="PgmEdit_mainPad_Active" path="progedit/active/main_Pad.svg"></Image>
+		<Image name="PgmEdit_Padfx" path="progedit/default/padfx.svg"></Image>
+		<Image name="PgmEdit_fxinsert_Active" path="progedit/active/padfx_insert.svg"></Image>
+		<Image name="PgmEdit_fxdrums_Active" path="progedit/active/padfx_drums.svg"></Image>
+		<Image name="num_Header" path="Header/buttons/Button Level 43.svg"></Image>
+		<Image name="num1_Header" path="Header/buttons/2.svg"></Image>
+		<Image name="PgmEdit_insertDefault" path="progedit/default/insert-default.svg"></Image>
+		<Image name="PgmEdit_EditTool" path="progedit/default/Button - Edit.svg"></Image>
+		<Image name="Insert_mute" path="inserts/mute_insert.svg"></Image>
+		<Image name="Insert_L" path="inserts/L.svg"></Image>
+		<Image name="Insert_E" path="inserts/E.svg"></Image>
+		<Image name="Insert_D" path="inserts/D.svg"></Image>
+		<Image name="Insert_S" path="inserts/S.svg"></Image>
+		<Image name="Insert_ALLON" path="inserts/ALLON.svg"></Image>
+		<Image name="Insert_ON" path="inserts/on.svg"></Image>
+		<Image name="Icon_pgmEdit" path="Header/Program Edit.svg"></Image>
+		<Image name="sEdit_Icon" path="Header/Icon-ID-Sample Edit.svg"></Image>
+		<Image name="sEdit_Arrow" path="sampleEdit/default/arrow.png"></Image>
+		<Image name="sEdit_Warning" path="sampleEdit/default/Icon - Warning.svg"></Image>
+		<Image name="sEdit_discard" path="sampleEdit/default/Button - Icon with Text.svg"></Image>
+		<Image name="sEdit_delete" path="sampleEdit/default/Button - Icon with Text (1).svg"></Image>
+		<Image name="sEdit_silence" path="sampleEdit/default/Button - Icon with Text (2).svg"></Image>
+		<Image name="sEdit_extract" path="sampleEdit/default/Button - Icon with Text (4).svg"></Image>
+		<Image name="sEdit_normalize" path="sampleEdit/default/Button - Icon with Text (5).svg"></Image>
+		<Image name="sEdit_reverse" path="sampleEdit/default/Button - Icon with Text (6).svg"></Image>
+		<Image name="sEdit_fadein" path="sampleEdit/default/Button - Icon with Text (7).svg"></Image>
+		<Image name="sEdit_fadeout" path="sampleEdit/default/Button - Icon with Text (8).svg"></Image>
+		<Image name="sEdit_pitchshift" path="sampleEdit/default/Button - Icon with Text (9).svg"></Image>
+		<Image name="sEdit_timestretch" path="sampleEdit/default/Button - Icon with Text (10).svg"></Image>
+		<Image name="sEdit_gainchange" path="sampleEdit/default/Button - Icon with Text (11).svg"></Image>
+		<Image name="sEdit_copy" path="sampleEdit/default/Button - Icon with Text (12).svg"></Image>
+		<Image name="sEdit_bitreduce" path="sampleEdit/default/Button - Icon with Text (13).svg"></Image>
+		<Image name="sEdit_steromono" path="sampleEdit/default/Button - Icon with Text (14).svg"></Image>
+		<Image name="sEdit_Gdiscard" path="sampleEdit/default/Graphic - Discard.svg"></Image>
+		<Image name="sEdit_Gdelete" path="sampleEdit/default/Graphic - Delete.svg"></Image>
+		<Image name="sEdit_Gsilence" path="sampleEdit/default/Graphic - Silence.svg"></Image>
+		<Image name="sEdit_Gextract" path="sampleEdit/default/Graphic - Extract.svg"></Image>
+		<Image name="sEdit_Gnormalize" path="sampleEdit/default/Graphic - Normalize.svg"></Image>
+		<Image name="sEdit_Greverse" path="sampleEdit/default/Graphic - Reverse.svg"></Image>
+		<Image name="sEdit_Gfadein" path="sampleEdit/default/Graphic - Fade In.svg"></Image>
+		<Image name="sEdit_Gfadeout" path="sampleEdit/default/Graphic - Fade Out.svg"></Image>
+		<Image name="sEdit_Gcopy" path="sampleEdit/default/Graphic - Copy.svg"></Image>
+		<Image name="sEdit_buttonloop" path="Sample Edit Button Loop None.png"></Image>
+		<Image name="sEdit_buttonforward" path="Sample Edit Button Loop Forward.png"></Image>
+		<Image name="sEdit_buttonalternate" path="Sample Edit Button Loop alternate.png"></Image>
+		<Image name="sEdit_buttonbackward" path="Sample Edit Button Loop Backward.png"></Image>
+		<Image name="sEdit_setting" path="Sample Edit - Icon Button - Settings.png"></Image>
+		<Image name="sEdit_zoom" path="Sample Edit - Icon Button - Zoom.png"></Image>
+		<Image name="sEdit_sound" path="Sample Edit - Icon Button - Sound.png"></Image>
+		<Image name="sEdit_edit" path="Sample Edit - Icon Button - Edit.png"></Image>
+		<Image name="sEdit_erase" path="Sample Edit - Icon Button - Eraser.png"></Image>
+		<Image name="sEdit_zoom_active" path="Sample Edit - Icon Button - Zoom - Enable.png"></Image>
+		<Image name="sEdit_sound_active" path="Sample Edit - Icon Button - Sound - Enable.png"></Image>
+		<Image name="sEdit_edit_active" path="Sample Edit - Icon Button - Edit - Enable.png"></Image>
+		<Image name="sEdit_erase_active" path="Sample Edit - Icon Button - Eraser - Enable.png"></Image>
+		<Image name="Icon_Looper" path="Header/Icon-ID-Looper.svg"></Image>
+		<Image name="Looper_reverse" path="looper/reverse.svg"></Image>
+		<Image name="Looper_repeat" path="looper/repeat.svg"></Image>
+		<Image name="Looper_play" path="looper/play.svg"></Image>
+		<Image name="Looper_rec" path="looper/record.svg"></Image>
+		<Image name="Looper_reverse_active" path="looper/Button - Reverse.svg"></Image>
+		<Image name="Looper_repeat_active" path="looper/Button - Replace.svg"></Image>
+		<Image name="Looper_play_active" path="looper/Button - Play.svg"></Image>
+		<Image name="Looper_rec_active" path="looper/Button - Rec.svg"></Image>
+		<Image name="Icon_qlink" path="Header/qlink.svg"></Image>
+		<Image name="qlink_momentary" path="qLink/default/Button - Toggle - MOMENTARY.svg"></Image>
+		<Image name="qlink_momentary_active" path="qLink/active/Button - Toggle - MOMENTARY (1).svg"></Image>
+		<Image name="seq_Tri" path="stepseq/active/Button - Triangle.svg"></Image>
+		<Image name="seq_Tri_active" path="stepseq/active/Button - Triangle (2).svg"></Image>
+		<Image name="seq_Tri4" path="stepseq/active/Button - Triangle 4.svg"></Image>
+		<Image name="seq_Tri5" path="stepseq/active/Button - Triangle 5.svg"></Image>
+		<Image name="seq_Tri_rev" path="stepseq/active/Button - Triangle rev.svg"></Image>
+		<Image name="seq_Tri_rev2" path="stepseq/active/Button - Triangle 02 rev.svg"></Image>
+		<Image name="seq_Tri_rev3" path="stepseq/active/Button - Triangle 03 rev.svg"></Image>
+		<Image name="seq_saw" path="stepseq/active/Button - Sawtooth rev (1).svg"></Image>
+		<Image name="seq_saw_active" path="stepseq/active/Button - Sawtooth rev.svg"></Image>
+		<Image name="seq_saw_rev" path="stepseq/active/Button - Sawtooth 02 rev.svg"></Image>
+		<Image name="seq_saw_rev2" path="stepseq/active/Button - Sawtooth 03 rev.svg"></Image>
+		<Image name="seq_saw1" path="stepseq/active/Button - Sawtooth.svg"></Image>
+		<Image name="seq_saw4" path="stepseq/active/Button - Sawtooth 4.svg"></Image>
+		<Image name="seq_saw5" path="stepseq/active/Button - Sawtooth 5.svg"></Image>
+		<Image name="seq_squ" path="stepseq/active/Button - Square (1).svg"></Image>
+		<Image name="seq_ssqu_active" path="stepseq/active/Button - Square.svg"></Image>
+		<Image name="seq_squ4" path="stepseq/active/Button - Square 4.svg"></Image>
+		<Image name="seq_squ5" path="stepseq/active/Button - Square 5.svg"></Image>
+		<Image name="seq_squ_rev" path="stepseq/active/Button - Squarerev.svg"></Image>
+		<Image name="seq_squ_rev2" path="stepseq/active/Button - Square 02 rev.svg"></Image>
+		<Image name="seq_squ_rev3" path="stepseq/active/Button - Square 03 rev.svg"></Image>
+		<Image name="seq_button1" path="stepseq/default/1.svg"></Image>
+		<Image name="seq_nudge" path="stepseq/default/Button - Nudge.svg"></Image>
+		<Image name="Icon_minus" path="Header/buttons/minus.svg"></Image>
+		<Image name="Icon_plus" path="Header/buttons/plus.svg"></Image>
+		<Image name="LOGO" path="Sim KICK logo.png"></Image>
+		<Image name="BrandName" path="Sim Brands dt_KlarkTeknik.png"></Image>
+		<Image name="Icon_SettingsScreen" path="Header/Icon-ID-Info Settings.svg"></Image>
+		<Image name="Settings-Info" path="preferenceView/Main Preferences - Sidebar Menu - Info.png"></Image>
+		<Image name="Settings-Info_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Info.png"></Image>
+		<Image name="Settings-Ethernet" path="preferenceView/Main Preferences - Sidebar Menu - Ethernet.png"></Image>
+		<Image name="Settings-Ethernet_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Ethernet.png"></Image>
+		<Image name="Settings-Sequencer" path="preferenceView/Main Preferences - Sidebar Menu - Sequencer.png" ></Image>
+		<Image name="Settings-Sequencer_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Sequencer.png"></Image>
+		<Image name="Settings-Sync" path="preferenceView/Main Preferences - Sidebar Menu - Sync.png" ></Image>
+		<Image name="Settings-Sync_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Sync.png"></Image>
+		<Image name="Settings-Hardware" path= "preferenceView/Main Preferences - Sidebar Menu - Hardware.png" ></Image>
+		<Image name="Settings-Hardware_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Hardware.png"></Image>
+		<Image name="Settings-Defaults" path="preferenceView/Main Preferences - Sidebar Menu - Project Defaults.png" ></Image>
+		<Image name="Settings-Defaults_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - Project Defaults.png"></Image>
+		<Image name="Settings-Export" path="preferenceView/Main Preferences - Sidebar Menu - Record.png" ></Image>
+		<Image name="Settings-Export_active" path= "preferenceView/Main Preferences - Sidebar Menu - Active - Record.png" ></Image>
+		<Image name="Settings-General" path="preferenceView/Main Preferences - Sidebar Menu - General.png"></Image>
+		<Image name="Settings-General_active" path= "preferenceView/Main Preferences - Sidebar Menu - Active - General.png"></Image>
+		<Image name="Settings-CV" path="preferenceView/Main Preferences - Sidebar Menu - General.png" ></Image>
+		<Image name="Settings-CV_active" path="preferenceView/Main Preferences - Sidebar Menu - Active - General.png"></Image>
+		<Image name="solo_mini" path="padMixer/Button Level 01c.svg"></Image>
+		<Image name="solo_mini_active" path="padMixer/Button Level 01c (2).svg"></Image>
+		<Image name="mute_mini" path="padMixer/Button Level 01c (1).svg"></Image>
+		<Image name="mute_mini_active" path="padMixer/Button Level 01c (3).svg"></Image>
+		<Image name="Alert Icon - Warning" path="Alert Icon - Warning.png"></Image>
+		<Image name="Alert Icon - Error" path="Alert Icon - Error.png"></Image>
+		<Image name="Alert Icon - Question" path="Alert Icon - Question.png"></Image>
+		<Image name="purge" path="purge.svg"></Image>
+		<Image name="purgeused" path="purgeused.svg"></Image>
+		<Image name="ok_resource" path="ok_resource.svg"></Image>
+		<Image name="effect1" path="Program Edit - Effect - Button - Icon - Edit - Active.png"></Image>
+		<Image name="effect2" path="Program Edit - Effect - Button - Icon - Trash - Active.png"></Image>
+		<Image name="effect3" path="Program Edit - Filter-Env - Button -  Connect.png"></Image>
+
+
+
+
+
+
+
+
+
+
+	</Images>
+</THEME>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ROOT name="gg" manufacturer="Musictribe" version="0.1" bpm="120.0"
+      length="4" num="4" den="4" isMasterBPM="1">
+  <BUSES/>
+  <FILEMANAGER id="AMowy9q0">
+    <ASSETS/>
+    <AUDIO/>
+    <EXPORTS/>
+  </FILEMANAGER>
+</ROOT>
