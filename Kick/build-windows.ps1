@@ -12,16 +12,30 @@ $Juce = "$Root/.3rdPartySourceCache/JUCE-7.0.12"
 
 if (-not (Test-Path $Juce)) {
     git clone --depth 1 --branch 7.0.12 https://github.com/juce-framework/JUCE.git $Juce
+    if ($LASTEXITCODE -ne 0) { throw "git clone failed with exit code $LASTEXITCODE" }
 }
 
-cmake -S "$Root/Kick" -B "$Root/Kick/build-win" -G "Visual Studio 17 2022" -A x64 `
-    -DTIMESTAMP=OFF `
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 `
-    -DCPM_JUCE_SOURCE="$Juce" `
-    -DCPM_AudIO_SOURCE="$Root/AudIO" `
-    -DCPM_COM_PROTOCOL_SOURCE="$Root/ComProtocol" `
-    -DMT_PLATFORM_GIT_PATH=file:///nonexistent
+# Pass every argument through an array. Direct native-command arguments are re-parsed by
+# PowerShell, which splits values such as CMAKE_POLICY_VERSION_MINIMUM=3.5 into "3" and ".5".
+$ConfigureArgs = @(
+    "-S", "$Root/Kick"
+    "-B", "$Root/Kick/build-win"
+    "-G", "Visual Studio 17 2022"
+    "-A", "x64"
+    "-DTIMESTAMP=OFF"
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    "-DCPM_JUCE_SOURCE=$Juce"
+    "-DCPM_AudIO_SOURCE=$Root/AudIO"
+    "-DCPM_COM_PROTOCOL_SOURCE=$Root/ComProtocol"
+    "-DMT_PLATFORM_GIT_PATH=file:///nonexistent"
+)
+& cmake @ConfigureArgs
+if ($LASTEXITCODE -ne 0) { throw "CMake configure failed with exit code $LASTEXITCODE" }
 
-cmake --build "$Root/Kick/build-win" --config Release --target Kick --parallel
+$BuildArgs = @("--build", "$Root/Kick/build-win", "--config", "Release", "--target", "Kick", "--parallel")
+& cmake @BuildArgs
+if ($LASTEXITCODE -ne 0) { throw "CMake build failed with exit code $LASTEXITCODE" }
 
-Write-Host "Built: $Root/Kick/build-win/Kick.exe"
+$Exe = "$Root/Kick/build-win/Kick.exe"
+if (-not (Test-Path $Exe)) { throw "Kick.exe was not produced at $Exe" }
+Write-Host "Built: $Exe"
