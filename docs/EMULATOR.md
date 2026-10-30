@@ -9,9 +9,10 @@ This is a working note for our project (an unofficial KICK build, see
 [KickEmulator](https://github.com/KickEm-Tools/KickEmulator) and how (or whether) it fits a
 Windows host.
 
-> **Status (2026-10-29):** native Windows fast mode is not possible (the launcher and the panel
+> **Status (2026-10-30):** native Windows fast mode is not possible (the launcher and the panel
 > transport are POSIX). The full **fast-mode stack is verified working under WSL2 (Ubuntu 24.04)** on
-> this machine — see [Windows (via WSL2)](#windows-via-wsl2--verified-working).
+> this machine, including audio, and the official `checks/smoke` passes — see
+> [Windows (via WSL2)](#windows-via-wsl2--verified-working).
 
 ## What it is
 
@@ -128,27 +129,43 @@ Exact commands that were run:
 ```sh
 # in WSL2 Ubuntu
 sudo apt update && sudo apt install -y cmake git python3 build-essential \
-  libasound2-dev libfreetype6-dev libx11-dev libxext-dev libxinerama-dev libxrandr-dev \
-  libxcursor-dev libgl1-mesa-dev
+  libasound2-dev libjack-jackd2-dev libcurl4-openssl-dev libfreetype6-dev \
+  libx11-dev libxcomposite-dev libxcursor-dev libxext-dev libxinerama-dev \
+  libxrandr-dev libxrender-dev libwebkit2gtk-4.1-dev libglu1-mesa-dev mesa-common-dev \
+  libx11-xcb-dev libxcb1-dev libxkbcommon-dev libxkbcommon-x11-dev libgtk-3-dev \
+  libasound2-plugins alsa-utils pulseaudio-utils python3-numpy tmux
 git clone https://github.com/KickEm-Tools/KickEmulator.git ~/KickEmulator
 cd ~/KickEmulator
 CPM_SOURCE_CACHE='/mnt/d/Coding  Projects/Behringer Kick/.3rdPartySourceCache' \
   ./kickem run --ref integration/standalone
 ```
 
-Result (fast mode): the firmware was fetched (`0700-AAM` `integration/standalone` @ `cc5fa831`), the
-desktop `Kick` app and `kickem-panel` were built, the panel opened a pty (device `/dev/pts/N`), and
-the handshake reached **`SimSerial: LIVE 0.396 s after the app connected`**. Driving it with
-`checks/lib/kickem_ctl` worked over the wire: control frames were delivered and acked
-(`KNOB_ENTER`, then `PLAY` → `PanelControl: ok`).
+Result (fast mode): the firmware was fetched (`0700-AAM` `integration/standalone`), the desktop
+`Kick` app and `kickem-panel` were built, the panel opened a pty (device `/dev/pts/N`), and the
+handshake reached **`SimSerial: LIVE`**. Driving it with `checks/lib/kickem_ctl` worked over the
+wire: control frames were delivered and acked (`KNOB_ENTER`, then `PLAY` → `PanelControl: ok`).
 
-Known rough edges in the WSL2 run (not blockers):
+Audio (verified 2026-10-30): after installing `libasound2-plugins alsa-utils pulseaudio-utils`,
+`pactl info` shows WSLg's `RDPSink`, and the app opens **`PulseAudio Sound Server`** at 48 kHz.
+`--probe` produced a growing WAV with peaks around **-3 dBFS** during playback.
 
-- The desktop `Kick` app logs **`free(): invalid pointer`** and crashes **on teardown** (after the
-  scripted `STOP`). The UI and the wire link worked; only shutdown is unclean. Watch for this when
-  scripting a run to completion.
-- `--probe` left a **0-byte `kick-probe.wav`** in that run (the teardown crash happens before the
-  file is flushed).
+Official smoke test (verified 2026-10-30):
+
+```sh
+cd ~/KickEmulator
+checks/smoke --ref integration/standalone --no-build
+```
+
+`SMOKE OK` — handshake, PUSH loaded `/app/demos/Starter Kit`, 10 PAD colour packets, silent before
+PLAY (peak -120 dBFS), PLAY/STOP LED packets, 7/7 seconds of playback above -40 dBFS, max peak
+-3.3 dBFS (no clipping), and silent after STOP. This is the acceptance test to run after any change
+to the app, engine or protocol.
+
+Known rough edges:
+
+- An earlier manual run logged **`free(): invalid pointer`** on teardown. The official `checks/smoke`
+  run did not reproduce it; it may be triggered by a manual `kickem_ctl status` or a forced stop.
+  Keep an eye on it when scripting shutdown.
 - Linux-only screens log `FeatureUnavailable: resources shown/hidden` (expected; they have no device
   to talk to).
 
