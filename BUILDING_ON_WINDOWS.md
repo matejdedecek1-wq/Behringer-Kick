@@ -9,6 +9,8 @@ supported by Music Tribe.
 - Reference fork used to reconstruct the missing pieces:
   [Eight4aWish/0700-AAM](https://github.com/Eight4aWish/0700-AAM), branch `macos-build`
   at `bab631ed` (a macOS port; used as reference, not as authoritative Music Tribe code).
+  The fork has since advanced to `96e983b0` (a fix for an empty recent-projects list); the
+  stand-ins here were reconstructed from `bab631ed`, not from that later commit.
 
 Built with Visual Studio 2022 (Build Tools 17.14, MSVC 19.44), CMake 4.2, the
 "Visual Studio 17 2022" generator, x64, Release, against JUCE 7.0.12 with the release's
