@@ -250,6 +250,10 @@ namespace ui
                 selectedIndex = index;
             };
             recentItemsPtr->onMouseDown = [&]( int index, juce::File project ) {
+                // The jog wheel's PUSH (knobClicked) and the long-press "load" pass no file:
+                // load the demo at this index.
+                if( project == juce::File() && juce::isPositiveAndBelow( index, demoDirList.size() ) )
+                    project = demoDirList[index];
                 enableRecentProjVTreeEntry = false;
                 loadProject( project );
             };
@@ -289,6 +293,10 @@ namespace ui
             };
 
             recentItemsPtr->onMouseDown = [&]( int index, juce::File project ) {
+                // As for demos: PUSH passes no file, take the template at this index.
+                const auto t = index - demoList.getSize();
+                if( project == juce::File() && juce::isPositiveAndBelow( t, templateDirList.size() ) )
+                    project = templateDirList[t];
                 openVirtualKeyBoard( project );
             };
 
