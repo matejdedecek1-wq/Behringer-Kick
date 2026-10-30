@@ -77,6 +77,10 @@ namespace mt
         // Connect handler to length change handler.
         lengthChangeHandler();
         progChangeHandler();
+
+        // The level of a loaded track: valueTreePropertyChanged only sees later edits, so without
+        // this a saved track level was ignored (velocity x 1.0) until the level was touched.
+        levelScaler = ( level.get() * MIDI::SCALER );
     }
 
     void MTTrack::setName( const juce::String& Name )

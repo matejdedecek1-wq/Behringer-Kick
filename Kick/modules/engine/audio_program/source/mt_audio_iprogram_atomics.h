@@ -34,14 +34,17 @@ namespace mt
             semi.onValueChanged = CalculatePitchRatio;
             fine.onValueChanged = CalculatePitchRatio;
 
+            // The program LEVEL (0..127, TRACK MIX / Programs strip, PROGRAM `level`) scales the
+            // program's output like CommonUtils::midiToGain; it was stored but never heard.
             auto CalculateLRGains = [&]() {
-                panner.setParameters( pan(), gain() );
+                panner.setParameters( pan(), gain() * (float)level() * MIDI::SCALER );
                 gainL = isMuted() ? 0.f : panner.getLeft();
                 gainR = isMuted() ? 0.f : panner.getRight();
             };
             isMuted.onValueChanged = CalculateLRGains;
             gain.onValueChanged    = CalculateLRGains;
             pan.onValueChanged     = CalculateLRGains;
+            level.onValueChanged   = CalculateLRGains;
 
             attachTo( Tree );
         }
@@ -56,6 +59,7 @@ namespace mt
             poly.attachTo( Tree, IDs::poly, Undo, POLYPHONY::DEFAULT, POLYPHONY::MIN, POLYPHONY::MAX );
             gain.attachTo( Tree, IDs::gain, Undo, GAIN::DEFAULT, GAIN::MIN, GAIN::MAX );
             pan.attachTo( Tree, IDs::pan, Undo, PAN::DEFAULT, PAN::MIN, PAN::MAX );
+            level.attachTo( Tree, IDs::level, Undo, MIDI::LEVEL_DEFAULT, MIDI::MIN, MIDI::MAX );
         }
 
         Atomic<bool>  isMuted;
@@ -65,6 +69,7 @@ namespace mt
         Atomic<int>   poly;
         Atomic<float> gain;
         Atomic<float> pan;
+        Atomic<int>   level;
 
         std::atomic<float> pitchRatio;
         std::atomic<float> gainL;
