@@ -109,8 +109,9 @@ block so JUCE's CMake can register them.
   `KICK_TEST_CONTROL` (new `test_control` module and `Main.cpp` wiring), `KICK_AUDIO_PROBE` /
   `KICK_AUDIO_INPUT` (`AudIO_juce/source/mt_AudioDeviceProbe.h`) and `KICK_HARDWARE`
   (`kick_HardwareProbe`) are ported from `KickEm-Tools/0700-AAM`. The Windows `Kick` target still
-  builds and renders the Projects screen. `KICK_SERIAL_DEVICE` currently expects an absolute
-  path; a Windows `COMx` name needs a small follow-up.
+  builds and renders the Projects screen. The same tree also builds on Linux and passes the
+  emulator's `checks/smoke`; see [`docs/EMULATOR.md`](docs/EMULATOR.md). `KICK_SERIAL_DEVICE`
+  currently expects an absolute path; a Windows `COMx` name needs a small follow-up.
 
 No PktMgr wrapper was required: JUCE 7.0.12's `juce_add_module` accepts a `PktMgr.hpp`
 header and does not require a module-declaration block, so

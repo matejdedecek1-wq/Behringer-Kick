@@ -11,8 +11,8 @@ Windows host.
 
 > **Status (2026-10-30):** native Windows fast mode is not possible (the launcher and the panel
 > transport are POSIX). The full **fast-mode stack is verified working under WSL2 (Ubuntu 24.04)** on
-> this machine, including audio, and the official `checks/smoke` passes — see
-> [Windows (via WSL2)](#windows-via-wsl2--verified-working).
+> this machine, including audio, and the official `checks/smoke` passes for the fork and for our own
+> tree — see [Windows (via WSL2)](#windows-via-wsl2--verified-working).
 
 ## What it is
 
@@ -162,6 +162,38 @@ PLAY (peak -120 dBFS), PLAY/STOP LED packets, 7/7 seconds of playback above -40 
 -3.3 dBFS (no clipping), and silent after STOP. This is the acceptance test to run after any change
 to the app, engine or protocol.
 
+### Running our own tree (verified 2026-10-30)
+
+Our tree now has the emulator prerequisites (in-tree `AudIO`/`ComProtocol`, relative sample paths,
+`ui::overlayRoot`, FeatureUnavailable screens) and the Windows desktop seams. The same fast-mode
+stack builds it on Linux and passes the official smoke test:
+
+```sh
+# in WSL2, once: a bare mirror avoids the spaces in the Windows path
+git clone --bare '/mnt/d/Coding  Projects/Behringer Kick' /home/matej/kick-ours.git
+cd ~/KickEmulator
+./kickem build --firmware /home/matej/kick-ours.git --ref main
+checks/smoke --firmware /home/matej/kick-ours.git --ref main --no-build
+```
+
+Result: `SMOKE OK` 10/10 (handshake, PUSH loads the Starter Kit, 10 PAD colour packets, silent
+before PLAY, PLAY/STOP LEDs, 7/7 s above -40 dBFS, max peak -5.2 dBFS, silent after STOP).
+Refresh the mirror with `git --git-dir=/home/matej/kick-ours.git fetch origin main` after a push.
+
+The Linux app resolves absolute paths (`/app/assets`, `/app/demos`, `/app/templates`,
+`/data/sounds`, `/home/Kick/{projects,logs,prefs}`). After a build, point them at that build; the
+emulator does not create them:
+
+```sh
+sudo ln -sfn ~/.cache/kickem/build/<...>/kick /opt/kick-build
+sudo mkdir -p /app /data /home/Kick/projects /home/Kick/logs /home/Kick/prefs
+sudo ln -sfn /opt/kick-build/assets /app/assets
+sudo ln -sfn /opt/kick-build/demos /app/demos
+sudo ln -sfn /opt/kick-build/templates /app/templates
+sudo ln -sfn /opt/kick-build/data/samplesKick /data/sounds
+sudo chown -R matej:matej /home/Kick
+```
+
 Known rough edges:
 
 - An earlier manual run logged **`free(): invalid pointer`** on teardown. The official `checks/smoke`
@@ -249,10 +281,9 @@ branch merges every open pull request and is the branch used for the verificatio
 2. **Use WSL2 (Ubuntu) for the emulator** — it is installed (Ubuntu 24.04.5) and fast mode is
    confirmed working; keep `CPM_SOURCE_CACHE` pointed at our `.3rdPartySourceCache` to reuse JUCE
    7.0.12 and skip the download. See [Windows (via WSL2)](#windows-via-wsl2--verified-working).
-3. **`integration/standalone` is already confirmed** to build and run fast mode here. Our tree now
-   has the desktop seams (merged 2026-10-30), but it has not yet been built for Linux and run in the
-   emulator; the next step is to point `kickem` at a local checkout of our tree and run it with
-   `--no-fetch` (cached checkout, local edits included) while iterating.
+3. **Our tree is now confirmed** to build and pass `checks/smoke` under fast mode; see
+   [Running our own tree](#running-our-own-tree-verified-2026-10-30). Use the bare mirror because the
+   Windows path has spaces, and keep the emulator clone separate.
 4. Keep our Windows MSVC `Kick.exe` build (proven) separate from the emulator workflow. Use the
    emulator to exercise **app/engine behaviour over the protocol**, not to validate our Windows
    serial port (no unit is attached; the Win32 `juce_serialport` path is untested against hard­ware).
