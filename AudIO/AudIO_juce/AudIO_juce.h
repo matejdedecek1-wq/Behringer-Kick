@@ -16,7 +16,7 @@
   website:            https://github.com/Eight4aWish
   license:            AGPLv3
 
-  dependencies:       AudIO, AudIO_constants, juce_audio_basics, juce_audio_devices, juce_audio_utils
+  dependencies:       AudIO, AudIO_constants, juce_audio_basics, juce_audio_devices, juce_audio_formats, juce_audio_utils
 
  END_JUCE_MODULE_DECLARATION
 
@@ -27,6 +27,7 @@
 // The JUCE glue around AudIO: Kick reaches the whole engine through this module.
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_devices/juce_audio_devices.h>
+#include <juce_audio_formats/juce_audio_formats.h>
 #include <juce_audio_utils/juce_audio_utils.h>
 #include <AudIO_constants/AudIO_constants.h>
 // Recorder.h only includes its WAV writer when JUCE is absent; under JUCE the original
@@ -63,4 +64,5 @@ namespace EMPTY
 
 #include "source/AudIO_recorders.h"
 #include "source/AudIO_filter.h"
+#include "source/mt_AudioDeviceProbe.h"
 #include "source/AudIO_device.h"

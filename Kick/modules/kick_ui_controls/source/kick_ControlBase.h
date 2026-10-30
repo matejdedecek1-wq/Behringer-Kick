@@ -136,7 +136,9 @@ namespace ui
         }
 
         // Class Methods...
-        inline bool hasSelectionFocus() const { return ComponentType::hasKeyboardFocus(); }
+        // The test-control fallback (test_control/source/kick_FocusFallback.h) only counts while
+        // KICK_TEST_CONTROL is set; otherwise these are JUCE's keyboard focus and nothing else.
+        inline bool hasSelectionFocus() const { return ComponentType::hasKeyboardFocus() || testcontrol::FocusFallback::is( this ); }
         inline void setSelectionEnabled( bool enabled ) noexcept { ComponentType::setWantsKeyboardFocus( enabled ); }
         inline bool isSelectionEnabled() const noexcept { return ComponentType::getWantsKeyboardFocus(); }
 
@@ -146,16 +148,20 @@ namespace ui
                 ComponentType::grabKeyboardFocus();
             else
                 ComponentType::giveAwayKeyboardFocus();
+            testcontrol::FocusFallback::note( this, focus && ComponentType::isShowing() );
         }
     };
 
     static inline KickControlsProcessor* getComponentInFocus()
     {
+        if( auto* c = testcontrol::FocusFallback::get() )
+            return dynamic_cast<KickControlsProcessor*>( c );
         return dynamic_cast<KickControlsProcessor*>( juce::Component::getCurrentlyFocusedComponent() );
     };
 
     static inline void clearFocusComponent()
     {
         juce::Component::unfocusAllComponents();
+        testcontrol::FocusFallback::clear();
     }
 }

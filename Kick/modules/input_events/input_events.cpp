@@ -9,6 +9,16 @@
 
 #include "ComConfig.hpp"
 
+// The serial link to the control-surface microcontroller: compiled wherever juce_serialport has a
+// backend (the POSIX build and the Win32 build of this tree). On the unit it is /dev/ttymxc0;
+// KICK_SERIAL_DEVICE names another device (a USB adapter, or the pseudo-terminal of a simulated
+// panel).
+#if JUCE_WINDOWS || JUCE_LINUX || __linux__
+    #define KICK_SERIAL_LINK 1
+#else
+    #define KICK_SERIAL_LINK 0
+#endif
+
 namespace Controls
 {
     std::atomic<bool> shiftBtnState{ false };
@@ -42,27 +52,31 @@ namespace Controls
 
         void connect()
         {
-#if( JUCE_LINUX || __linux__ )
-            if( juce::File( "/dev/ttymxc0" ).exists() )
+            // The send thread: close() stops it, so a reconnect() must start it again.
+            if( !isThreadRunning() )
+                startThread();
+#if KICK_SERIAL_LINK
+            // KICK_SERIAL_DEVICE=<absolute path> replaces the unit's port; unset, it is
+            // /dev/ttymxc0 as always. Same settings and handshake either way.
+            const juce::String overridePath = juce::SystemStats::getEnvironmentVariable( "KICK_SERIAL_DEVICE", {} ).trim();
+            const juce::String serialDev    = overridePath.isNotEmpty() ? overridePath : juce::String( "/dev/ttymxc0" );
+            const juce::String origin       = overridePath.isNotEmpty() ? "KICK_SERIAL_DEVICE" : "default";
+
+            if( juce::File::isAbsolutePath( serialDev ) && juce::File( serialDev ).exists() )
             {
                 juce::StringPairArray portlist = SerialPort::getSerialPortPaths();
 
-                if( !portlist.size() )
+                // The unit's own port is listed in /dev; a pseudo-terminal named by
+                // KICK_SERIAL_DEVICE (/dev/pts/N, /dev/ttysNNN) is not, and needs no listing.
+                if( !portlist.size() && overridePath.isEmpty() )
                     return;
 
-                bool         hasSerialPort = false;
-                juce::String serialDev     = "/dev/ttymxc0";
-                serialDev                  = "/dev/ttymxc0";
-
                 auto serialDebug = []( juce::String str1, juce::String str2 ) {
-                    DBG( str1 );
-                    DBG( str2 );
+                    juce::Logger::writeToLog( str1 + ": " + str2 );
                 };
                 SerialPortConfig config( 230400, 8, SerialPortConfig::SERIALPORT_PARITY_NONE, SerialPortConfig::STOPBITS_1, SerialPortConfig::FLOWCONTROL_NONE );
 
-    #if( JUCE_LINUX || __linux__ )
                 juce::String devPath = serialDev;
-    #endif
                 if( sPort )
                 {
                     input.reset( nullptr );
@@ -70,13 +84,13 @@ namespace Controls
                     sPort.reset( nullptr );
                 }
                 {
-    #if( JUCE_LINUX || __linux__ )
                     CPktMgr::HWMsg_t hwMsg;
                     hwMsg.pktType = CPktMgr::EN_PKT_TYPE_SYSTEM;
                     hwMsg.pktCmd  = contracts::DeviceControlContracts::SysCmd::EN_SYS_COMM_INIT;
                     hwMsg.pktDir  = CPktMgr::EN_PKT_REQUEST;
 
                     sPort.reset( new SerialPort( devPath, config, serialDebug ) );
+                    juce::Logger::writeToLog( "InputEvents: control surface on " + devPath + " (" + origin + "): " + ( sPort->exists() ? "open" : "could not open" ) );
                     input.reset( new SerialPortInputStream( sPort.get() ) );
                     input->addChangeListener( this );
                     input->setNotify( SerialPortInputStream::NOTIFY_ALWAYS );
@@ -84,12 +98,14 @@ namespace Controls
                     hwMsg.data.push_back( (int)contracts::DeviceControlContracts::SysCommCmd::EN_SYS_COMM_CONNECTED );
                     output.reset( new SerialPortOutputStream( sPort.get() ) );
                     Controls::InputEvents::sendMessageToHardware( hwMsg );
-    #endif
                 }
             }
             else
             {
                 DBG( "Serial Not Found" );
+                if( overridePath.isNotEmpty() && !missingLogged )
+                    juce::Logger::writeToLog( "InputEvents: KICK_SERIAL_DEVICE=" + overridePath + " does not exist (an absolute path is needed)" );
+                missingLogged = true;
             }
 #endif
         }
@@ -129,7 +145,7 @@ namespace Controls
         void handleAsyncUpdate() override { txEvent.signal(); }
         void sendSerialOutData( const std::vector<char>& data )
         {
-#if( JUCE_LINUX || __linux__ )
+#if KICK_SERIAL_LINK
             if( !output )
                 return;
 
@@ -275,7 +291,7 @@ namespace Controls
 
                 while( txQueue.try_dequeue( item ) && !threadShouldExit() )
                 {
-#if( JUCE_LINUX || __linux__ )
+#if KICK_SERIAL_LINK
                     txData.clear();
                     ms_objPktMgrUsb.BuildAndTransmitPacket( item, txData );
                     sendSerialOutData( txData );
@@ -294,6 +310,8 @@ namespace Controls
         std::unique_ptr<SerialPortOutputStream> output;
 
         moodycamel::ConcurrentQueue<CPktMgr::HWMsg_t> txQueue;
+
+        bool missingLogged{ false };
     };
     static std::unique_ptr<HwSerialData> _FPPort;
 

@@ -28,6 +28,19 @@ namespace mt
     const char* FACTORY_RESET_CMD = "/bin/rm -rf /home/Kick/projects* /home/Kick/prefs";
     const char* POWEROFF          = "/sbin/poweroff";
 
+    namespace
+    {
+        /// The commands below change the system (network, clock): run them only where the feature
+        /// exists (kick_HardwareProbe.h), and say so in the log when they are skipped.
+        bool isFeatureAvailable( hw::Feature F, const std::string& Command )
+        {
+            if( hw::isAvailable( F ) )
+                return true;
+            juce::Logger::writeToLog( "FeatureUnavailable: " + hw::getName( F ) + ": command not run: " + juce::String( Command ) );
+            return false;
+        }
+    } // namespace
+
     HwPref::HwPref()
         : juce::Thread( "powerbutton" )
     {
@@ -120,6 +133,8 @@ namespace mt
     {
 	    DBG("Starting DHCP");
         std::string command = "/usr/sbin/udhcpc -i eth0 &";
+        if( !isFeatureAvailable( hw::Feature::ethernet, command ) )
+            return 0;
         return executeSetCommand( command.c_str() );
     }
 
@@ -127,6 +142,8 @@ namespace mt
     {
 	    DBG("Stoping DHCP");
         std::string command = "killall udhcpc";
+        if( !isFeatureAvailable( hw::Feature::ethernet, command ) )
+            return 0;
         return executeSetCommand( command.c_str() );
     }
 
@@ -612,6 +629,8 @@ namespace mt
     {
 #if( JUCE_LINUX || __linux__ )
         std::string command = status ? "ifconfig eth0 up" : "ifconfig eth0 down";
+        if( !isFeatureAvailable( hw::Feature::ethernet, command ) )
+            return false;
         int         result  = system( command.c_str() ); // Execute the command using system call
         if( result == 0 )
         {
@@ -655,6 +674,8 @@ namespace mt
         std::string command = "ifconfig " + interface + " " + ipAddress + " netmask " + subnetMask;
 	DBG("cmd = " <<command);
 #if( JUCE_LINUX || __linux__ )
+        if( !isFeatureAvailable( hw::Feature::ethernet, command ) )
+            return result;
         result = executeSetCommand( command.c_str() );
 #endif
         return result;
@@ -818,6 +839,8 @@ namespace mt
     {
 #if defined( __linux__ ) || defined( __linux ) || defined( linux )
         std::string cmd = "timedatectl set-timezone " + str.toStdString();
+        if( !isFeatureAvailable( hw::Feature::clock, cmd ) )
+            return 0;
         int         ret = system( cmd.c_str() );
         if( ret == 0 )
         {
@@ -930,6 +953,9 @@ namespace mt
         //date - s "2024-05-15"
         std::string cmd = std::to_string( year ) + "-" + std::to_string( month ) + "-" + std::to_string( day );
         DBG( "Setting Day -> " << cmd );
+        // Never set the clock of a system that is not a unit, such as a developer's computer.
+        if( !isFeatureAvailable( hw::Feature::clock, cmd ) )
+            return;
         // Execute the command
         int result = std::system( cmd.c_str() );
         // Check if the command executed successfully
@@ -947,6 +973,8 @@ namespace mt
     {
         std::string cmd = std::to_string( hour ) + ":" + std::to_string( minute ) + ":00";
         DBG( "Setting Day -> " << cmd );
+        if( !isFeatureAvailable( hw::Feature::clock, cmd ) )
+            return;
         // Execute the command
         int result = std::system( cmd.c_str() );
         // Check if the command executed successfully
