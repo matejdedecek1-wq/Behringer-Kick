@@ -1,6 +1,7 @@
 
 #include <hardware/source/kick_FirmwareUpdate.h>
 #include <hardware/source/kick_Hwcommon.h>
+#include <hardware/source/kick_HardwareProbe.h>
 
 #pragma once
 namespace kick_ui
@@ -105,6 +106,8 @@ namespace kick_ui
         void                    setupProvider();
         void                    refresh();
         kick_ui::KickModeHeader header{ "Firmware Update", "Icon_SettingsScreen" };
+        // Covers the update list when swupdate is missing; the header's back arrow and "Go Back" stay usable.
+        std::unique_ptr<ui::FeatureUnavailable> featureUnavailable;
         void                    updateDeviceData( const juce::String& deviceName, const juce::String& version, bool hasImage );
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR( SWUpdateView )
     };

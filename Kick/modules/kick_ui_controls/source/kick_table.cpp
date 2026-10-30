@@ -242,10 +242,10 @@ namespace ui
 
     void KickTableView::mouseDown( const juce::MouseEvent& event )
     {
-        auto viewPos  = canvas.getScreenPosition();
-        auto clickPos = event.getScreenPosition();
-
-        auto Y   = clickPos.getY() - viewPos.getY();
+        // The touch in the canvas's own coordinates (the canvas and its rows report it through a
+        // mouse listener). Same as display pixels minus the canvas's display position on the
+        // unit, and also right when the screen is drawn scaled or transformed.
+        auto Y   = event.getEventRelativeTo( &canvas ).getPosition().getY();
         auto row = canvas.getRowFromY( Y );
         if( enableRowSelectionFlag )
             selectRow( row < getNumRows() ? row : getSelectedRow() );
@@ -255,7 +255,14 @@ namespace ui
     {
         int              rowHeight      = canvas.rowHeight;
         int              rowWidth       = canvas.rowWidth;
-        auto             viewPos        = canvas.getScreenPosition();
+        // The Q-Link row maths below works in 1024x600 screen pixels. On the unit the screen is the
+        // whole display, so this is the canvas's display position; measure it from the top-level
+        // component (or a transformed ancestor that draws the screen scaled) so it stays right
+        // when the window is elsewhere on a larger display.
+        juce::Component* root = &canvas;
+        while( root->getParentComponent() != nullptr && !root->isTransformed() )
+            root = root->getParentComponent();
+        auto             viewPos        = root->getLocalPoint( &canvas, juce::Point<int>() );
         auto             startingHeight = height;
         auto             startingWidth  = width;
         std::vector<int> rows;
@@ -287,10 +294,7 @@ namespace ui
 
     void KickTableView::mouseDoubleClick( const juce::MouseEvent& event )
     {
-        auto viewPos  = canvas.getScreenPosition();
-        auto clickPos = event.getScreenPosition();
-
-        auto Y   = clickPos.getY() - viewPos.getY();
+        auto Y   = event.getEventRelativeTo( &canvas ).getPosition().getY(); // as in mouseDown
         auto row = canvas.getRowFromY( Y );
         if( rowComponents.size() > 0 )
             if( onRowDoubleClicked && juce::isPositiveAndBelow( row, rowComponents.size() ) )

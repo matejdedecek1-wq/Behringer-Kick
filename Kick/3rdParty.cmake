@@ -7,6 +7,22 @@
 #   -DMT_PLATFORM_GIT_PATH=<your git base url>
 set(MT_PLATFORM_GIT_PATH   "https://example.com/your-git-server" CACHE STRING "Base URL for private platform repositories")
 
+# The public release ships AudIO and ComProtocol in this repository (../AudIO, ../ComProtocol).
+# Unless MT_PLATFORM_GIT_PATH names a real server, or CPM_AudIO_SOURCE /
+# CPM_COM_PROTOCOL_SOURCE are given on the command line, use those in-tree copies, so a plain
+# `cmake -S Kick -B Kick/build` configures without access to the internal server.
+if(MT_PLATFORM_GIT_PATH STREQUAL "https://example.com/your-git-server")
+    get_filename_component(_kick_repo_root "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+    if(NOT CPM_AudIO_SOURCE AND EXISTS "${_kick_repo_root}/AudIO/juce_modules.cmake")
+        set(CPM_AudIO_SOURCE "${_kick_repo_root}/AudIO")
+        message(STATUS "AudIO: using the in-tree copy ${CPM_AudIO_SOURCE}")
+    endif()
+    if(NOT CPM_COM_PROTOCOL_SOURCE AND EXISTS "${_kick_repo_root}/ComProtocol/PktMgr")
+        set(CPM_COM_PROTOCOL_SOURCE "${_kick_repo_root}/ComProtocol")
+        message(STATUS "ComProtocol: using the in-tree copy ${CPM_COM_PROTOCOL_SOURCE}")
+    endif()
+endif()
+
 ##
 ## 3RD Party git repo tags
 ##

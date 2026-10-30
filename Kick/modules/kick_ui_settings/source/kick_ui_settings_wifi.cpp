@@ -35,6 +35,8 @@ namespace kick_ui
     SettingsWifi::SettingsWifi()
         : SettingsInterface( 6, 3, true )
     {
+        setRequiredFeature( mt::hw::Feature::wifi, "Wi-Fi",
+                            "On the unit Wi-Fi is wpa_supplicant and dhclient on its wlan0 interface. This system has no wlan0 for the app to manage: nothing is scanned or changed." );
         ui::KickGrid::setBackgroundColour( juce::Colours::transparentBlack );
         setRowTitles( { "", "WIFI SETTINGS", "SSID", "PASSWORD", "Connection/Status" } );
 

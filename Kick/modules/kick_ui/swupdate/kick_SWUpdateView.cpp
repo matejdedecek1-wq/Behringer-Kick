@@ -214,6 +214,20 @@ namespace kick_ui
 
     void SWUpdateView::visibilityChanged()
     {
+        // Without swupdate (mt::hw::isAvailable) nothing can be installed: no image scan, no USB
+        // gadget, no "You are on latest Version" claim; the notice says what the unit does here.
+        const bool canUpdate = mt::hw::isAvailable( mt::hw::Feature::update );
+        ui::FeatureUnavailable::update( featureUnavailable, *this, canUpdate, mt::hw::getName( mt::hw::Feature::update ), "Firmware update",
+                                        "Updates come from a .swu image on an SD card or USB drive, or from the PC app over USB "
+                                        "(/dev/usb-utp0), and are installed by swupdate, which this system does not have.",
+                                        centreBounds );
+        if( !canUpdate )
+        {
+            latestVersionlabel.setVisible( false );
+            checkLabel.setVisible( false );
+            return;
+        }
+
         if( isVisible() )
         {
             if( thread == nullptr )

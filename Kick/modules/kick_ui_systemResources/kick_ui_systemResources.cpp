@@ -89,7 +89,16 @@ namespace kick_ui
 
     void KSystemResources::start()
     {
+        updateFeatureNotice();
         startTimerHz( 1 );
+    }
+
+    void KSystemResources::updateFeatureNotice()
+    {
+        ui::FeatureUnavailable::update( featureUnavailable, *this, mt::hw::isAvailable( mt::hw::Feature::resources ),
+                                        mt::hw::getName( mt::hw::Feature::resources ), "CPU, RAM and storage meters",
+                                        "The unit reads them from its Linux: /proc/stat, sysinfo, and df on /home/Kick, /mnt/sdcard (SD card) and /mnt/flash (USB drive).",
+                                        { 10, 5, 570, 425 } );
     }
 
     void KSystemResources::stop()
@@ -98,6 +107,9 @@ namespace kick_ui
     }
     void KSystemResources::timerCallback()
     {
+        // Off Linux these calls leave their results unset; the notice explains instead.
+        if( !mt::hw::isAvailable( mt::hw::Feature::resources ) )
+            return;
         double          cpuusage;
         mt::sysRamInfo  rInfo;
         mt::sysSizeInfo sInfo;
@@ -152,6 +164,7 @@ namespace kick_ui
         purgeAll.setBounds( 20, 433, 140, 40 );
         purgeUnused.setBounds( 240, 433, 140, 40 );
         ok.setBounds( 430, 433, 140, 40 );
+        updateFeatureNotice();
     }
 
     void KSystemResources::visibilityChanged()

@@ -21,6 +21,32 @@
 
 namespace mt
 {
+    /// A project may name its samples by a path relative to its own folder or to the samples
+    /// root (getAppDirs( MTSamples )), so content such as a demo project can ship without
+    /// machine-specific absolute paths. Every FILE path, SLICE / LAYER source is made absolute
+    /// before anything reads it; the sound cache and the program layers key sounds by that full
+    /// path string. Absolute paths (all the device ever writes) are left alone, and a relative
+    /// path that names no existing file is left as it was.
+    static void resolveRelativeSamplePaths( juce::ValueTree VT, const juce::File& ProjectDir )
+    {
+        for( const auto& property : { IDs::path, IDs::source } )
+        {
+            const auto value = VT.getProperty( property ).toString();
+            if( value.isEmpty() || juce::File::isAbsolutePath( value ) )
+                continue;
+            for( const auto& root : { ProjectDir, getAppDirs( MTSamples ) } )
+            {
+                const auto file = root.getChildFile( value );
+                if( file.existsAsFile() )
+                {
+                    VT.setProperty( property, file.getFullPathName(), nullptr );
+                    break;
+                }
+            }
+        }
+        for( auto child : VT )
+            resolveRelativeSamplePaths( child, ProjectDir );
+    }
 
     ///
     /// MTAudioManager
@@ -157,6 +183,9 @@ namespace mt
         //DBG( "LP: FM2: " << engine.getFeeMemory() );
         undoManager.clearUndoHistory();
         vTree = projectManager::loadOrCreate( ProjectFile );
+        resolveRelativeSamplePaths( vTree, juce::File( projectManager::getProjectDir() ) );
+        // Which project was loaded, for logs and scripted checks.
+        juce::Logger::writeToLog( "Project: loaded " + ProjectFile.getFullPathName() );
 
 #if defined( USE_VALUE_TREE_DEBUGGER ) && ( USE_VALUE_TREE_DEBUGGER > 0 )
         debugger.setSource( vTree );

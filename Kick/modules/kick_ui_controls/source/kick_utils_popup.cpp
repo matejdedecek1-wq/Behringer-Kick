@@ -31,6 +31,13 @@ namespace mt
         {
             setOpaque( true );
 
+            // Covers the app's window (ui::overlayRoot(), kick_ControlBase.h), which on the unit is
+            // the whole display; getFullScreenModalPopUP() adds it there.
+            if( auto* root = ui::overlayRoot().getComponent() )
+            {
+                setBounds( root->getLocalBounds() );
+                return;
+            }
             auto display = juce::Desktop::getInstance().getDisplays().getPrimaryDisplay();
             auto b       = display->totalArea;
             setBounds( b ); // Overall component Area.
@@ -60,8 +67,13 @@ namespace mt
         {
             image.clear( ui::layout::screen );
 
-            if( auto w = juce::TopLevelWindow::getActiveTopLevelWindow() )
+            // The blurred backdrop is what the app's window shows, without this popup itself.
+            juce::Component* w = ui::overlayRoot().getComponent();
+            if( w == nullptr )
+                w = juce::TopLevelWindow::getActiveTopLevelWindow();
+            if( w != nullptr )
             {
+                setVisible( false );
                 image = w->createComponentSnapshot( ui::layout::screen, false );
                 stack_blur<10>( image );
             }
@@ -326,8 +338,13 @@ namespace mt
 
         _popups.emplace_back( new Type() );
         auto& p = _popups.back();
-        auto  c = juce::TopLevelWindow::getActiveTopLevelWindow();
-        c->addAndMakeVisible( p.get() );
+        // The app's window, which is not necessarily the active window on a desktop (another app
+        // in front, the screen locked); without one registered, the active window as before.
+        juce::Component* c = ui::overlayRoot().getComponent();
+        if( c == nullptr )
+            c = juce::TopLevelWindow::getActiveTopLevelWindow();
+        if( c != nullptr )
+            c->addAndMakeVisible( p.get() );
         return p.get();
     }
 

@@ -176,6 +176,10 @@ public:
         // Visibility...
         w->setVisible( true );
 
+        // Full-screen popups, the loading spinner and notification bubbles go on this window
+        // (kick_ui_controls/source/kick_ControlBase.h). On the unit it covers the display.
+        ui::overlayRoot() = w.get();
+
 #if !( JUCE_LINUX || __linux__ )
         // Desktop debugging aid (not for the device): KICK_SNAPSHOT=<file.png> renders the window
         // to a PNG after KICK_SNAPSHOT_DELAY_MS (default 4000) and quits.
@@ -222,6 +226,7 @@ public:
         // Add your application's shutdown code here ...
         testControl = nullptr;
         testcontrol::TestControl::statusProvider = nullptr;
+        ui::overlayRoot() = nullptr;
         w = nullptr;
         adapter = nullptr;
     }

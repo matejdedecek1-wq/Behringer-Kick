@@ -35,7 +35,7 @@
    website:            http://www.musictribe.com/
    license:            AGPLv3
 
-   dependencies:       kick_ui_controls
+   dependencies:       kick_ui_controls, hardware
 
   END_JUCE_MODULE_DECLARATION
 
@@ -44,6 +44,7 @@
 #pragma once
 
 #include <kick_ui_controls/kick_ui_controls.h>
+#include <hardware/source/kick_HardwareProbe.h>
 
 namespace kick_ui
 {
@@ -62,6 +63,7 @@ namespace kick_ui
         void paint( juce::Graphics& g ) override;
         void resized() override;
         void visibilityChanged() override;
+        void updateFeatureNotice();
 
     private:
         ui::KickLabel storage{ "STORAGE" };
@@ -78,6 +80,8 @@ namespace kick_ui
         std::string         internalPath = "/home/Kick";
         std::string         sdCardPath   = "/dev/mmcblk1p1";
         std::string         usbDiskPath  = "/dev/sda1";
+        // Covers the meters off Linux (mt::hw::isAvailable); Purge All / Purge Unused / OK stay usable.
+        std::unique_ptr<ui::FeatureUnavailable> featureUnavailable;
     };
 
     class KickSysResources

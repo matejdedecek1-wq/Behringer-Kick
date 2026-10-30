@@ -34,6 +34,8 @@ namespace kick_ui
     SettingsEthernet::SettingsEthernet()
         : SettingsInterface( 6, 3, true )
     {
+        setRequiredFeature( mt::hw::Feature::ethernet, "Ethernet",
+                            "On the unit eth0 is configured with ifconfig and udhcpc. This system has no eth0 for the app to manage, and its network is left as it is." );
         ui::KickGrid::setBackgroundColour( juce::Colours::transparentBlack );
         setRowTitles( { "ETHERNET SETTINGS", "IP ADDRESS", "SUBNET MASK", "GATEWAY", "DNS SERVER" } );
 

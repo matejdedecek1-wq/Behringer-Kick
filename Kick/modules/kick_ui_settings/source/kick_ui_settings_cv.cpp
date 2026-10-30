@@ -33,6 +33,8 @@ namespace kick_ui
     SettingsCV::SettingsCV()
         : SettingsInterface( 5, 4, true )
     {
+        setRequiredFeature( mt::hw::Feature::cv, "CV / Gate",
+                            "The CV and gate outputs, and their calibration, drive the unit's DAC over I2C (/dev/i2c-3), which this system does not have." );
         ui::KickGrid::setBackgroundColour( juce::Colours::transparentBlack );
         setRowTitles( { "CV Range Settings", "", "", "" } );
 

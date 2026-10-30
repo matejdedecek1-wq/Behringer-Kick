@@ -27,7 +27,15 @@ namespace mt
         bubbleNotification()
             : juce::BubbleMessageComponent()
         {
-            addToDesktop( 0 );
+            // Positions are on the 1024x600 screen: show it on the app's window (ui::overlayRoot(),
+            // which on the unit is the whole display), or on the desktop when none is registered.
+            if( auto* root = ui::overlayRoot().getComponent() )
+            {
+                setAlwaysOnTop( true );
+                root->addChildComponent( this );
+            }
+            else
+                addToDesktop( 0 );
             setAllowedPlacement( BubbleMessageComponent::above );
         }
 
@@ -45,7 +53,8 @@ namespace mt
 
         void show( const juce::AttributedString& Str, juce::Rectangle<int> Bounds = ui::layout::statusBar, int TimeInMS = 1500 )
         {
-            showAt( Bounds, Str, TimeInMS );
+            // On the window it is deleted once it has faded, rather than left there.
+            showAt( Bounds, Str, TimeInMS, true, getParentComponent() != nullptr );
             setPosition( Bounds.getCentre(), -1 );
         }
 

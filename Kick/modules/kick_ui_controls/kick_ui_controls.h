@@ -74,5 +74,6 @@
     #include "source/kick_attachedControls.h"
     #include "source/kick_NoteSelector.h"
     #include "source/kick_IPv4Editor.h"
+    #include "source/kick_FeatureUnavailable.h"
 
 #endif

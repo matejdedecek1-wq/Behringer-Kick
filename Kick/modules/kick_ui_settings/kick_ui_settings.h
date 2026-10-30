@@ -14,7 +14,7 @@
   website:
   license:            AGPLv3
 
-  dependencies:       kick_ui_header, kick_ui_selectors, audio_program, kick_ui_header, project
+  dependencies:       kick_ui_header, kick_ui_selectors, audio_program, kick_ui_header, project, hardware
 
  END_JUCE_MODULE_DECLARATION
 
@@ -28,6 +28,7 @@
 #include <kick_ui_selectors/kick_ui_selectors.h>
 #include <audio_program/audio_program.h>
 #include <project/project.h>
+#include <hardware/source/kick_HardwareProbe.h>
 
 // Module include files.
 //
@@ -58,6 +59,40 @@ namespace kick_ui
 
         explicit SettingsInterface( int NRows, int NCols, bool RowTitlesRequired = false, juce::ValueTree VT = {} )
             : ui::KickGrid( NRows, NCols, RowTitlesRequired ), state( VT ){};
+
+        /// A view whose only job is to drive a device feature names it here. While the system
+        /// does not have it (mt::hw::isAvailable), the view is covered with ui::FeatureUnavailable.
+        /// On a unit every feature is present and nothing is created.
+        void setRequiredFeature( mt::hw::Feature F, const juce::String& Label, const juce::String& Reason )
+        {
+            requiredFeature = F;
+            featureLabel    = Label;
+            featureReason   = Reason;
+        }
+
+        void resized() override
+        {
+            ui::KickGrid::resized(); // re-adds only the grid items: re-attach the notice on top
+            updateFeatureNotice();
+        }
+
+        void visibilityChanged() override
+        {
+            ui::KickGrid::visibilityChanged();
+            updateFeatureNotice();
+        }
+
+    private:
+        void updateFeatureNotice()
+        {
+            if( requiredFeature.has_value() )
+                ui::FeatureUnavailable::update( featureUnavailable, *this, mt::hw::isAvailable( *requiredFeature ),
+                                                mt::hw::getName( *requiredFeature ), featureLabel, featureReason );
+        }
+
+        std::optional<mt::hw::Feature>          requiredFeature;
+        juce::String                            featureLabel, featureReason;
+        std::unique_ptr<ui::FeatureUnavailable> featureUnavailable;
     };
 
     class Settings : public kick_ui::IScreen
