@@ -24,6 +24,7 @@
 #include "kick_device_adapter.h"
 #include "kick_audio_engine_adapter.h"
 #include "kick_audio_interface.h"
+#include <test_control/test_control.h>
 
 #ifdef PERFETTO
     #include "melatonin_perfetto/melatonin_perfetto.h"
@@ -193,6 +194,21 @@ public:
         }
 #endif
 
+        // Opt-in test channel for the screen: only with KICK_TEST_CONTROL=<file> set
+        // (modules/test_control). Otherwise nothing is created.
+        testControl = testcontrol::TestControl::createFromEnvironment( *w );
+        if( testControl != nullptr )
+            testcontrol::TestControl::statusProvider = []() {
+                auto&      ae  = mt::getAudioInterface();
+                const auto bnb = ae.getPlayhead().bnb; // 1-based, as BAR : BEAT : TICK on screen
+                // The record mode needs the note-recording engine (not in this firmware yet): n/a.
+                return juce::String( ae.isSequencePlaying() ? "playing" : "stopped" )
+                       + " bbt=" + juce::String( bnb.bar + 1 ) + ":" + juce::String( bnb.beat + 1 ).paddedLeft( '0', 2 ) + ":" + juce::String( bnb.tick ).paddedLeft( '0', 3 )
+                       + " bpm=" + juce::String( ae.getMasterBPM() ) + " clock=" + juce::String( mt::getMidiClock().getTempo(), 1 )
+                       + " rec=n/a"
+                       + " metronome=" + ( mt::getSettings().metronome.enabled() ? "on" : "off" );
+            };
+
 #if PERFETTO
         MelatoninPerfetto::get().beginSession();
 #endif
@@ -204,6 +220,8 @@ public:
         MelatoninPerfetto::get().endSession();
 #endif
         // Add your application's shutdown code here ...
+        testControl = nullptr;
+        testcontrol::TestControl::statusProvider = nullptr;
         w = nullptr;
         adapter = nullptr;
     }
@@ -260,6 +278,7 @@ public:
 
 private:
     std::unique_ptr<juce::DocumentWindow> w;
+    std::unique_ptr<testcontrol::TestControl> testControl;
     std::unique_ptr<KickDeviceAdapter>    adapter;
     std::unique_ptr<KickAudioEngineAdapter>    engineAdapter;
     std::shared_ptr<contracts::AudioInterface> audioInterface;

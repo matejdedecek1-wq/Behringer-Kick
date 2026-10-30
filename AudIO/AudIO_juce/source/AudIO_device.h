@@ -36,6 +36,9 @@ namespace mt
             setup.sampleRate = (double)samplerate;
             setup.bufferSize = (int)blocksize;
             deviceManager.setAudioDeviceSetup( setup, true );
+            // Opt-in test tooling (KICK_AUDIO_PROBE, KICK_AUDIO_INPUT), see mt_AudioDeviceProbe.h.
+            probe     = AudioProbe::createFromEnvironment( (double)samplerate, numOuts );
+            testInput = TestInput::createFromEnvironment( (double)samplerate );
             prepareToPlay( samplerate, blocksize );
             deviceManager.addAudioCallback( this );
             setState( AudIO::AudioDeviceState::playing );
@@ -49,6 +52,8 @@ namespace mt
             if( !isInitialized() ) return;
             deviceManager.removeAudioCallback( this );
             deviceManager.closeAudioDevice();
+            probe     = nullptr;
+            testInput = nullptr;
             teardown();
             setState( AudIO::AudioDeviceState::stopped );
         }
@@ -75,8 +80,24 @@ namespace mt
                         juce::FloatVectorOperations::clear( in, block );
                         if( ch < numInputChannels && inputs[ch] ) juce::FloatVectorOperations::copy( in, inputs[ch] + pos, n );
                     }
+                if( testInput )
+                {
+                    float* ins[8] = {};
+                    const int nIns = (int)juce::jmin<uint32_t>( 8, buf.getNumInputChannels() );
+                    for( int ch = 0; ch < nIns; ++ch )
+                        ins[ch] = buf.getInputBuffer( (uint32_t)ch );
+                    testInput->render( ins, nIns, n );
+                }
                 buf.clearOutputs();
                 process( buf );
+                if( probe )
+                {
+                    float* outs[8] = {};
+                    const int nOuts = (int)juce::jmin<uint32_t>( 8, buf.getNumOutputChannels() );
+                    for( int ch = 0; ch < nOuts; ++ch )
+                        outs[ch] = buf.getOutputBuffer( (uint32_t)ch );
+                    probe->push( outs, nOuts, n );
+                }
                 for( int ch = 0; ch < juce::jmin( numOutputChannels, (int)buf.getNumOutputChannels() ); ++ch )
                     if( auto out = buf.getOutputBuffer( (uint32_t)ch ) )
                         if( outputs[ch] ) juce::FloatVectorOperations::copy( outputs[ch] + pos, out, n );
@@ -89,5 +110,10 @@ namespace mt
         juce::AudioDeviceManager deviceManager;
         int                      numIns, numOuts;
         juce::String             name;
+
+        // Opt-in test tooling (KICK_AUDIO_PROBE, KICK_AUDIO_INPUT), see mt_AudioDeviceProbe.h.
+        // Both stay null unless the variable is set.
+        std::unique_ptr<AudioProbe> probe;
+        std::unique_ptr<TestInput>  testInput;
     };
 } // namespace mt

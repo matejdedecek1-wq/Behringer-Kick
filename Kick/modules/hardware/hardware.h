@@ -32,5 +32,6 @@
     #include "source/kick_Hwcommon.h"
     #include "source/kick_UsbFunctionFS.h"
 	#include "source/kick_WifiFirmware.h"
+    #include "source/kick_HardwareProbe.h"
 
 #endif

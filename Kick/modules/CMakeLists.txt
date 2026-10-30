@@ -13,6 +13,7 @@ juce_add_modules(
     kick_ui_selectors
     kick_ui_systemResources
     program_edit_ui
+    test_control
     kick_ui_settings
     kick_leds
 	ipc

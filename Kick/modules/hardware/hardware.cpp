@@ -32,6 +32,7 @@
 #include "hardware.h"
 
 // Module source files...
+#include "source/kick_HardwareProbe.cpp"
 #include "source/kick_I2c.cpp"
 #include "source/kick_Resorces.cpp"
 #include "source/kick_Hwpref.cpp"
