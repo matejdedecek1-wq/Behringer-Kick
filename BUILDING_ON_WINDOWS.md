@@ -105,6 +105,12 @@ block so JUCE's CMake can register them.
   `KICK_SNAPSHOT` to a PNG path and the app renders its window to that file after
   `KICK_SNAPSHOT_DELAY_MS` (default 4000) and quits. This is how the Windows screenshot was
   produced.
+- **Desktop seams (2026-10-30)** — `KICK_SERIAL_DEVICE` (serial link in `input_events`),
+  `KICK_TEST_CONTROL` (new `test_control` module and `Main.cpp` wiring), `KICK_AUDIO_PROBE` /
+  `KICK_AUDIO_INPUT` (`AudIO_juce/source/mt_AudioDeviceProbe.h`) and `KICK_HARDWARE`
+  (`kick_HardwareProbe`) are ported from `KickEm-Tools/0700-AAM`. The Windows `Kick` target still
+  builds and renders the Projects screen. `KICK_SERIAL_DEVICE` currently expects an absolute
+  path; a Windows `COMx` name needs a small follow-up.
 
 No PktMgr wrapper was required: JUCE 7.0.12's `juce_add_module` accepts a `PktMgr.hpp`
 header and does not require a module-declaration block, so
@@ -121,6 +127,9 @@ header and does not require a module-declaration block, so
   approximations, not measured against hardware.
 - **The serial link is a port of the mac fork's file plus a new Win32 path; it is untested
   against real hardware.** On Windows the app opens no port unless one is present.
+- **Shutdown crash:** `Kick.exe` exits with `0xC0000374` (heap corruption) after
+  `KICK_SNAPSHOT` quits. The build before the desktop seams does the same, so this predates
+  them; the UI and screenshot are unaffected.
 - The window is a normal 1024 × 600 desktop window; the device's kiosk/fullscreen behaviour
   is Linux-only and not applied on Windows.
 

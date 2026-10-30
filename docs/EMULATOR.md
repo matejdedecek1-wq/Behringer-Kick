@@ -249,9 +249,10 @@ branch merges every open pull request and is the branch used for the verificatio
 2. **Use WSL2 (Ubuntu) for the emulator** — it is installed (Ubuntu 24.04.5) and fast mode is
    confirmed working; keep `CPM_SOURCE_CACHE` pointed at our `.3rdPartySourceCache` to reuse JUCE
    7.0.12 and skip the download. See [Windows (via WSL2)](#windows-via-wsl2--verified-working).
-3. **`integration/standalone` is already confirmed** to build and run fast mode here. Point the
-   emulator at our own fork only once we have merged the seams (PRs #15/#2) into a branch of it, then
-   run against it with `--no-fetch` (cached checkout, local edits included) while iterating.
+3. **`integration/standalone` is already confirmed** to build and run fast mode here. Our tree now
+   has the desktop seams (merged 2026-10-30), but it has not yet been built for Linux and run in the
+   emulator; the next step is to point `kickem` at a local checkout of our tree and run it with
+   `--no-fetch` (cached checkout, local edits included) while iterating.
 4. Keep our Windows MSVC `Kick.exe` build (proven) separate from the emulator workflow. Use the
    emulator to exercise **app/engine behaviour over the protocol**, not to validate our Windows
    serial port (no unit is attached; the Win32 `juce_serialport` path is untested against hard­ware).
