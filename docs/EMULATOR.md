@@ -149,7 +149,8 @@ Audio (verified 2026-10-30): after installing `libasound2-plugins alsa-utils pul
 `pactl info` shows WSLg's `RDPSink`, and the app opens **`PulseAudio Sound Server`** at 48 kHz.
 `--probe` produced a growing WAV with peaks around **-3 dBFS** during playback.
 
-Official smoke test (verified 2026-10-30):
+Official smoke test (verified 2026-10-30 on `integration/standalone` @ `2d2c9462` after a clean
+rebuild):
 
 ```sh
 cd ~/KickEmulator
@@ -210,18 +211,21 @@ work, not a supported path.
 
 ## Using the right firmware base
 
-Fast mode needs firmware changes that are **not in `KickEm-Tools/0700-AAM main`** yet. `main` is
-equal to upstream `27194180` and fast mode's preflight stops on it. Upstream's
+The fork's `main` has moved past upstream `27194180`: at the time of writing it is `4f8853e9`,
+**78 commits ahead**, and already contains the desktop seams. The
 [`integration/standalone`](https://github.com/KickEm-Tools/0700-AAM/tree/integration/standalone)
-branch merges every open pull request, for running everything at once:
+branch merges every open pull request and is the branch used for the verification above:
 
-- `integration/standalone` head `cc5fa831`, **44 commits ahead of `main` (`27194180`), 0 behind**.
-- **16 open pull requests** at the time of writing.
-- The prerequisite PRs fast mode needs: `build/release-builds` (#1, reconstructed `AudIO_juce` +
+- `integration/standalone` head `2d2c9462`, **71 commits ahead of upstream `main` (`27194180`), 0
+  behind**.
+- **1 open pull request** at the time of writing (#21, CI for the emulator).
+- The prerequisite PRs fast mode needed: `build/release-builds` (#1, reconstructed `AudIO_juce` +
   build fixes — required), `feature/serialport` (#15, real `juce_serialport` + `KICK_SERIAL_DEVICE`
   — required), `feature/desktop-seams` (#2, `KICK_TEST_CONTROL` / `KICK_AUDIO_PROBE` /
   `KICK_HARDWARE` — checks that need them fail without it), `fix/relative-sample-paths` (#7, the
-  Starter Kit's samples load), `fix/shift-state` (#16, SHIFT functions from the surface).
+  Starter Kit's samples load), `fix/shift-state` (#16, SHIFT functions from the surface). These are
+  merged into the fork's `main`/`integration/standalone` now; the hashes and counts are a moving
+  target.
 
 `integration/standalone` is a scratch branch (it force-merges open PRs). It is the right base for
 **trying** the emulator; it is not a base for our own work.
